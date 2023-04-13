@@ -1,1 +1,44 @@
-<p>header works!</p>
+<header
+  class="w-full h-20 md:px-14 xl:px-40 flex justify-between items-center bg-main-blue"
+>
+  <!-- Menu left section -->
+  <ul class="flex gap-x-3 md:gap-x-5 xl:gap-x-9 text-white font-normal">
+    <li>
+      <a [routerLink]="['']">Home</a>
+    </li>
+    <li>
+      <a [routerLink]="['']">Monitor</a>
+    </li>
+    <li>
+      <a [routerLink]="['']">Manutenções</a>
+    </li>
+    <li>
+      <a [routerLink]="['']">Documentos</a>
+    </li>
+    <li>
+      <a [routerLink]="['equipment']">Estações</a>
+    </li>
+    <li>
+      <a [routerLink]="['']">Gestão</a>
+    </li>
+  </ul>
+
+  <!-- Menu right section -->
+  <ul class="flex gap-x-2 md:gap-x-4 xl:gap-x-6 items-center">
+    <li>
+      <a [routerLink]="['']">
+        <img src="../../../assets/helpDesk.svg" alt="botão de ajuda" />
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['']">
+        <img src="../../../assets/notification.svg" alt="notificações" />
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['']">
+        <img src="../../../assets/perfil.svg" alt="perfil" />
+      </a>
+    </li>
+  </ul>
+</header>
