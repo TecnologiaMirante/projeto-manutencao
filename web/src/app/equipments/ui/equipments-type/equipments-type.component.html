@@ -1,0 +1,20 @@
+<!-- <div class="flex w-max max-w-5xl justify-center h-max rounded-lg bg-white"> -->
+<div
+  class="flex justify-start md:w-custom_810px xl:w-custom_1056px h-max rounded-lg bg-white"
+>
+  <!-- zona menor -->
+  <!-- aqui o bottom padding ficou 24 pois ele está somando com o bottom padding do último item. -->
+  <!-- Deste modo, sempre que um novo item for adicionado, o bottom padding final não é alterado -->
+  <div class="mx-9 mt-6 mb-6">
+    <div *ngFor="let equipment_type of lista" class="pb-9">
+      <h3 class="pb-3 text-lg font-bold text-main-blue">
+        {{ equipment_type.title }}
+      </h3>
+      <div class="flex flex-wrap justify-start gap-3">
+        <div *ngFor="let equipment of equipment_type.items">
+          <a [routerLink]="['/equipment', equipment.toLowerCase()]">aa </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
