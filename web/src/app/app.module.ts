@@ -15,7 +15,7 @@ import { EquipmentsModule } from './equipments/equipments.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    EquipmentsModule
+    EquipmentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

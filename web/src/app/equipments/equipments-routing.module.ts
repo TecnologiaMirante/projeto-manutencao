@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     {
@@ -8,7 +8,7 @@ const routes: Routes = [
         redirectTo: 'create'
     },
     {
-        path: 'equipments',
+        path: 'create',
         loadChildren: () =>
          import('../equipments/feature/equipments-shell/equipments-shell.module').then(
             (m) => m.EquipmentsShellModule
@@ -17,7 +17,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-    imports: [],
-    exports: []
+    imports: [ RouterModule.forChild(routes) ],
+    exports: [ RouterModule ]
 })
 export class EquipmentsRoutingModule {}

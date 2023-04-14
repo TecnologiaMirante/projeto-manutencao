@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { EquipmentsCreateComponent } from './equipments-create.component';
 import { EquipmentsCreateRoutingModule } from './equipments-create-routing.module';
 
-NgModule({
+@NgModule({
     declarations: [
         EquipmentsCreateComponent
     ],
