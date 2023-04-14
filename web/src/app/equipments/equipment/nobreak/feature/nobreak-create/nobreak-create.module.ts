@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NobreakCreateRoutingModule } from './nobreak-create-routing.module';
 import { NobreakCreateComponent } from './nobreak-create.component';
+import { NobreakCreateEditCardModule } from '../../ui/nobreak-create-edit-card/nobreak-create-edit-card.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { NobreakCreateComponent } from './nobreak-create.component';
   ],
   imports: [
     CommonModule,
-    NobreakCreateRoutingModule
+    NobreakCreateRoutingModule,
+    NobreakCreateEditCardModule
   ],
   exports: [
     NobreakCreateComponent

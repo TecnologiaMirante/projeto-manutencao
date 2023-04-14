@@ -4,8 +4,81 @@
   </p>
 
   <div class="flex justify-center">
-    <div class="mx-custom_432px mt-custom_29px">
+    <div class="mt-custom_29px">
       <h3 class="mb-6 font-bold text-main-blue">Nobreak</h3>
+
+      <!-- aqui o bottom padding ficou 44 pois ele está somando com o bottom padding do último item. -->
+      <!-- Deste modo, sempre que um novo item for adicionado, o bottom padding final não é alterado -->
+      <!-- create nobreak form -->
+      <div class="w-custom_1236px h-max rounded-lg bg-white">
+        <form class="flex justify-between mx-9 pt-6 mb-custom_60px">
+          <!-- left section: fields -->
+
+          <div class="mb-11">
+            <div class="pr-6 mb-4">
+              <label class="block mb-4 text-lg font-bold text-main-blue"
+                >Tag</label
+              >
+              <input
+                type="text"
+                class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-xs font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
+                placeholder="XXXXX"
+                autofocus
+              />
+            </div>
+            <div class="flex mb-4">
+              <div class="pr-6">
+                <h3 class="block mb-4 text-lg font-bold text-main-blue">
+                  Marca
+                </h3>
+                <input
+                  type="text"
+                  class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-xs font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
+                  placeholder="XXXXXXXXX"
+                  autofocus
+                />
+              </div>
+              <div class="pr-6">
+                <h3 class="block mb-4 text-lg font-bold text-main-blue">
+                  Modelo
+                </h3>
+                <input
+                  type="text"
+                  class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-xs font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
+                  placeholder="XXXXXXXXX"
+                  autofocus
+                />
+              </div>
+              <div class="pr-6">
+                <h3 class="block mb-4 text-lg font-bold text-main-blue">
+                  Tensão Entrada
+                </h3>
+                <input
+                  type="text"
+                  class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-xs font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
+                  placeholder="XXXXXXXXX"
+                  autofocus
+                />
+              </div>
+              <div class="pr-6">
+                <h3 class="block mb-4 text-lg font-bold text-main-blue">
+                  Tensão Saída
+                </h3>
+                <input
+                  type="text"
+                  class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-xs font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
+                  placeholder="XXXXXXXXX"
+                  autofocus
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- right section: image -->
+          <div>imagem</div>
+        </form>
+      </div>
+
       <!-- Aqui vem os botões -->
     </div>
   </div>

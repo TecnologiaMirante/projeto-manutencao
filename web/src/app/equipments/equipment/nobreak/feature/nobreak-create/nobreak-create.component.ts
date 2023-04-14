@@ -20,3 +20,11 @@ export class NobreakCreateComponent {
     
   }
 }
+
+interface fieldsList {
+  tag: string;
+  marca: string;
+  modelo: string;
+  tensao_entrada: number;
+  tensao_saida: number;
+}
