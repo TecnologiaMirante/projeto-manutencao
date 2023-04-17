@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NobreakCreateRoutingModule } from './nobreak-create-routing.module';
 import { NobreakCreateComponent } from './nobreak-create.component';
 import { NobreakCreateEditCardModule } from '../../ui/nobreak-create-edit-card/nobreak-create-edit-card.module';
+import { TextButtonModule } from 'src/app/shared/ui/text-button/text-button.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { NobreakCreateEditCardModule } from '../../ui/nobreak-create-edit-card/n
   imports: [
     CommonModule,
     NobreakCreateRoutingModule,
-    NobreakCreateEditCardModule
+    NobreakCreateEditCardModule,
+    TextButtonModule
   ],
   exports: [
     NobreakCreateComponent

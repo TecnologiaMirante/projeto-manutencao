@@ -58,5 +58,8 @@ module.exports = {
       },
     },
   },
+  variants: {
+    ringWidth: ["hover", "active"],
+  },
   plugins: [],
 };

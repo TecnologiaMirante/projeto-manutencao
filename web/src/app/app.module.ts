@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { EquipmentsModule } from './equipments/equipments.module';
+import { TextButtonComponent } from './shared/ui/text-button/text-button.component';
 
 
 @NgModule({
