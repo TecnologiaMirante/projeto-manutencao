@@ -8,6 +8,7 @@ module.exports = {
         "secondary-blue": "#E0EBFF",
         "main-gray": "#E8E7EF",
         "secondary-gray": "#F4F3F6",
+        "image-gray": "#888888",
       },
       padding: {
         "px-default": "10rem",
@@ -26,7 +27,9 @@ module.exports = {
         custom_37px: "2.313rem",
         custom_60px: "3.75rem",
         custom_73px: "4.563rem",
+        custom_120px: "7.5rem",
         custom_140px: "8.75rem",
+        custom_184px: "11.5rem",
         custom_237px: "14.813rem",
         custom_342px: "21.375rem",
         custom_432px: "27rem",
