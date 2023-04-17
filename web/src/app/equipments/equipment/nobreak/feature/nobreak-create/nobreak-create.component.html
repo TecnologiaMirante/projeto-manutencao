@@ -14,92 +14,40 @@
       <div
         class="md:w-custom_810px xl:w-custom_1236px h-max rounded-lg bg-white"
       >
-        <form class="flex justify-between mx-9 pt-6 mb-2">
+        <form
+          [formGroup]="createNobreakForm"
+          class="flex justify-between mx-9 pt-6 mb-2"
+          (ngSubmit)="OnSubmit()"
+        >
           <!-- left section: fields -->
           <div class="mb-11">
-            <app-text-button title="Tag"></app-text-button>
-
-            <!-- <div class="pr-6 mb-4">
-              <label class="block mb-4 text-lg font-bold text-main-blue"
-                >Tag</label
-              >
-
-              <input
-                type="text"
-                class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-base font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
-                placeholder="XXXXX"
-                autofocus
-              />
-            </div> -->
+            <app-input-text
+              [control]="$any(createNobreakForm.get('tag'))"
+              inputId="tag"
+              title="Tag"
+              placeholder="XXXXX"
+            ></app-input-text>
 
             <div class="flex">
-              <app-text-button
+              <app-input-text
+                [control]="$any(createNobreakForm.get('marca'))"
                 title="Marca"
                 placeholder="XXXXXXXXX"
-              ></app-text-button>
-
-              <app-text-button
+              ></app-input-text>
+              <app-input-text
+                [control]="$any(createNobreakForm).get('modelo')"
                 title="Modelo"
                 placeholder="XXXXXXXXX"
-              ></app-text-button>
-
-              <app-text-button
+              ></app-input-text>
+              <app-input-text
+                [control]="$any(createNobreakForm.get('tensao_entrada'))"
                 title="Tensão Entrada"
+              ></app-input-text>
+              <app-input-text
+                [control]="$any(createNobreakForm.get('tensao_saida'))"
                 placeholder="XXXXXXXXX"
-              ></app-text-button>
-
-              <app-text-button
                 title="Tensão Saída"
-                placeholder="XXXXXXXXX"
-              ></app-text-button>
-
-              <!-- <div class="pr-6 mb-4">
-                <h3 class="block mb-4 text-lg font-bold text-main-blue">
-                  Marca
-                </h3>
-                <input
-                  type="text"
-                  class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-base font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
-                  placeholder="XXXXXXXXX"
-                  autofocus
-                />
-              </div> -->
-
-              <!-- <div class="pr-6 mb-4">
-                <h3 class="block mb-4 text-lg font-bold text-main-blue">
-                  Modelo
-                </h3>
-                <input
-                  type="text"
-                  class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-base font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
-                  placeholder="XXXXXXXXX"
-                  autofocus
-                />
-              </div> -->
-
-              <!-- <div class="pr-6 mb-4">
-                <h3 class="block mb-4 text-lg font-bold text-main-blue">
-                  Tensão Entrada
-                </h3>
-                <input
-                  type="text"
-                  class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-base font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
-                  placeholder="XXXXXXXXX"
-                  autofocus
-                />
-              </div> -->
-
-              <!-- <div class="pr-6 mb-4">
-                <h3 class="block mb-4 text-lg font-bold text-main-blue">
-                  Tensão Saída
-                </h3>
-                <input
-                  type="text"
-                  class="bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-base font-normal block w-custom_140px py-2 pl-custom_9_18px pr-custom_23_72px"
-                  placeholder="XXXXXXXXX"
-                  autofocus
-                />
-              </div> -->
+              ></app-input-text>
             </div>
           </div>
 
@@ -107,24 +55,25 @@
           <div class="w-custom_184px h-custom_120px rounded bg-image-gray">
             imagem
           </div>
+
+          <!-- buttons -->
+          <div class="flex justify-end gap-custom_18px">
+            <button
+              type="button"
+              class="px-custom_68px py-custom_10px font-inter font-normal text-lg rounded-lg text-white1 bg-gradient-to-r from-gray1 to-gray2 hover:from-gray-400 hover:to-gray-500"
+            >
+              Cancelar
+            </button>
+
+            <button
+              [disabled]="createNobreakForm.invalid"
+              type="submit"
+              class="px-custom_21_5px py-custom_10px font-inter font-normal text-lg rounded-lg text-white1 bg-gradient-to-r from-blue1 to-blue2 hover:from-blue-600 hover:to-blue-500"
+            >
+              Salvar equipamento
+            </button>
+          </div>
         </form>
-      </div>
-
-      <!-- buttons -->
-      <div class="flex justify-end gap-custom_18px">
-        <button
-          type="button"
-          class="px-custom_68px py-custom_10px font-inter font-normal text-lg rounded-lg text-white1 bg-gradient-to-r from-gray1 to-gray2 hover:from-gray-400 hover:to-gray-500"
-        >
-          Cancelar
-        </button>
-
-        <button
-          type="button"
-          class="px-custom_21_5px py-custom_10px font-inter font-normal text-lg rounded-lg text-white1 bg-gradient-to-r from-blue1 to-blue2 hover:from-blue-600 hover:to-blue-500"
-        >
-          Salvar equipamento
-        </button>
       </div>
     </div>
   </div>
