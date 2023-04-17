@@ -9,11 +9,13 @@
 
       <!-- aqui o bottom padding ficou 44 pois ele está somando com o bottom padding do último item. -->
       <!-- Deste modo, sempre que um novo item for adicionado, o bottom padding final não é alterado -->
-      <!-- create nobreak form -->
-      <div class="w-custom_1236px h-max rounded-lg bg-white">
-        <form class="flex justify-between mx-9 pt-6 mb-custom_60px">
-          <!-- left section: fields -->
 
+      <!-- create nobreak form -->
+      <div
+        class="md:w-custom_810px xl:w-custom_1236px h-max rounded-lg bg-white"
+      >
+        <form class="flex justify-between mx-9 pt-6 mb-2">
+          <!-- left section: fields -->
           <div class="mb-11">
             <div class="pr-6 mb-4">
               <label class="block mb-4 text-lg font-bold text-main-blue"
@@ -81,7 +83,22 @@
         </form>
       </div>
 
-      <!-- Aqui vem os botões -->
+      <!-- buttons -->
+      <div class="flex justify-end gap-custom_18px">
+        <button
+          type="button"
+          class="px-custom_68px py-custom_10px font-inter font-normal text-lg rounded-lg text-white1 bg-gradient-to-r from-gray1 to-gray2 hover:from-gray-400 hover:to-gray-500"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="button"
+          class="px-custom_21_5px py-custom_10px font-inter font-normal text-lg rounded-lg text-white1 bg-gradient-to-r from-blue1 to-blue2 hover:from-blue-600 hover:to-blue-500"
+        >
+          Salvar equipamento
+        </button>
+      </div>
     </div>
   </div>
 </div>
