@@ -13,6 +13,13 @@ const routes: Routes = [
          import('../equipments/feature/equipments-shell/equipments-shell.module').then(
             (m) => m.EquipmentsShellModule
          )
+    },
+    {
+        path: 'nobreak',
+        loadChildren: () =>
+            import('../equipments/equipment/nobreak/feature/nobreak-shell/nobreak-shell.module').then(
+                (m) => m.NobreakShellModule
+            )
     }
 ]
 

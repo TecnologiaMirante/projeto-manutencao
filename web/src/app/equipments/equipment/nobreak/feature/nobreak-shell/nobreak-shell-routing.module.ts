@@ -5,17 +5,19 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'equipments'
+    redirectTo: 'create'
   },
   {
-    path: 'equipments',
+    path: 'create',
     loadChildren: () =>
-      import('./equipments/equipments.module').then(m => m.EquipmentsModule)
-  },
+      import('../nobreak-create/nobreak-create.module').then(
+        (m) => m.NobreakCreateModule
+      )
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class NobreakShellRoutingModule { }

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { EquipmentsModule } from './equipments/equipments.module';
-
+import { InputTextComponent } from './shared/ui/input-text/input-text.component';
 
 @NgModule({
   declarations: [

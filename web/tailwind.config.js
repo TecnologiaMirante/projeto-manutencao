@@ -5,8 +5,15 @@ module.exports = {
     extend: {
       colors: {
         "main-blue": "#3A9DF9",
-        "main-gray": "#E8E7EF",
         "secondary-blue": "#E0EBFF",
+        "main-gray": "#E8E7EF",
+        "secondary-gray": "#F4F3F6",
+        "image-gray": "#888888",
+        white1: "#FAFAFF",
+        gray1: "#B7B6C0",
+        gray2: "#A5A5A5",
+        blue1: "#4839F9",
+        blue2: "#3963F9",
       },
       padding: {
         "px-default": "10rem",
@@ -16,13 +23,25 @@ module.exports = {
       },
       fontFamily: {
         lato: ["Lato", "sans-serif"],
+        inter: ["Inter"],
       },
       spacing: {
+        custom_9_18px: "0.574rem",
+        custom_10px: "0.625rem",
+        custom_18px: "1.125rem",
+        custom_21_5px: "1.344rem",
+        custom_23_72px: "1.483rem",
         custom_24px: "1.5rem",
         custom_29px: "1.813rem",
         custom_37px: "2.313rem",
+        custom_42px: "2.625rem",
         custom_60px: "3.75rem",
+        custom_68px: "4.25rem",
         custom_73px: "4.563rem",
+        custom_120px: "7.5rem",
+        custom_140px: "8.75rem",
+        custom_184px: "11.5rem",
+        custom_212px: "13.25rem",
         custom_237px: "14.813rem",
         custom_342px: "21.375rem",
         custom_432px: "27rem",
@@ -34,7 +53,13 @@ module.exports = {
       margin: {
         "mx-default-left": "10rem",
       },
+      borderRadius: {
+        DEFAULT: "0.25rem",
+      },
     },
+  },
+  variants: {
+    ringWidth: ["hover", "active"],
   },
   plugins: [],
 };
