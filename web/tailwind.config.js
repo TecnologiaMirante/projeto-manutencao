@@ -10,10 +10,14 @@ module.exports = {
         "secondary-gray": "#F4F3F6",
         "image-gray": "#888888",
         white1: "#FAFAFF",
+        white2: "#F2F2F2",
         gray1: "#B7B6C0",
         gray2: "#A5A5A5",
+        gray3: "#6C6C6C",
+        gray4: "#FCFDFF",
         blue1: "#4839F9",
         blue2: "#3963F9",
+        blue3: "#EFF6FF",
       },
       padding: {
         "px-default": "10rem",
@@ -22,10 +26,12 @@ module.exports = {
         custom_432px: "27rem",
       },
       fontFamily: {
-        lato: ["Lato", "sans-serif"],
+        lato: ["Lato"],
         inter: ["Inter"],
       },
       spacing: {
+        custom_6px: "0.375rem",
+        custom_7px: "0.438rem",
         custom_9_18px: "0.574rem",
         custom_10px: "0.625rem",
         custom_18px: "1.125rem",
@@ -55,6 +61,9 @@ module.exports = {
       },
       borderRadius: {
         DEFAULT: "0.25rem",
+      },
+      boxShadow: {
+        customBlue: "0px 5px 40px -5px rgba(58, 157, 249, 0.3)",
       },
     },
   },
