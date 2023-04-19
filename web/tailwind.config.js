@@ -19,6 +19,7 @@ module.exports = {
         blue2: "#3963F9",
         blue3: "#EFF6FF",
         blue4: "#3A9DF9",
+        blue5: "#BDE7FF",
       },
       padding: {
         "px-default": "10rem",

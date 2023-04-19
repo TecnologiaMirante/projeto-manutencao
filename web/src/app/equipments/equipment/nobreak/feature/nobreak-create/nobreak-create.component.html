@@ -4,7 +4,7 @@
   </p>
 
   <div class="flex justify-center">
-    <div class="mt-custom_19px">
+    <div class="mt-6">
       <h3 class="mb-6 text-lg font-bold text-main-blue">Nobreak</h3>
 
       <form [formGroup]="createNobreakForm" class="" (ngSubmit)="OnSubmit()">
@@ -18,37 +18,35 @@
                 [control]="$any(createNobreakForm.get('tag'))"
                 inputId="tag"
                 title="Tag"
-                placeholder="XXXXX"
+                placeholder="Text"
               ></app-input-text>
 
               <div class="flex">
                 <app-input-text
                   [control]="$any(createNobreakForm.get('marca'))"
                   title="Marca"
-                  placeholder="XXXXXXXXX"
+                  placeholder="Marca"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(createNobreakForm).get('modelo')"
                   title="Modelo"
-                  placeholder="XXXXXXXXX"
+                  placeholder="Modelo"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(createNobreakForm.get('tensao_entrada'))"
-                  placeholder="XXXXXXXXX"
                   title="Tensão Entrada"
+                  placeholder="Tensão Entrada"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(createNobreakForm.get('tensao_saida'))"
-                  placeholder="XXXXXXXXX"
                   title="Tensão Saída"
+                  placeholder="Tensão Saída"
                 ></app-input-text>
               </div>
             </div>
 
             <!-- image -->
-            <div class="w-custom_184px h-custom_120px rounded bg-image-gray">
-              imagem
-            </div>
+            <div class="w-custom_184px h-custom_120px rounded bg-blue5"></div>
           </div>
         </div>
 
