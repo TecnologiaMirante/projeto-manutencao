@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nobreak-create',
@@ -16,7 +17,8 @@ export class NobreakCreateComponent implements OnInit {
   createNobreakForm!: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +58,10 @@ export class NobreakCreateComponent implements OnInit {
     alert(modelo)
     alert(tensao_entrada)
     alert(tensao_saida)
+  }
+
+  cancel() {
+    this.router.navigate(['/equipments'])
   }
 }
 

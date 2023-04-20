@@ -56,12 +56,7 @@
 
         <!-- buttons -->
         <div class="flex justify-end gap-3">
-          <button
-            type="button"
-            class="px-custom_56px py-custom_10px font-inter font-normal text-base rounded-lg text-gray-500 border-gray-400 hover:text-white border hover:bg-gray-500 duration-300"
-          >
-            Cancelar
-          </button>
+          <app-cancel-button (click)="cancel()"></app-cancel-button>
 
           <button
             [disabled]="createNobreakForm.invalid"
