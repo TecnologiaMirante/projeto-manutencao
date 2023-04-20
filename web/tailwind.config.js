@@ -76,6 +76,9 @@ module.exports = {
       height: {
         70: "4.375rem",
       },
+      screens: {
+        xl1: "1680px",
+      },
     },
   },
   variants: {
