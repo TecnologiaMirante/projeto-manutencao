@@ -20,6 +20,8 @@ module.exports = {
         blue3: "#EFF6FF",
         blue4: "#3A9DF9",
         blue5: "#BDE7FF",
+        black1: "#27272A",
+        black2: "#09090B",
       },
       padding: {
         "px-default": "10rem",
@@ -37,6 +39,7 @@ module.exports = {
         custom_9_18px: "0.574rem",
         custom_10px: "0.625rem",
         custom_13px: "0.813rem",
+        custom_13_5px: "0.844rem",
         custom_15px: "0.938rem",
         custom_17px: "1.063rem",
         custom_18px: "1.125rem",
