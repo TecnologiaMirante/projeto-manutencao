@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'src/app/shared/ui/input-text/input-text.module';
 import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-button.module';
 import { DeleteButtonModule } from 'src/app/shared/ui/delete-button/delete-button.module';
+import { DeleteEquipmentDialogModule } from 'src/app/shared/ui/delete-equipment-dialog/delete-equipment-dialog.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DeleteButtonModule } from 'src/app/shared/ui/delete-button/delete-butto
     NobreakEditRoutingModule,
     InputTextModule,
     CancelButtonModule,
-    DeleteButtonModule
+    DeleteButtonModule,
+    DeleteEquipmentDialogModule
   ],
   exports: [
     NobreakEditComponent

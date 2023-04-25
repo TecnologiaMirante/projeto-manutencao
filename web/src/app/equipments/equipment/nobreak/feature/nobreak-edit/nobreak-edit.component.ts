@@ -11,6 +11,7 @@ export class NobreakEditComponent {
   cidade:string = "Cururupu";
   equipamento:string = "NBR0001";
   funcao:string = "Editar Nobreak";
+  dialog:boolean = false;
 
   action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.equipamento} > ${this.funcao}`
 
@@ -59,8 +60,12 @@ export class NobreakEditComponent {
   }
 
   delete() {
-    alert("Chamou service de delete!")
+    this.showDialog();
   }  
+
+  confirmDelete() {
+    alert("Chamou o service de delete!");
+  }
  
   atLeastOneHasValue(fields: Array<string>) {
     return (group: FormGroup) => {
@@ -71,6 +76,19 @@ export class NobreakEditComponent {
       }
       return { atLeastOneFieldFilled: true };
     }
+  }
+
+  showDialog():void {
+    if(this.dialog == false) {
+      this.dialog = true
+    } else {
+      this.dialog = false
+    }
+  }
+
+  showModal = false;
+  toggleModal(){
+    this.showModal = !this.showModal;
   }
 
 }

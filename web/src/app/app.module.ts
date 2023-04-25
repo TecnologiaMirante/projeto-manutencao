@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { EquipmentsModule } from './equipments/equipments.module';
-import { DeleteButtonComponent } from './shared/ui/delete-button/delete-button.component';
 
 @NgModule({
   declarations: [
