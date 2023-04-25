@@ -59,7 +59,7 @@
           <app-delete-button (click)="delete()"></app-delete-button>
           <app-cancel-button (click)="cancel()"></app-cancel-button>
           <button
-            [disabled]="editNobreakForm.invalid"
+            [disabled]="editNobreakForm.hasError('atLeastOneFieldFilled')"
             type="submit"
             class="px-custom_15px py-custom_10px font-inter font-normal text-base rounded-lg text-white1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br duration-300"
           >

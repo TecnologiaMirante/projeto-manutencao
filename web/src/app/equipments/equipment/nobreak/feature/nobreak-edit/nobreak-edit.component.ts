@@ -25,31 +25,33 @@ export class NobreakEditComponent {
     this.editNobreakForm = this.formBuilder.group({
       tag: ['',
         [
-          Validators.required,
           Validators.pattern('^[a-zA-Z]*$')
         ]
       ],
-      marca: ['', Validators.required],
-      modelo: ['', Validators.required],
+      marca: [''],
+      modelo: [''],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
-      tensao_entrada: ['', Validators.required],
-      tensao_saida: ['', Validators.required],
+      tensao_entrada: [''],
+      tensao_saida: [''],
+    }, {
+      validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'tensao_entrada', 'tensao_saida'])
     })
   }
 
   OnSubmit() {
-    const tag = this.editNobreakForm.get('tag')?.value;
-    const marca = this.editNobreakForm.get('marca')?.value;
-    const modelo = this.editNobreakForm.get('modelo')?.value;
-    const tensao_entrada = this.editNobreakForm.get('tensao_entrada')?.value;
-    const tensao_saida = this.editNobreakForm.get('tensao_saida')?.value;
+    // const tag = this.editNobreakForm.get('tag')?.value;
+    // const marca = this.editNobreakForm.get('marca')?.value;
+    // const modelo = this.editNobreakForm.get('modelo')?.value;
+    // const tensao_entrada = this.editNobreakForm.get('tensao_entrada')?.value;
+    // const tensao_saida = this.editNobreakForm.get('tensao_saida')?.value;
     
-    alert(tag)
-    alert(marca)
-    alert(modelo)
-    alert(tensao_entrada)
-    alert(tensao_saida)
+    // alert(tag)
+    // alert(marca)
+    // alert(modelo)
+    // alert(tensao_entrada)
+    // alert(tensao_saida)
+    alert('blz')
   }
 
   cancel() {
@@ -58,5 +60,17 @@ export class NobreakEditComponent {
 
   delete() {
     alert("Chamou service de delete!")
+  }  
+ 
+  atLeastOneHasValue(fields: Array<string>) {
+    return (group: FormGroup) => {
+      for (const fieldName of fields) {
+        if (group.get(fieldName)!.value) {
+          return null;
+        }
+      }
+      return { atLeastOneFieldFilled: true };
+    }
   }
+
 }
