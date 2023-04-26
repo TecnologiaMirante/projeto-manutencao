@@ -56,7 +56,7 @@
 
         <!-- buttons -->
         <div class="flex justify-end gap-3">
-          <app-delete-button (click)="delete()"></app-delete-button>
+          <app-delete-button (click)="toggleModal()"></app-delete-button>
           <app-cancel-button (click)="cancel()"></app-cancel-button>
           <button
             [disabled]="editNobreakForm.hasError('atLeastOneFieldFilled')"
@@ -68,7 +68,18 @@
         </div>
       </form>
 
-      <app-delete-equipment-dialog *ngIf="dialog"></app-delete-equipment-dialog>
+      <div
+        *ngIf="showModal"
+        class="opacity-25 fixed inset-0 z-40 bg-black"
+      ></div>
+
+      <app-delete-equipment-dialog
+        appClickedOutside
+        (clickedOutside)="vaiLa()"
+        (showDialog)="cancelDialog($event)"
+        (deleteEquipment)="confirmDelete($event)"
+        *ngIf="showModal"
+      ></app-delete-equipment-dialog>
     </div>
   </div>
 </div>

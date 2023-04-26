@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-delete-equipment-dialog',
@@ -7,8 +7,17 @@ import { Component } from '@angular/core';
 })
 export class DeleteEquipmentDialogComponent {
 
-  showDialog:boolean = false;
-
+  @Output() showDialog = new EventEmitter<boolean>();
+  @Output() deleteEquipment = new EventEmitter<boolean>();
+  
   constructor() {}
+
+  cancel() {
+    this.showDialog.emit(false);
+  }
+
+  confirmDelete() {
+    this.deleteEquipment.emit(true);
+  }
 
 }

@@ -11,7 +11,8 @@ export class NobreakEditComponent {
   cidade:string = "Cururupu";
   equipamento:string = "NBR0001";
   funcao:string = "Editar Nobreak";
-  dialog:boolean = false;
+  showModal:boolean = false;
+  teste:boolean = false;
 
   action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.equipamento} > ${this.funcao}`
 
@@ -55,18 +56,6 @@ export class NobreakEditComponent {
     alert('blz')
   }
 
-  cancel() {
-    this.router.navigate(['/equipments'])
-  }
-
-  delete() {
-    this.showDialog();
-  }  
-
-  confirmDelete() {
-    alert("Chamou o service de delete!");
-  }
- 
   atLeastOneHasValue(fields: Array<string>) {
     return (group: FormGroup) => {
       for (const fieldName of fields) {
@@ -78,17 +67,29 @@ export class NobreakEditComponent {
     }
   }
 
-  showDialog():void {
-    if(this.dialog == false) {
-      this.dialog = true
-    } else {
-      this.dialog = false
-    }
+  cancel() {
+    this.router.navigate(['/equipments'])
   }
 
-  showModal = false;
+  cancelDialog(dado:boolean) {
+    this.toggleModal();
+  }
+
+  confirmDelete(dado:boolean) {
+    this.toggleModal();
+    // aqui vai mandar dado pro service
+  }
+
   toggleModal(){
     this.showModal = !this.showModal;
+  }
+
+  toggleTeste(){
+    this.teste = !this.teste;
+  }
+
+  vaiLa() {
+    alert("funcionou o vai La")
   }
 
 }
