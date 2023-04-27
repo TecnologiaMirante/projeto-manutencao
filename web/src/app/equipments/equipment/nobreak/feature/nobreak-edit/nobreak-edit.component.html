@@ -56,7 +56,12 @@
 
         <!-- buttons -->
         <div class="flex justify-end gap-3">
-          <app-delete-button (click)="toggleModal()"></app-delete-button>
+          <app-delete-button
+            (click)="toggleModal()"
+            data-modal-target="popup-modal"
+            data-modal-toggle="popup-modal"
+            class="block"
+          ></app-delete-button>
           <app-cancel-button (click)="cancel()"></app-cancel-button>
           <button
             [disabled]="editNobreakForm.hasError('atLeastOneFieldFilled')"
@@ -68,18 +73,35 @@
         </div>
       </form>
 
-      <div
+      <!-- <div
         *ngIf="showModal"
         class="opacity-25 fixed inset-0 z-40 bg-black"
       ></div>
 
       <app-delete-equipment-dialog
         appClickedOutside
-        (clickedOutside)="vaiLa()"
+        (clickedOutside)="toggleModal()"
+        data-modal-toggle="defaultModal"
         (showDialog)="cancelDialog($event)"
         (deleteEquipment)="confirmDelete($event)"
         *ngIf="showModal"
-      ></app-delete-equipment-dialog>
+      ></app-delete-equipment-dialog> -->
+
+      <app-delete-equipment-dialog
+        (showDialog)="cancelDialog($event)"
+        (deleteEquipment)="confirmDelete($event)"
+      >
+      </app-delete-equipment-dialog>
+
+      <!-- Modal toggle -->
+      <!-- <button
+        data-modal-target="popup-modal"
+        data-modal-toggle="popup-modal"
+        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="button"
+      >
+        Toggle modal
+      </button> -->
     </div>
   </div>
 </div>

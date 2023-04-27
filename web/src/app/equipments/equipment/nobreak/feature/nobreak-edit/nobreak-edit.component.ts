@@ -73,16 +73,20 @@ export class NobreakEditComponent {
 
   cancelDialog(dado:boolean) {
     this.toggleModal();
+    alert("tchau")
   }
 
   confirmDelete(dado:boolean) {
     this.toggleModal();
+    alert("oi")
     // aqui vai mandar dado pro service
   }
 
   toggleModal(){
     this.showModal = !this.showModal;
   }
+
+
 
   toggleTeste(){
     this.teste = !this.teste;
