@@ -89,6 +89,7 @@ module.exports = {
       },
       screens: {
         xl1: "1680px",
+        "3xl": "1920px",
       },
       backgroundSize: {
         "size-200": "200% 200%",
