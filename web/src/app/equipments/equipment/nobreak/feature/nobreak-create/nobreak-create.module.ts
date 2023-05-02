@@ -7,6 +7,9 @@ import { NobreakCreateComponent } from './nobreak-create.component';
 import { NobreakCreateEditCardModule } from '../../ui/nobreak-create-edit-card/nobreak-create-edit-card.module';
 import { InputTextModule } from 'src/app/shared/ui/input-text/input-text.module';
 import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-button.module';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { NobreakService } from '../../data-access/nobreak.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,14 @@ import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-butto
     NobreakCreateEditCardModule,
     InputTextModule,
     CancelButtonModule,
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
     NobreakCreateComponent
+  ],
+  providers: [
+    NobreakService
   ]
 })
 export class NobreakCreateModule { }

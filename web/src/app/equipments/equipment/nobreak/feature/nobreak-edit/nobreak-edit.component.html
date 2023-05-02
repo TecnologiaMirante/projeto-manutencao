@@ -20,29 +20,29 @@
                 [control]="$any(editNobreakForm.get('tag'))"
                 inputId="tag"
                 title="Tag"
-                placeholder="Text"
+                placeholder="{{ this.nobreak.tag }}"
               ></app-input-text>
 
               <div class="flex">
                 <app-input-text
                   [control]="$any(editNobreakForm.get('marca'))"
                   title="Marca"
-                  placeholder="Marca"
+                  placeholder="{{ this.nobreak.marca }}"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(editNobreakForm).get('modelo')"
                   title="Modelo"
-                  placeholder="Modelo"
+                  placeholder="{{ this.nobreak.modelo }}"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(editNobreakForm.get('tensao_entrada'))"
                   title="Tensão Entrada"
-                  placeholder="Tensão Entrada"
+                  placeholder="{{ this.nobreak.tensaoEntrada }}"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(editNobreakForm.get('tensao_saida'))"
                   title="Tensão Saída"
-                  placeholder="Tensão Saída"
+                  placeholder="{{ this.nobreak.tensaoSaida }}"
                 ></app-input-text>
               </div>
             </div>
@@ -57,13 +57,15 @@
         <!-- buttons -->
         <div class="flex justify-end gap-3">
           <app-delete-button
-            (click)="toggleModal()"
             data-modal-target="popup-modal"
             data-modal-toggle="popup-modal"
             class="block"
           >
           </app-delete-button>
-          <app-cancel-button (click)="cancel()"></app-cancel-button>
+          <app-cancel-button
+            data-modal-target="popup-modal"
+            data-modal-toggle="popup-modal"
+          ></app-cancel-button>
           <button
             [disabled]="editNobreakForm.hasError('atLeastOneFieldFilled')"
             type="submit"
@@ -91,7 +93,6 @@
       <!-- class="absolute bottom-[19.2rem] right-[37.6rem]" -->
       <app-delete-equipment-dialog
         class="relative"
-        (showDialog)="cancelDialog($event)"
         (deleteEquipment)="confirmDelete($event)"
       >
       </app-delete-equipment-dialog>

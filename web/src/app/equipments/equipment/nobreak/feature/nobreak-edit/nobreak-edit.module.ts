@@ -10,6 +10,8 @@ import { DeleteButtonModule } from 'src/app/shared/ui/delete-button/delete-butto
 import { DeleteEquipmentDialogModule } from 'src/app/shared/ui/delete-equipment-dialog/delete-equipment-dialog.module';
 import { ClickOutsideModule } from 'src/app/shared/utils/directives/click-outside.module';
 import { ClickedOutsideModule } from 'src/app/shared/utils/directives/clicked-outside/clicked-outside.module';
+import { NobreakService } from '../../data-access/nobreak.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,10 +27,14 @@ import { ClickedOutsideModule } from 'src/app/shared/utils/directives/clicked-ou
     DeleteButtonModule,
     DeleteEquipmentDialogModule,
     ClickOutsideModule,
-    ClickedOutsideModule
+    ClickedOutsideModule,
+    HttpClientModule,
   ],
   exports: [
     NobreakEditComponent
+  ],
+  providers: [
+    NobreakService
   ]
 })
 export class NobreakEditModule { }

@@ -15,7 +15,7 @@ const routes: Routes = [
       )
   },
   {
-    path: 'edit',
+    path: ':id/edit',
     loadChildren: () =>
     import('../nobreak-edit/nobreak-edit.module').then(
       (m) => m.NobreakEditModule
