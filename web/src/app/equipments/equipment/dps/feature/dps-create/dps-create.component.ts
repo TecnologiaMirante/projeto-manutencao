@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DPS } from '../data-access/dps';
 import { Router } from '@angular/router';
+import { DpsService } from '../../data-access/dps.service';
 
 @Component({
   selector: 'app-dps-create',
@@ -28,6 +29,7 @@ export class DpsCreateComponent implements OnInit   {
 
   constructor(
     private formBuilder: FormBuilder,
+    private dpsService: DpsService,
     private router: Router    
   ) {}
 
@@ -48,7 +50,18 @@ export class DpsCreateComponent implements OnInit   {
     this.dps.correnteMaxima = this.dpsForm.get('correnteMaxima')?.value;
     this.dps.classe = this.dpsForm.get('dps')?.value;
     
-    alert("DPS criado com sucesso!");
+    this.dpsService.create(this.dps).subscribe(
+      {
+        next: () => {
+          alert("DPS criado com sucesso!");
+          this.dpsForm.reset();
+        },
+        error: (err) => {
+          console.log(err);
+          this.dpsForm.reset();
+        }
+      }
+    )
   }
 
   cancel() {

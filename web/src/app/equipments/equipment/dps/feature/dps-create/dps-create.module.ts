@@ -9,6 +9,7 @@ import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-butto
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
+import { DpsService } from '../../data-access/dps.service';
 
 
 @NgModule({
@@ -28,6 +29,9 @@ import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
   ],
   exports: [
     DpsCreateComponent
+  ],
+  providers: [
+    DpsService
   ]
 })
 export class DpsCreateModule { }
