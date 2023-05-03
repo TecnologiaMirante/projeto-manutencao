@@ -20,6 +20,13 @@ const routes: Routes = [
             import('../equipments/equipment/nobreak/feature/nobreak-shell/nobreak-shell.module').then(
                 (m) => m.NobreakShellModule
             )
+    },
+    {
+        path: 'disjuntor',
+        loadChildren: () =>
+            import('../equipments/equipment/disjuntor/feature/disjuntor-shell/disjuntor-shell.module').then(
+                (m) => m.DisjuntorShellModule
+            )
     }
 ]
 
