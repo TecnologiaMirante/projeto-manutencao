@@ -15,7 +15,7 @@ const routes: Routes = [
       )
   },
   {
-    path: 'edit',
+    path: ':id/edit',
     loadChildren: () => 
       import('../disjuntor-edit/disjuntor-edit.module').then(
         (m) => m.DisjuntorEditModule

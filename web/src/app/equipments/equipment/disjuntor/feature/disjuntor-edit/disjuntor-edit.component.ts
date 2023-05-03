@@ -59,6 +59,8 @@ export class DisjuntorEditComponent {
     this.disjuntor.modelo = this.disjuntorForm.get('modelo')?.value;
     this.disjuntor.correnteMaxima = this.disjuntorForm.get('correnteMaxima')?.value;
     
+    alert("Disjuntor editado com sucesso!");
+
     this.disjuntorService.update(this.disjuntor).subscribe(
       {
         next: () => {

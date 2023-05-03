@@ -21,13 +21,6 @@ const routes: Routes = [
       (m) => m.NobreakEditModule
     )
   },
-  {
-    path: 'edit',
-    loadChildren: () =>
-    import('../nobreak-edit/nobreak-edit.module').then(
-      (m) => m.NobreakEditModule
-    )
-  }
 ];
 
 @NgModule({
