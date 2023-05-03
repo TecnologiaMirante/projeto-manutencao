@@ -27,6 +27,13 @@ const routes: Routes = [
             import('../equipments/equipment/disjuntor/feature/disjuntor-shell/disjuntor-shell.module').then(
                 (m) => m.DisjuntorShellModule
             )
+    },
+    {
+        path: 'dps',
+        loadChildren: () =>
+            import('../equipments/equipment/dps/feature/dps-shell/dps-shell.module').then(
+                (m) => m.DpsShellModule
+            )
     }
 ]
 
