@@ -1,1 +1,57 @@
-<p>header works!</p>
+<header
+  class="w-full h-[4.375rem] md:px-14 lg:px-16 2xl:px-40 flex justify-between items-center bg-gradient-to-r from-main-blue to-blue2"
+>
+  <!-- Menu left section -->
+  <div class="md:px-14 w-40 h-10 bg-white"></div>
+
+  <!-- Menu center section -->
+  <ul
+    class="flex gap-x-3 md:gap-x-5 xl:gap-x-9 text-white font-bold line text-base"
+  >
+    <li>
+      <a [routerLink]="['']">Home</a>
+    </li>
+    <li>
+      <a [routerLink]="['']">Monitor</a>
+    </li>
+    <li>
+      <a [routerLink]="['']">Manutenções</a>
+    </li>
+    <li>
+      <a [routerLink]="['']">Documentos</a>
+    </li>
+    <li>
+      <a [routerLink]="['equipments']">Estações</a>
+    </li>
+    <li>
+      <a [routerLink]="['']">Gestão</a>
+    </li>
+  </ul>
+
+  <!-- Menu right section -->
+  <ul class="flex gap-x-2 md:gap-x-4 xl:gap-x-6 items-center">
+    <li>
+      <a [routerLink]="['']">
+        <img
+          src="../../../assets/helpDesk.svg"
+          class="w-6"
+          alt="botão de ajuda"
+        />
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['']">
+        <img
+          src="../../../assets/notification.svg"
+          class="w-5"
+          alt="notificações"
+        />
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['']">
+        <img src="../../../assets/perfil.svg" class="w-8" alt="perfil" />
+      </a>
+    </li>
+  </ul>
+</header>
