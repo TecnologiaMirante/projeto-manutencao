@@ -13,6 +13,13 @@ const routes: Routes = [
       import('../disjuntor-create/disjuntor-create.module').then(
         (m) => m.DisjuntorCreateModule
       )
+  },
+  {
+    path: 'edit',
+    loadChildren: () => 
+      import('../disjuntor-edit/disjuntor-edit.module').then(
+        (m) => m.DisjuntorEditModule
+      )
   }
 ];
 

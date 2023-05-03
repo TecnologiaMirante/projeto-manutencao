@@ -8,7 +8,8 @@ import { InputTextModule } from 'src/app/shared/ui/input-text/input-text.module'
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { RouterModule } from '@angular/router';
 import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-button.module';
-
+import { DisjuntorService } from '../../data-access/disjuntor.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,15 @@ import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-butto
     ReactiveFormsModule,
     InputTextModule,
     CancelButtonModule,
+    HttpClientModule,
     RouterModule,
     VmessageModule
-
   ],
   exports: [
     DisjuntorCreateComponent
+  ],
+  providers: [
+    DisjuntorService
   ]
 })
 export class DisjuntorCreateModule { }

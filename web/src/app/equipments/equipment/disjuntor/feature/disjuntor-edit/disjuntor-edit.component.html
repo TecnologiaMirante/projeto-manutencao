@@ -7,9 +7,9 @@
 
   <div class="flex justify-center">
     <div class="mt-6">
-      <h3 class="mb-6 text-lg font-bold text-main-blue">Nobreak</h3>
+      <h3 class="mb-6 text-lg font-bold text-main-blue">Disjuntor</h3>
 
-      <form [formGroup]="editNobreakForm" class="" (ngSubmit)="OnSubmit()">
+      <form [formGroup]="disjuntorForm" class="" (ngSubmit)="OnSubmit()">
         <div
           class="md:w-custom_810px xl:w-custom_1236px h-max rounded-lg bg-white shadow-customBlue"
         >
@@ -17,42 +17,31 @@
             <!-- left section  -->
             <div class="mb-7">
               <app-input-text
-                [control]="$any(editNobreakForm.get('tag'))"
+                [control]="$any(disjuntorForm.get('tag'))"
                 inputId="tag"
                 title="Tag"
-                placeholder="{{ this.nobreak.tag }}"
+                placeholder="{{ this.disjuntor.tag }}"
               ></app-input-text>
 
               <div class="flex">
                 <app-input-text
-                  [control]="$any(editNobreakForm.get('marca'))"
+                  [control]="$any(disjuntorForm.get('marca'))"
                   title="Marca"
-                  placeholder="{{ this.nobreak.marca }}"
+                  placeholder="{{ this.disjuntor.marca }}"
                 ></app-input-text>
                 <app-input-text
-                  [control]="$any(editNobreakForm).get('modelo')"
+                  [control]="$any(disjuntorForm).get('modelo')"
                   title="Modelo"
-                  placeholder="{{ this.nobreak.modelo }}"
+                  placeholder="{{ this.disjuntor.modelo }}"
                 ></app-input-text>
                 <div>
                   <app-input-text
-                    [control]="$any(editNobreakForm.get('tensao_entrada'))"
-                    title="Tensão Entrada"
-                    placeholder="{{ this.nobreak.tensaoEntrada }}"
+                    [control]="$any(disjuntorForm.get('correnteMaxima'))"
+                    title="Corrente Máxima"
+                    placeholder="{{ this.disjuntor.correnteMaxima }}"
                   ></app-input-text>
                   <app-vmessage
-                    *ngIf="editNobreakForm.get('tensao_entrada')?.errors?.['pattern']"
-                    text="Digite um número!"
-                  ></app-vmessage>
-                </div>
-                <div>
-                  <app-input-text
-                    [control]="$any(editNobreakForm.get('tensao_saida'))"
-                    title="Tensão Saída"
-                    placeholder="{{ this.nobreak.tensaoSaida }}"
-                  ></app-input-text>
-                  <app-vmessage
-                    *ngIf="editNobreakForm.get('tensao_saida')?.errors?.['pattern']"
+                    *ngIf="disjuntorForm.get('correnteMaxima')?.errors?.['pattern']"
                     text="Digite um número!"
                   ></app-vmessage>
                 </div>
@@ -76,7 +65,7 @@
           </app-delete-button>
           <app-cancel-button (click)="cancel()"></app-cancel-button>
           <button
-            [disabled]="editNobreakForm.hasError('atLeastOneFieldFilled')"
+            [disabled]="disjuntorForm.hasError('atLeastOneFieldFilled')"
             type="submit"
             class="px-custom_15px py-custom_10px font-inter font-normal text-base rounded-lg text-white1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br duration-300"
           >
@@ -85,21 +74,6 @@
         </div>
       </form>
 
-      <!-- <div
-        *ngIf="showModal"
-        class="opacity-25 fixed inset-0 z-40 bg-black"
-      ></div>
-
-      <app-delete-equipment-dialog
-        appClickedOutside
-        (clickedOutside)="toggleModal()"
-        data-modal-toggle="defaultModal"
-        (showDialog)="cancelDialog($event)"
-        (deleteEquipment)="confirmDelete($event)"
-        *ngIf="showModal"
-      ></app-delete-equipment-dialog> -->
-
-      <!-- class="absolute bottom-[19.2rem] right-[37.6rem]" -->
       <app-delete-equipment-dialog
         class="relative"
         (deleteEquipment)="confirmDelete($event)"

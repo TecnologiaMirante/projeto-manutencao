@@ -19,9 +19,9 @@ export class NobreakEditComponent {
   editNobreakForm!: FormGroup
 
   nobreak: Nobreak = {
-    tag: '',
-    marca: '',
-    modelo: '',
+    tag: 'Text',
+    marca: 'Marca',
+    modelo: 'Modelo',
     tensaoEntrada: 0,
     tensaoSaida: 0
   }

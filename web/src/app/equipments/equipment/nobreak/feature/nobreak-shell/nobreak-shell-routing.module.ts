@@ -20,6 +20,13 @@ const routes: Routes = [
     import('../nobreak-edit/nobreak-edit.module').then(
       (m) => m.NobreakEditModule
     )
+  },
+  {
+    path: 'edit',
+    loadChildren: () =>
+    import('../nobreak-edit/nobreak-edit.module').then(
+      (m) => m.NobreakEditModule
+    )
   }
 ];
 

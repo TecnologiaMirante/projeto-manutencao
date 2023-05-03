@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Disjuntor } from '../../data-access/disjuntor';
 import { Router } from '@angular/router';
+import { DisjuntorService } from '../../data-access/disjuntor.service';
 
 @Component({
   selector: 'app-disjuntor-create',
@@ -26,6 +27,7 @@ export class DisjuntorCreateComponent implements OnInit  {
 
   constructor(
     private formBuilder: FormBuilder,
+    private disjuntorService: DisjuntorService,
     private router: Router
   ) {}
 
@@ -48,22 +50,20 @@ export class DisjuntorCreateComponent implements OnInit  {
     this.disjuntor.tag = this.disjuntorForm.get('tag')?.value;
     this.disjuntor.marca = this.disjuntorForm.get('marca')?.value;
     this.disjuntor.modelo = this.disjuntorForm.get('modelo')?.value;
-    this.disjuntor.correnteMaxima = this.disjuntorForm.get('tensao_entrada')?.value;
+    this.disjuntor.correnteMaxima = this.disjuntorForm.get('correnteMaxima')?.value;
     
-    alert("Criado!")
-
-    // this.disjuntorService.create(this.nobreak).subscribe(
-    //   {
-    //     next: () => {
-    //       alert("Criado!");
-    //       this.createNobreakForm.reset();
-    //     },
-    //     error: (err) => {
-    //       console.log(err);
-    //       this.createNobreakForm.reset();
-    //     }
-    //   }
-    // )
+    this.disjuntorService.create(this.disjuntor).subscribe(
+      {
+        next: () => {
+          alert("Disjuntor criado com sucesso!");
+          this.disjuntorForm.reset();
+        },
+        error: (err) => {
+          console.log(err);
+          this.disjuntorForm.reset();
+        }
+      }
+    )
   }
 
   cancel() {
