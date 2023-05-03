@@ -34,16 +34,28 @@
                   title="Modelo"
                   placeholder="{{ this.nobreak.modelo }}"
                 ></app-input-text>
-                <app-input-text
-                  [control]="$any(editNobreakForm.get('tensao_entrada'))"
-                  title="Tensão Entrada"
-                  placeholder="{{ this.nobreak.tensaoEntrada }}"
-                ></app-input-text>
-                <app-input-text
-                  [control]="$any(editNobreakForm.get('tensao_saida'))"
-                  title="Tensão Saída"
-                  placeholder="{{ this.nobreak.tensaoSaida }}"
-                ></app-input-text>
+                <div>
+                  <app-input-text
+                    [control]="$any(editNobreakForm.get('tensao_entrada'))"
+                    title="Tensão Entrada"
+                    placeholder="Tensão Entrada"
+                  ></app-input-text>
+                  <app-vmessage
+                    *ngIf="editNobreakForm.get('tensao_entrada')?.errors?.['pattern']"
+                    text="Digite um número!"
+                  ></app-vmessage>
+                </div>
+                <div>
+                  <app-input-text
+                    [control]="$any(editNobreakForm.get('tensao_saida'))"
+                    title="Tensão Saída"
+                    placeholder="Tensão Saída"
+                  ></app-input-text>
+                  <app-vmessage
+                    *ngIf="editNobreakForm.get('tensao_saida')?.errors?.['pattern']"
+                    text="Digite um número!"
+                  ></app-vmessage>
+                </div>
               </div>
             </div>
 

@@ -10,6 +10,7 @@ import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-butto
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NobreakService } from '../../data-access/nobreak.service';
+import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NobreakService } from '../../data-access/nobreak.service';
     InputTextModule,
     CancelButtonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    VmessageModule
   ],
   exports: [
     NobreakCreateComponent
