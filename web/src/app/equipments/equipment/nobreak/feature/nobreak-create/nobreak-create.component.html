@@ -17,13 +17,14 @@
             <!-- left section  -->
             <div class="mb-7">
               <app-input-text
+                class="flex mb-8"
                 [control]="$any(createNobreakForm.get('tag'))"
                 inputId="tag"
                 title="Tag"
                 placeholder="Text"
               ></app-input-text>
 
-              <div class="flex">
+              <div class="flex mb-8">
                 <app-input-text
                   [control]="$any(createNobreakForm.get('marca'))"
                   title="Marca"
@@ -34,16 +35,28 @@
                   title="Modelo"
                   placeholder="Modelo"
                 ></app-input-text>
-                <app-input-text
-                  [control]="$any(createNobreakForm.get('tensao_entrada'))"
-                  title="Tensão Entrada"
-                  placeholder="Tensão Entrada"
-                ></app-input-text>
-                <app-input-text
-                  [control]="$any(createNobreakForm.get('tensao_saida'))"
-                  title="Tensão Saída"
-                  placeholder="Tensão Saída"
-                ></app-input-text>
+                <div>
+                  <app-input-text
+                    [control]="$any(createNobreakForm.get('tensao_entrada'))"
+                    title="Tensão Entrada"
+                    placeholder="Tensão Entrada"
+                  ></app-input-text>
+                  <app-vmessage
+                    *ngIf="createNobreakForm.get('tensao_entrada')?.errors?.['pattern']"
+                    text="Digite um número!"
+                  ></app-vmessage>
+                </div>
+                <div>
+                  <app-input-text
+                    [control]="$any(createNobreakForm.get('tensao_saida'))"
+                    title="Tensão Saída"
+                    placeholder="Tensão Saída"
+                  ></app-input-text>
+                  <app-vmessage
+                    *ngIf="createNobreakForm.get('tensao_saida')?.errors?.['pattern']"
+                    text="Digite um número!"
+                  ></app-vmessage>
+                </div>
               </div>
             </div>
 
