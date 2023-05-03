@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Disjuntor } from '../../data-access/disjuntor';
 import { DisjuntorService } from '../../data-access/disjuntor.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './disjuntor-edit.component.html',
   styleUrls: ['./disjuntor-edit.component.css']
 })
-export class DisjuntorEditComponent {
+export class DisjuntorEditComponent implements OnInit {
   cidade:string = "Cururupu";
   equipamento:string = "DJN0001";
   funcao:string = "Editar Disjuntor";
@@ -45,11 +45,10 @@ export class DisjuntorEditComponent {
       modelo: [''],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
-      correnteMaxima: [''],
+      correnteMaxima: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
     }, {
       validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'correnteMaxima'])
     })
-
 
   }
 
@@ -97,6 +96,5 @@ export class DisjuntorEditComponent {
         this.router.navigate(['/equipments'])
       })
     }
-    // aqui vai mandar dado pro service
   }
 }

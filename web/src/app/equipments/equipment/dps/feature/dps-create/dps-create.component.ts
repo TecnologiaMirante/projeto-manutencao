@@ -38,7 +38,7 @@ export class DpsCreateComponent implements OnInit   {
       tag: ['', Validators.required],
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
-      correnteMaxima: ['', [Validators.required, Validators.pattern("^[0-9]\d*(\.\d+)?$")]],
+      correnteMaxima: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
       classe: ['', Validators.required]
     })
   }

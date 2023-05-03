@@ -13,6 +13,13 @@ const routes: Routes = [
       import('../dps-create/dps-create.module').then(
         (m) => m.DpsCreateModule
       )
+  },
+  {
+    path: ':id/edit',
+    loadChildren: () =>
+      import('../dps-edit/dps-edit.module').then(
+        (m) => m.DpsEditModule
+      )
   }
 ];
 

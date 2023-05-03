@@ -7,9 +7,9 @@
 
   <div class="flex justify-center">
     <div class="mt-6">
-      <h3 class="mb-6 text-lg font-bold text-main-blue">Disjuntor</h3>
+      <h3 class="mb-6 text-lg font-bold text-main-blue">DPS</h3>
 
-      <form [formGroup]="disjuntorForm" class="" (ngSubmit)="OnSubmit()">
+      <form [formGroup]="dpsForm" class="" (ngSubmit)="OnSubmit()">
         <div
           class="md:w-custom_810px xl:w-custom_1236px h-max rounded-lg bg-white shadow-customBlue"
         >
@@ -18,34 +18,39 @@
             <div class="mb-7">
               <app-input-text
                 class="flex mb-8"
-                [control]="$any(disjuntorForm.get('tag'))"
+                [control]="$any(dpsForm.get('tag'))"
                 inputId="tag"
                 title="Tag"
-                placeholder="{{ this.disjuntor.tag }}"
+                placeholder="{{ this.dps.tag }}"
               ></app-input-text>
 
               <div class="flex mb-8">
                 <app-input-text
-                  [control]="$any(disjuntorForm.get('marca'))"
+                  [control]="$any(dpsForm.get('marca'))"
                   title="Marca"
-                  placeholder="{{ this.disjuntor.marca }}"
+                  placeholder="{{ this.dps.marca }}"
                 ></app-input-text>
                 <app-input-text
-                  [control]="$any(disjuntorForm).get('modelo')"
+                  [control]="$any(dpsForm).get('modelo')"
                   title="Modelo"
-                  placeholder="{{ this.disjuntor.modelo }}"
+                  placeholder="{{ this.dps.modelo }}"
                 ></app-input-text>
                 <div>
                   <app-input-text
-                    [control]="$any(disjuntorForm.get('correnteMaxima'))"
+                    [control]="$any(dpsForm.get('correnteMaxima'))"
                     title="Corrente Máxima"
-                    placeholder="{{ this.disjuntor.correnteMaxima }}"
+                    placeholder="{{ this.dps.correnteMaxima }}"
                   ></app-input-text>
                   <app-vmessage
-                    *ngIf="disjuntorForm.get('correnteMaxima')?.errors?.['pattern']"
+                    *ngIf="dpsForm.get('correnteMaxima')?.errors?.['pattern']"
                     text="Digite um número!"
                   ></app-vmessage>
                 </div>
+                <app-input-text
+                  [control]="$any(dpsForm).get('classe')"
+                  title="Classe"
+                  placeholder="{{ this.dps.classe }}"
+                ></app-input-text>
               </div>
             </div>
 
@@ -66,7 +71,7 @@
           </app-delete-button>
           <app-cancel-button (click)="cancel()"></app-cancel-button>
           <button
-            [disabled]="disjuntorForm.hasError('atLeastOneFieldFilled')"
+            [disabled]="dpsForm.hasError('atLeastOneFieldFilled')"
             type="submit"
             class="px-custom_15px py-custom_10px font-inter font-normal text-base rounded-lg text-white1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br duration-300"
           >

@@ -42,7 +42,7 @@ export class DisjuntorCreateComponent implements OnInit  {
       modelo: ['', Validators.required],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
-      correnteMaxima: ['', [Validators.required, Validators.pattern("^[0-9]\d*(\.\d+)?$")]],
+      correnteMaxima: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
     })
   }
 

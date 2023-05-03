@@ -43,8 +43,8 @@ export class NobreakCreateComponent implements OnInit {
       modelo: ['', Validators.required],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
-      tensao_entrada: ['', [Validators.required, Validators.pattern("^[0-9]\d*(\.\d+)?$")]],
-      tensao_saida: ['', [Validators.required, Validators.pattern("^[0-9]\d*(\.\d+)?$")]],
+      tensao_entrada: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
+      tensao_saida: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
     })
   }
 

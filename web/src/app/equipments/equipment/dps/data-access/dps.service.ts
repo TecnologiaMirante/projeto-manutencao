@@ -15,4 +15,24 @@ export class DpsService {
   create(dps: DPS): Observable<DPS> {
     return this.http.post<DPS>(this.API, dps);
   }
+
+  update(dps: DPS): Observable<DPS> {
+    const url = `${this.API}/${dps.id}`;
+    return this.http.put<DPS>(url, dps);
+  }
+
+  list(): Observable<DPS[]> {
+    return this.http.get<DPS[]>(this.API);
+  }
+
+  find(id: number): Observable<DPS> {
+    const url = `${this.API}/${id}`;
+    return this.http.get<DPS>(url);
+  }
+
+  delete(id: number): Observable<DPS> {
+    const url = `${this.API}/${id}`;
+    return this.http.delete<DPS>(url);
+  }
+
 }

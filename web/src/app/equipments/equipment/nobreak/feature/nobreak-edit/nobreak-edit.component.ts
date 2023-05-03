@@ -46,8 +46,8 @@ export class NobreakEditComponent {
       modelo: [''],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
-      tensao_entrada: [''],
-      tensao_saida: [''],
+      tensao_entrada: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
+      tensao_saida: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
     }, {
       validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'tensao_entrada', 'tensao_saida'])
     })
