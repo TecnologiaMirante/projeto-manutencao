@@ -58,7 +58,7 @@ export class NobreakCreateComponent implements OnInit {
     this.nobreakService.create(this.nobreak).subscribe(
       {
         next: () => {
-          alert("Criado!");
+          alert("Nobreak criado com sucesso!");
           this.createNobreakForm.reset();
         },
         error: (err) => {

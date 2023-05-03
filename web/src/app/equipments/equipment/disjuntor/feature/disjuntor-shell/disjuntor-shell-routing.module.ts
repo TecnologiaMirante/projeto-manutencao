@@ -9,22 +9,22 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    loadChildren: () =>
-      import('../nobreak-create/nobreak-create.module').then(
-        (m) => m.NobreakCreateModule
+    loadChildren: () => 
+      import('../disjuntor-create/disjuntor-create.module').then(
+        (m) => m.DisjuntorCreateModule
       )
   },
   {
     path: ':id/edit',
-    loadChildren: () =>
-    import('../nobreak-edit/nobreak-edit.module').then(
-      (m) => m.NobreakEditModule
-    )
-  },
+    loadChildren: () => 
+      import('../disjuntor-edit/disjuntor-edit.module').then(
+        (m) => m.DisjuntorEditModule
+      )
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class NobreakShellRoutingModule { }
+export class DisjuntorShellRoutingModule { }

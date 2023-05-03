@@ -1,0 +1,74 @@
+<div>
+  <p
+    class="md:px-14 lg:px-16 2xl:px-40 pt-3 text-base font-normal text-main-blue"
+  >
+    {{ action_path }}
+  </p>
+
+  <div class="flex justify-center">
+    <div class="mt-6">
+      <h3 class="mb-6 text-lg font-bold text-main-blue">Disjuntor</h3>
+
+      <form [formGroup]="disjuntorForm" class="" (ngSubmit)="OnSubmit()">
+        <div
+          class="md:w-custom_810px xl:w-custom_1236px h-max rounded-lg bg-white shadow-customBlue"
+        >
+          <div class="flex justify-between mx-9 pt-6 mb-4">
+            <!-- left section  -->
+            <div class="mb-7">
+              <app-input-text
+                class="flex mb-8"
+                [control]="$any(disjuntorForm.get('tag'))"
+                inputId="tag"
+                title="Tag"
+                placeholder="Text"
+              ></app-input-text>
+
+              <div class="flex mb-8">
+                <app-input-text
+                  [control]="$any(disjuntorForm.get('marca'))"
+                  title="Marca"
+                  placeholder="Marca"
+                ></app-input-text>
+                <app-input-text
+                  [control]="$any(disjuntorForm).get('modelo')"
+                  title="Modelo"
+                  placeholder="Modelo"
+                ></app-input-text>
+                <div>
+                  <app-input-text
+                    [control]="$any(disjuntorForm.get('correnteMaxima'))"
+                    title="Corrente Máxima"
+                    placeholder="Corrente Máxima"
+                  ></app-input-text>
+                  <app-vmessage
+                    *ngIf="disjuntorForm.get('correnteMaxima')?.errors?.['pattern']"
+                    text="Digite um número!"
+                  ></app-vmessage>
+                </div>
+              </div>
+            </div>
+
+            <!-- image -->
+            <div
+              class="md:w-[5.75rem] md:h-[3.75rem] xl:w-custom_184px xl:h-custom_120px rounded bg-blue5"
+            ></div>
+          </div>
+        </div>
+
+        <!-- buttons -->
+        <div class="flex justify-end gap-3">
+          <app-cancel-button (click)="cancel()"></app-cancel-button>
+
+          <button
+            [disabled]="disjuntorForm.invalid"
+            type="submit"
+            class="px-custom_15px py-custom_10px font-inter font-normal text-base rounded-lg text-white1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br duration-300"
+          >
+            Salvar equipamento
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
