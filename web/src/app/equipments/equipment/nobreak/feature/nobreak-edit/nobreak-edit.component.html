@@ -75,7 +75,11 @@
             class="block"
           >
           </app-delete-button>
-          <app-cancel-button (click)="cancel()"></app-cancel-button>
+          <app-cancel-button
+            data-modal-target="cancel-modal"
+            data-modal-toggle="cancel-modal"
+            class="block"
+          ></app-cancel-button>
           <button
             [disabled]="editNobreakForm.hasError('atLeastOneFieldFilled')"
             type="submit"
@@ -91,6 +95,11 @@
         (deleteEquipment)="confirmDelete($event)"
       >
       </app-delete-equipment-dialog>
+
+      <app-cancel-dialog
+        class="relative"
+        (exitEquipment)="confirmCancel($event)"
+      ></app-cancel-dialog>
     </div>
   </div>
 </div>

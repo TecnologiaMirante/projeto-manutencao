@@ -13,6 +13,7 @@ import { ClickedOutsideModule } from 'src/app/shared/utils/directives/clicked-ou
 import { NobreakService } from '../../data-access/nobreak.service';
 import { HttpClientModule } from '@angular/common/http';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
+import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialog.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
     ClickOutsideModule,
     ClickedOutsideModule,
     HttpClientModule,
-    VmessageModule
+    VmessageModule,
+    CancelDialogModule
   ],
   exports: [
     NobreakEditComponent

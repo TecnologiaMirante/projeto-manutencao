@@ -96,6 +96,10 @@ export class NobreakEditComponent {
     this.router.navigate(['/equipments'])
   }
 
+  confirmCancel(dado:boolean) {
+    this.router.navigate(['/equipments'])
+  }
+
   confirmDelete(dado:boolean) {
     if(this.nobreak.id) {
 
