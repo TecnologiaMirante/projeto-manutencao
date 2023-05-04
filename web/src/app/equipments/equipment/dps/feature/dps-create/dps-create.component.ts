@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DPS } from '../data-access/dps';
+import { DPS } from '../../data-access/dps';
 import { Router } from '@angular/router';
 import { DpsService } from '../../data-access/dps.service';
 
@@ -23,7 +23,7 @@ export class DpsCreateComponent implements OnInit   {
     tag: '',
     marca: '',
     modelo: '',
-    correnteMaxima: 0,
+    corrente_maxima: 0,
     classe: ''
   }
 
@@ -38,7 +38,7 @@ export class DpsCreateComponent implements OnInit   {
       tag: ['', Validators.required],
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
-      correnteMaxima: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
+      corrente_maxima: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
       classe: ['', Validators.required]
     })
   }
@@ -47,8 +47,8 @@ export class DpsCreateComponent implements OnInit   {
     this.dps.tag = this.dpsForm.get('tag')?.value;
     this.dps.marca = this.dpsForm.get('marca')?.value;
     this.dps.modelo = this.dpsForm.get('modelo')?.value;
-    this.dps.correnteMaxima = this.dpsForm.get('correnteMaxima')?.value;
-    this.dps.classe = this.dpsForm.get('dps')?.value;
+    this.dps.corrente_maxima = this.dpsForm.get('corrente_maxima')?.value;
+    this.dps.classe = this.dpsForm.get('classe')?.value;
     
     this.dpsService.create(this.dps).subscribe(
       {

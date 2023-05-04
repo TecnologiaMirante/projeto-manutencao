@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { DPS } from '../feature/data-access/dps';
+import { DPS } from './dps';
 import { Observable } from 'rxjs';
 
 @Injectable({

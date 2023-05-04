@@ -3,6 +3,6 @@ export interface DPS {
     tag: string;
     marca: string;
     modelo: string;
-    correnteMaxima: number;
+    corrente_maxima: number;
     classe: string;
 }
