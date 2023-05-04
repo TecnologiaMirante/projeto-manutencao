@@ -35,39 +35,51 @@ export class NobreakEditComponent {
   
   ngOnInit(): void {
 
-    const id = this.route.snapshot.paramMap.get('id');
-    this.nobreakService.find(parseInt(id!)).subscribe((nobreak) => {
-      this.nobreak = nobreak;
-    })
-
     this.editNobreakForm = this.formBuilder.group({
       tag: [''],
       marca: [''],
-      modelo: [''],
-      // futuramente verificar se o modelo ja existe no sistema
-      // criar um async validator
-      tensao_entrada: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
-      tensao_saida: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
+      modelo: [''], // futuramente verificar se o modelo ja existe no sistema criar um async validator
+      tensaoEntrada: [0, Validators.pattern("-?\\d+(\\.\\d+)?")],
+      tensaoSaida: [0, Validators.pattern("-?\\d+(\\.\\d+)?")],
     }, {
-      validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'tensao_entrada', 'tensao_saida'])
+      validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'tensaoEntrada', 'tensaoSaida'])
     })
+
+    const id = this.route.snapshot.paramMap.get('id');
+    this.nobreakService.find(parseInt(id!)).subscribe(
+      {
+        next: (nobreak) => {
+          this.editNobreakForm.patchValue(nobreak);  
+          this.nobreak = nobreak;        
+        },
+        error: (err) => {
+          alert(err.error.message);
+          this.router.navigate(['/equipments'])
+        }
+      }
+    )
+
+    // this.nobreakService.find(parseInt(id!)).subscribe((nobreak) => {
+    //   this.nobreak = nobreak;
+    //   this.editNobreakForm.patchValue(nobreak);
+    // })
   }
 
   OnSubmit() {
     this.nobreak.tag = this.editNobreakForm.get('tag')?.value;
     this.nobreak.marca = this.editNobreakForm.get('marca')?.value;
     this.nobreak.modelo = this.editNobreakForm.get('modelo')?.value;
-    this.nobreak.tensaoEntrada = this.editNobreakForm.get('tensao_entrada')?.value;
-    this.nobreak.tensaoSaida = this.editNobreakForm.get('tensao_saida')?.value;
+    this.nobreak.tensaoEntrada = this.editNobreakForm.get('tensaoEntrada')?.value;
+    this.nobreak.tensaoSaida = this.editNobreakForm.get('tensaoSaida')?.value;
     
     this.nobreakService.update(this.nobreak).subscribe(
       {
         next: () => {
           alert("Editado!");
-          this.editNobreakForm.reset();
+          this.router.navigate(['/equipments'])
         },
         error: (err) => {
-          console.log(err);
+          alert(err.error.message);
           this.editNobreakForm.reset();
         }
       }
@@ -90,13 +102,21 @@ export class NobreakEditComponent {
   }
 
   confirmDelete(dado:boolean) {
-    alert("Equipamento deletado!")
     if(this.nobreak.id) {
-      this.nobreakService.delete(this.nobreak.id).subscribe(() => {
-        this.router.navigate(['/equipments'])
-      })
+
+      this.nobreakService.delete(this.nobreak.id).subscribe(
+        {
+          next: () => {
+            alert("Equipamento deletado!");
+            this.router.navigate(['/equipments'])
+          },
+          error: (err) => {
+            alert(err.error.message);
+            this.editNobreakForm.reset();
+          }
+        }
+      )
     }
-    // aqui vai mandar dado pro service
   }
 
 }

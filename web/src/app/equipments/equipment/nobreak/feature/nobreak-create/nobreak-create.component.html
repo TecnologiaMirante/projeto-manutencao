@@ -37,23 +37,23 @@
                 ></app-input-text>
                 <div>
                   <app-input-text
-                    [control]="$any(createNobreakForm.get('tensao_entrada'))"
+                    [control]="$any(createNobreakForm.get('tensaoEntrada'))"
                     title="Tensão Entrada"
                     placeholder="Tensão Entrada"
                   ></app-input-text>
                   <app-vmessage
-                    *ngIf="createNobreakForm.get('tensao_entrada')?.errors?.['pattern']"
+                    *ngIf="createNobreakForm.get('tensaoEntrada')?.errors?.['pattern']"
                     text="Digite um número!"
                   ></app-vmessage>
                 </div>
                 <div>
                   <app-input-text
-                    [control]="$any(createNobreakForm.get('tensao_saida'))"
+                    [control]="$any(createNobreakForm.get('tensaoSaida'))"
                     title="Tensão Saída"
                     placeholder="Tensão Saída"
                   ></app-input-text>
                   <app-vmessage
-                    *ngIf="createNobreakForm.get('tensao_saida')?.errors?.['pattern']"
+                    *ngIf="createNobreakForm.get('tensaoSaida')?.errors?.['pattern']"
                     text="Digite um número!"
                   ></app-vmessage>
                 </div>
@@ -110,11 +110,11 @@
                   placeholder="XXXXXXXXX"
                 ></app-input-text>
                 <app-input-text
-                  [control]="$any(createNobreakForm.get('tensao_entrada'))"
+                  [control]="$any(createNobreakForm.get('tensaoEntrada'))"
                   title="Tensão Entrada"
                 ></app-input-text>
                 <app-input-text
-                  [control]="$any(createNobreakForm.get('tensao_saida'))"
+                  [control]="$any(createNobreakForm.get('tensaoSaida'))"
                   placeholder="XXXXXXXXX"
                   title="Tensão Saída"
                 ></app-input-text>

@@ -37,12 +37,12 @@
                 ></app-input-text>
                 <div>
                   <app-input-text
-                    [control]="$any(disjuntorForm.get('correnteMaxima'))"
+                    [control]="$any(disjuntorForm.get('corrente_maxima'))"
                     title="Corrente Máxima"
                     placeholder="Corrente Máxima"
                   ></app-input-text>
                   <app-vmessage
-                    *ngIf="disjuntorForm.get('correnteMaxima')?.errors?.['pattern']"
+                    *ngIf="disjuntorForm.get('corrente_maxima')?.errors?.['pattern']"
                     text="Digite um número!"
                   ></app-vmessage>
                 </div>

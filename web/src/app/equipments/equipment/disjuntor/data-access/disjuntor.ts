@@ -3,5 +3,5 @@ export interface Disjuntor {
     tag: string;
     marca: string;
     modelo: string;
-    correnteMaxima: number;
+    corrente_maxima: number;
 }

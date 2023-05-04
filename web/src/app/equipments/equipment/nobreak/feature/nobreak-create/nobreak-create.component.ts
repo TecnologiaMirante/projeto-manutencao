@@ -43,8 +43,8 @@ export class NobreakCreateComponent implements OnInit {
       modelo: ['', Validators.required],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
-      tensao_entrada: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
-      tensao_saida: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
+      tensaoEntrada: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
+      tensaoSaida: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
     })
   }
 
@@ -52,8 +52,8 @@ export class NobreakCreateComponent implements OnInit {
     this.nobreak.tag = this.createNobreakForm.get('tag')?.value;
     this.nobreak.marca = this.createNobreakForm.get('marca')?.value;
     this.nobreak.modelo = this.createNobreakForm.get('modelo')?.value;
-    this.nobreak.tensaoEntrada = this.createNobreakForm.get('tensao_entrada')?.value;
-    this.nobreak.tensaoSaida = this.createNobreakForm.get('tensao_saida')?.value;
+    this.nobreak.tensaoEntrada = this.createNobreakForm.get('tensaoEntrada')?.value;
+    this.nobreak.tensaoSaida = this.createNobreakForm.get('tensaoSaida')?.value;
     
     this.nobreakService.create(this.nobreak).subscribe(
       {
@@ -78,6 +78,6 @@ interface fieldsList {
   tag: string;
   marca: string;
   modelo: string;
-  tensao_entrada: number;
-  tensao_saida: number;
+  tensaoEntrada: number;
+  tensaoSaida: number;
 }

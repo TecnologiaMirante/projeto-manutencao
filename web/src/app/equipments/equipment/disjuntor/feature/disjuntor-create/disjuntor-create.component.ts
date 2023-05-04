@@ -22,7 +22,7 @@ export class DisjuntorCreateComponent implements OnInit  {
     tag: '',
     marca: '',
     modelo: '',
-    correnteMaxima: 0
+    corrente_maxima: 0
   }
 
   constructor(
@@ -42,7 +42,7 @@ export class DisjuntorCreateComponent implements OnInit  {
       modelo: ['', Validators.required],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
-      correnteMaxima: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
+      corrente_maxima: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
     })
   }
 
@@ -50,7 +50,7 @@ export class DisjuntorCreateComponent implements OnInit  {
     this.disjuntor.tag = this.disjuntorForm.get('tag')?.value;
     this.disjuntor.marca = this.disjuntorForm.get('marca')?.value;
     this.disjuntor.modelo = this.disjuntorForm.get('modelo')?.value;
-    this.disjuntor.correnteMaxima = this.disjuntorForm.get('correnteMaxima')?.value;
+    this.disjuntor.corrente_maxima = this.disjuntorForm.get('corrente_maxima')?.value;
     
     this.disjuntorService.create(this.disjuntor).subscribe(
       {

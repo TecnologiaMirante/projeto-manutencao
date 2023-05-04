@@ -17,6 +17,7 @@ export class NobreakService {
   }
 
   update(nobreak: Nobreak): Observable<Nobreak> {
+    console.log(nobreak)
     const url = `${this.API}/${nobreak.id}`;
     return this.http.put<Nobreak>(url, nobreak);
   }
