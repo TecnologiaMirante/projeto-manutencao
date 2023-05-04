@@ -22,6 +22,7 @@
                 inputId="tag"
                 title="Tag"
                 placeholder="{{ this.nobreak.tag }}"
+                fieldData="{{ this.nobreak.tag }}"
               ></app-input-text>
 
               <div class="flex mb-8">
@@ -29,17 +30,20 @@
                   [control]="$any(editNobreakForm.get('marca'))"
                   title="Marca"
                   placeholder="{{ this.nobreak.marca }}"
+                  fieldData="{{ this.nobreak.marca }}"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(editNobreakForm).get('modelo')"
                   title="Modelo"
                   placeholder="{{ this.nobreak.modelo }}"
+                  fieldData="{{ this.nobreak.modelo }}"
                 ></app-input-text>
                 <div>
                   <app-input-text
                     [control]="$any(editNobreakForm.get('tensao_entrada'))"
                     title="Tensão Entrada"
                     placeholder="{{ this.nobreak.tensaoEntrada }}"
+                    fieldData="{{ this.nobreak.tensaoEntrada }}"
                   ></app-input-text>
                   <app-vmessage
                     *ngIf="editNobreakForm.get('tensao_entrada')?.errors?.['pattern']"
@@ -51,6 +55,7 @@
                     [control]="$any(editNobreakForm.get('tensao_saida'))"
                     title="Tensão Saída"
                     placeholder="{{ this.nobreak.tensaoSaida }}"
+                    fieldData="{{ this.nobreak.tensaoSaida }}"
                   ></app-input-text>
                   <app-vmessage
                     *ngIf="editNobreakForm.get('tensao_saida')?.errors?.['pattern']"
@@ -86,21 +91,6 @@
         </div>
       </form>
 
-      <!-- <div
-        *ngIf="showModal"
-        class="opacity-25 fixed inset-0 z-40 bg-black"
-      ></div>
-
-      <app-delete-equipment-dialog
-        appClickedOutside
-        (clickedOutside)="toggleModal()"
-        data-modal-toggle="defaultModal"
-        (showDialog)="cancelDialog($event)"
-        (deleteEquipment)="confirmDelete($event)"
-        *ngIf="showModal"
-      ></app-delete-equipment-dialog> -->
-
-      <!-- class="absolute bottom-[19.2rem] right-[37.6rem]" -->
       <app-delete-equipment-dialog
         class="relative"
         (deleteEquipment)="confirmDelete($event)"

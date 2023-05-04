@@ -12,4 +12,5 @@ export class InputTextComponent {
   @Input() controlName!: FormControlName;
   @Input() title!: string;
   @Input() placeholder: string = "XXXXX";
+  @Input() fieldData?: string;
 }
