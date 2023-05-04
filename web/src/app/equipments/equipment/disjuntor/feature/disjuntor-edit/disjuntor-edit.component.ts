@@ -34,11 +34,6 @@ export class DisjuntorEditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const id = this.route.snapshot.paramMap.get('id');
-    this.disjuntorService.find(parseInt(id!)).subscribe((disjuntor) => {
-      this.disjuntor = disjuntor;
-    })
-
     this.disjuntorForm = this.formBuilder.group({
       tag: [''],
       marca: [''],
@@ -50,6 +45,19 @@ export class DisjuntorEditComponent implements OnInit {
       validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'corrente_maxima'])
     })
 
+    const id = this.route.snapshot.paramMap.get('id');
+    this.disjuntorService.find(parseInt(id!)).subscribe(
+      {
+        next: (disjuntor) => {
+          this.disjuntorForm.patchValue(disjuntor);
+          this.disjuntor = disjuntor;
+        },
+        error: (err) => {
+          alert(err.error.message);
+          this.router.navigate(['/equipments'])
+        }
+      }
+    )
   }
 
   OnSubmit() {
@@ -58,16 +66,14 @@ export class DisjuntorEditComponent implements OnInit {
     this.disjuntor.modelo = this.disjuntorForm.get('modelo')?.value;
     this.disjuntor.corrente_maxima = this.disjuntorForm.get('corrente_maxima')?.value;
     
-    alert("Disjuntor editado com sucesso!");
-
     this.disjuntorService.update(this.disjuntor).subscribe(
       {
         next: () => {
           alert("Disjuntor editado com sucesso!");
-          this.disjuntorForm.reset();
+          this.router.navigate(['/equipments'])
         },
         error: (err) => {
-          console.log(err);
+          console.log(err.error.message);
           this.disjuntorForm.reset();
         }
       }
@@ -90,11 +96,21 @@ export class DisjuntorEditComponent implements OnInit {
   }
 
   confirmDelete(dado:boolean) {
-    alert("Disjuntor deletado!")
     if(this.disjuntor.id) {
-      this.disjuntorService.delete(this.disjuntor.id).subscribe(() => {
-        this.router.navigate(['/equipments'])
-      })
+      this.disjuntorService.delete(this.disjuntor.id).subscribe(
+        {
+          next: () => {
+            alert("Disjuntor deletado com sucesso!");
+            this.router.navigate(['/equipments'])
+          },
+          error: (err) => {
+            alert(err.error.message);
+            this.disjuntorForm.reset();
+          }
+        }
+      )
     }
+
+
   }
 }
