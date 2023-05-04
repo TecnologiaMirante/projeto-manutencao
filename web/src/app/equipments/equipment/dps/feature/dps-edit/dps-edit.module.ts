@@ -12,6 +12,7 @@ import { DeleteEquipmentDialogModule } from 'src/app/shared/ui/delete-equipment-
 import { HttpClientModule } from '@angular/common/http';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { DpsService } from '../../data-access/dps.service';
+import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialog.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DpsService } from '../../data-access/dps.service';
     DeleteButtonModule,
     DeleteEquipmentDialogModule,
     HttpClientModule,
-    VmessageModule
+    VmessageModule,
+    CancelDialogModule
   ],
   exports: [
     DpsEditComponent

@@ -103,6 +103,10 @@ export class DpsEditComponent implements OnInit {
     this.router.navigate(['/equipments'])
   }
 
+  confirmCancel(dado:boolean) {
+    this.router.navigate(['/equipments'])
+  }
+
   confirmDelete(dado:boolean) {
     if(this.dps.id) {
       this.dpsService.delete(this.dps.id).subscribe(
