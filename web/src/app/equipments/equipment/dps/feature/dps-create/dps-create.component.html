@@ -7,7 +7,7 @@
 
   <div class="flex justify-center">
     <div class="mt-6">
-      <h3 class="mb-6 text-lg font-bold text-main-blue">Disjuntor</h3>
+      <h3 class="mb-6 text-lg font-bold text-main-blue">DPS</h3>
 
       <form [formGroup]="dpsForm" class="" (ngSubmit)="OnSubmit()">
         <div
@@ -37,12 +37,12 @@
                 ></app-input-text>
                 <div>
                   <app-input-text
-                    [control]="$any(dpsForm.get('correnteMaxima'))"
+                    [control]="$any(dpsForm.get('corrente_maxima'))"
                     title="Corrente Máxima"
                     placeholder="Corrente Máxima"
                   ></app-input-text>
                   <app-vmessage
-                    *ngIf="dpsForm.get('correnteMaxima')?.errors?.['pattern']"
+                    *ngIf="dpsForm.get('corrente_maxima')?.errors?.['pattern']"
                     text="Digite um número!"
                   ></app-vmessage>
                 </div>

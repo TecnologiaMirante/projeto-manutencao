@@ -37,12 +37,12 @@
                 ></app-input-text>
                 <div>
                   <app-input-text
-                    [control]="$any(dpsForm.get('correnteMaxima'))"
+                    [control]="$any(dpsForm.get('corrente_maxima'))"
                     title="Corrente Máxima"
-                    placeholder="{{ this.dps.correnteMaxima }}"
+                    placeholder="{{ this.dps.corrente_maxima }}"
                   ></app-input-text>
                   <app-vmessage
-                    *ngIf="dpsForm.get('correnteMaxima')?.errors?.['pattern']"
+                    *ngIf="dpsForm.get('corrente_maxima')?.errors?.['pattern']"
                     text="Digite um número!"
                   ></app-vmessage>
                 </div>

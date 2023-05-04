@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DPS } from '../data-access/dps';
+import { DPS } from '../../data-access/dps';
 import { DpsService } from '../../data-access/dps.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -23,7 +23,7 @@ export class DpsEditComponent implements OnInit {
     tag: 'Text',
     marca: 'marca',
     modelo: 'Modelo',
-    correnteMaxima: 0,
+    corrente_maxima: 0,
     classe: 'Classe'
   }
 
@@ -35,10 +35,6 @@ export class DpsEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.dpsService.find(parseInt(id!)).subscribe((dps) => {
-      this.dps = dps;
-    })
 
     this.dpsForm = this.formBuilder.group({
       tag: [''],
@@ -46,18 +42,36 @@ export class DpsEditComponent implements OnInit {
       modelo: [''],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
-      correnteMaxima: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
+      corrente_maxima: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
       classe: ['']
     }, {
-      validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'correnteMaxima', 'classe'])
+      validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'corrente_maxima', 'classe'])
     })
+
+    const id = this.route.snapshot.paramMap.get('id');
+    this.dpsService.find(parseInt(id!)).subscribe((dps) => {
+      this.dps = dps;
+    })
+
+    this.dpsService.find(parseInt(id!)).subscribe(
+      {
+        next: (dps) => {
+          this.dpsForm.patchValue(dps);
+          this.dps = dps;
+        },
+        error: (err) => {
+          alert(err.error.message);
+          this.router.navigate(['/equipments']);
+        }
+      }
+    )
   }
 
   OnSubmit() {
     this.dps.tag = this.dpsForm.get('tag')?.value;
     this.dps.marca = this.dpsForm.get('marca')?.value;
     this.dps.modelo = this.dpsForm.get('modelo')?.value;
-    this.dps.correnteMaxima = this.dpsForm.get('correnteMaxima')?.value;
+    this.dps.corrente_maxima = this.dpsForm.get('corrente_maxima')?.value;
     this.dps.classe = this.dpsForm.get('classe')?.value;
     
     this.dpsService.update(this.dps).subscribe(
@@ -67,7 +81,7 @@ export class DpsEditComponent implements OnInit {
           this.dpsForm.reset();
         },
         error: (err) => {
-          console.log(err);
+          console.log(err.error.message);
           this.dpsForm.reset();
         }
       }
@@ -90,11 +104,20 @@ export class DpsEditComponent implements OnInit {
   }
 
   confirmDelete(dado:boolean) {
-    alert("DPS deletado com sucesso!")
     if(this.dps.id) {
-      this.dpsService.delete(this.dps.id).subscribe(() => {
-        this.router.navigate(['/equipments'])
-      })
+      this.dpsService.delete(this.dps.id).subscribe(
+        {
+          next: () => {
+            alert("DPS deletado com sucesso!");
+            this.router.navigate(['/equipments'])
+          },
+          error: (err) => {
+            alert(err.error.message);
+            this.dpsForm.reset();
+          }
+        }
+      )
+
     }
   }
 }
