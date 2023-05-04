@@ -58,11 +58,6 @@ export class NobreakEditComponent {
         }
       }
     )
-
-    // this.nobreakService.find(parseInt(id!)).subscribe((nobreak) => {
-    //   this.nobreak = nobreak;
-    //   this.editNobreakForm.patchValue(nobreak);
-    // })
   }
 
   OnSubmit() {
