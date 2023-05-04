@@ -17,7 +17,7 @@ export class DisjuntorService {
   }
 
   update(disjuntor: Disjuntor): Observable<Disjuntor> {
-    const url = `${this.API}${disjuntor.id}`;
+    const url = `${this.API}/${disjuntor.id}`;
     return this.http.put<Disjuntor>(url, disjuntor);
   }
 

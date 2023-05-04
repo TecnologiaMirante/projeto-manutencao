@@ -70,7 +70,7 @@ export class NobreakEditComponent {
     this.nobreakService.update(this.nobreak).subscribe(
       {
         next: () => {
-          alert("Editado!");
+          alert("Nobreak editado com sucesso!");
           this.router.navigate(['/equipments'])
         },
         error: (err) => {
