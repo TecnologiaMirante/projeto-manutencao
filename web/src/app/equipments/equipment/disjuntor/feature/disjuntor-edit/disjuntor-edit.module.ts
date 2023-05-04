@@ -11,6 +11,7 @@ import { DeleteEquipmentDialogModule } from 'src/app/shared/ui/delete-equipment-
 import { HttpClientModule } from '@angular/common/http';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { DeleteButtonModule } from 'src/app/shared/ui/delete-button/delete-button.module';
+import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialog.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DeleteButtonModule } from 'src/app/shared/ui/delete-button/delete-butto
     DeleteButtonModule,
     DeleteEquipmentDialogModule,
     HttpClientModule,
-    VmessageModule
+    VmessageModule,
+    CancelDialogModule
   ],
   exports: [
     DisjuntorEditComponent

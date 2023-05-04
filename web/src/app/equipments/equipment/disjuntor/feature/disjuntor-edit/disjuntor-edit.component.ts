@@ -95,6 +95,10 @@ export class DisjuntorEditComponent implements OnInit {
     this.router.navigate(['/equipments'])
   }
 
+  confirmCancel(dado:boolean) {
+    this.router.navigate(['/equipments'])
+  }
+
   confirmDelete(dado:boolean) {
     if(this.disjuntor.id) {
       this.disjuntorService.delete(this.disjuntor.id).subscribe(
