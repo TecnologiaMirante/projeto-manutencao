@@ -34,6 +34,14 @@ const routes: Routes = [
             import('../equipments/equipment/dps/feature/dps-shell/dps-shell.module').then(
                 (m) => m.DpsShellModule
             )
+    },
+    {
+        path: 'ar-condicionado',
+        loadChildren: () =>
+            import('../equipments/equipment/ar-condicionado/feature/ar-condicionado-shell/ar-condicionado-shell.module').then(
+                (m) => m.ArCondicionadoShellModule
+            )
+
     }
 ]
 
