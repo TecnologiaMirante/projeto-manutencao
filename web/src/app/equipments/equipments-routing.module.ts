@@ -42,6 +42,13 @@ const routes: Routes = [
                 (m) => m.ArCondicionadoShellModule
             )
 
+    },
+    {
+        path: 'switch',
+        loadChildren: () =>
+            import('../equipments/equipment/switch/feature/switch-shell/switch-shell-routing.module').then(
+                (m) => m.SwitchShellRoutingModule
+            )
     }
 ]
 
