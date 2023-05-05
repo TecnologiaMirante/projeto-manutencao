@@ -9,7 +9,7 @@ import { DpsService } from '../../data-access/dps.service';
   templateUrl: './dps-create.component.html',
   styleUrls: ['./dps-create.component.css']
 })
-export class DpsCreateComponent implements OnInit   {
+export class DpsCreateComponent implements OnInit {
   cidade:string = "Cururupu";
   equipamento:string = "DPS0001";
   funcao:string = "Criar";

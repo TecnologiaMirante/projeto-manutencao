@@ -49,6 +49,13 @@ const routes: Routes = [
             import('../equipments/equipment/switch/feature/switch-shell/switch-shell-routing.module').then(
                 (m) => m.SwitchShellRoutingModule
             )
+    },
+    {
+        path: 'exaustor',
+        loadChildren: () => 
+            import('../equipments/equipment/exaustor/feature/exaustor-shell/exaustor-shell-routing.module').then(
+                (m) => m.ExaustorShellRoutingModule
+            )
     }
 ]
 
