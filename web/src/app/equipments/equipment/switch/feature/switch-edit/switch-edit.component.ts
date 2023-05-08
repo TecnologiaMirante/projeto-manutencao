@@ -70,7 +70,7 @@ export class SwitchEditComponent implements OnInit {
       {
         next: () => {
           alert("Switch editado com sucesso!");
-          this.switchForm.reset();
+          this.router.navigate(['/equipments'])
         },
         error: (err) => {
           console.log(err.error.message);
