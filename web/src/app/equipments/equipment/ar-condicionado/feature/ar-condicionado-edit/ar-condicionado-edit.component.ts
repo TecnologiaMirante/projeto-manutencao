@@ -73,7 +73,7 @@ export class ArCondicionadoEditComponent {
       {
         next: () => {
           alert("Ar condicionado editado com sucesso!");
-          this.arCondicionadoForm.reset();
+          this.router.navigate(['/equipments'])
         },
         error: (err) => {
           console.log(err.error.message);

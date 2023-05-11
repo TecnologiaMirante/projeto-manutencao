@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ArCondicionadoService {
 
   private API = "http://192.168.6.20:5000/ativos";
+  private API_test = "http://localhost:3000/ativos";
 
   constructor(private http: HttpClient) { }
 
