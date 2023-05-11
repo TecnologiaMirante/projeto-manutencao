@@ -9,6 +9,7 @@ import { Exaustor } from './exaustor';
 export class ExaustorService {
 
   private API = "http://192.168.6.20:5000/exaustores";
+  private API_test = "http://localhost:3000/exaustores";
 
   constructor(private http: HttpClient) { }
 
