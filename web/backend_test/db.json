@@ -1,0 +1,18 @@
+{
+  "exaustores": [
+    {
+      "id": 1,
+      "tag": "ext0001",
+      "marca": "marca exaustor 1",
+      "modelo": "texto",
+      "categoriaEquipamento": 1,
+      "criadoPor": 1
+    },
+    {
+      "tag": "tag teste",
+      "marca": "marca teste ",
+      "modelo": "modelo teste",
+      "id": 2
+    }
+  ]
+}
