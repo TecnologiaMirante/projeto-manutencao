@@ -1,0 +1,11 @@
+<select [(ngModel)]="selectedEquipment">
+  <option *ngFor="let equipment of equipmentsType" [value]="equipment">
+    {{ equipment.title }}
+  </option>
+</select>
+
+<select [(ngModel)]="selectedOption">
+  <option *ngFor="let option of optionsList" [value]="option">
+    {{ option }}
+  </option>
+</select>
