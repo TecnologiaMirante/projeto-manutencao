@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Telemetria } from '../../data-access/telemetria';
 import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TelemetriaService } from '../../data-access/telemetria.service';
 
 @Component({
   selector: 'app-telemetria-create',
@@ -9,28 +12,69 @@ import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-acces
 })
 export class TelemetriaCreateComponent {
 
+  cidade:string = "Cururupu";
+  equipamento:string = "TLM0001";
+  funcao:string = "Criar";
+  equipment: string = "Telemetria";
+  equipmentTypes: EquipmentType[] = EquipmentsTypeList;
+  selectedEquipmentType: EquipmentType = this.equipmentTypes[2]; //Telemetria
+
+  action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment}`;
+  telemetriaForm!: FormGroup;
+
   telemetria: Telemetria = {
     tag: '',
     marca: '',
     modelo: '',
-    category: '',
+    category: this.selectedEquipmentType.value, //TELEMETRIA
   }
 
-  equipmentsType: EquipmentType[];
-  selectedEquipment: string;
+  constructor(
+    private formBuilder: FormBuilder,
+    private telemetriaService: TelemetriaService,
+    private router: Router
+  ) {}
 
-  constructor() {
-    this.equipmentsType = EquipmentsTypeList;
-    this.selectedEquipment = this.equipmentsType[0].title;
+  form!: FormGroup;
+
+
+  ngOnInit(): void {
+    this.telemetriaForm = this.formBuilder.group({
+      tag: ['', Validators.required],
+      marca: ['', Validators.required],
+      modelo: ['', Validators.required],
+      category: [''] 
+    })
   }
 
-  selectedOption: string = 'oi';
-  optionsList: string[] = ['Option 1', 'Option 2', 'Option 3'];
+  OnSubmit() {
+    this.telemetria.tag = this.telemetriaForm.get('tag')?.value;
+    this.telemetria.marca = this.telemetriaForm.get('marca')?.value;
+    this.telemetria.modelo = this.telemetriaForm.get('modelo')?.value;
 
-  ngOnInit() {
-    this.selectedOption = this.optionsList[0];
-    this.selectedEquipment = this.equipmentsType[0].title;
+    console.log(this.telemetriaForm.value)
+
+    this.telemetriaService.create(this.telemetria).subscribe(
+      {
+        next: () => {
+          alert("Telemetria criada com sucesso!");
+          this.telemetriaForm.reset();
+        },
+        error: (err) => {
+          console.log(err);
+          this.telemetriaForm.reset();
+        }
+      }
+    )
   }
 
+  cancel() {
+    this.router.navigate(['/equipments']);
+  }
 
+  OnEquipmentTypeSelected(value: EquipmentType) {
+    this.telemetriaForm.patchValue({
+      category:value.value
+    })
+  }
 }
