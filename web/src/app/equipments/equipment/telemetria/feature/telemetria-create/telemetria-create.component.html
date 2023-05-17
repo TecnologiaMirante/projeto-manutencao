@@ -25,6 +25,7 @@
                   placeholder="Text"
                 ></app-input-text>
                 <app-input-dropdown
+                  [control]="$any(telemetriaForm.get('status'))"
                   [selectedEquipmentStatus]="equipmentStatus[0]"
                   (equipmentStatusSelected)="OnEquipmentStatusSelected($event)"
                   title="Status"

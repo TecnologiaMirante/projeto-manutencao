@@ -19,7 +19,7 @@ export class TelemetriaService {
   }
   
   find(id: number): Observable<Telemetria> {
-    return this.http.get<Telemetria>(`${this.API}/:${id}`);
+    return this.http.get<Telemetria>(`${this.API}/${id}`);
   }
 
   create(telemetria: Telemetria): Observable<Telemetria> {

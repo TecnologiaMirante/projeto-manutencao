@@ -1,20 +1,12 @@
 {
   "telemetrias": [
     {
-      "codigo": "Código telemetria 1",
-      "status": "FUNCIONANDO",
-      "marca": "Marca telemetria 1",
-      "modelo": "modelo telemetria 1",
+      "codigo": "codigo 1",
+      "status": "STANDBY",
+      "marca": "marca 1",
+      "modelo": "modelo 1",
       "category": "TELEMETRIA",
       "id": 1
-    },
-    {
-      "codigo": "codigo teste 1",
-      "status": "FUNCIONANDO",
-      "marca": "marca teste 1",
-      "modelo": "modelo teste 1",
-      "category": "TELEMETRIA",
-      "id": 2
     }
   ]
 }

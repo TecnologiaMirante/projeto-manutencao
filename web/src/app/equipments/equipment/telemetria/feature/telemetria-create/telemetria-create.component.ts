@@ -73,8 +73,9 @@ export class TelemetriaCreateComponent {
   }
 
   OnEquipmentStatusSelected(value: EquipmentStatus) {
+    this.telemetria.status = value.value;
     this.telemetriaForm.patchValue({
       category:value.value
-    })
+    });
   }
 }
