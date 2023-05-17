@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TelemetriaService {
 
-  private API = "http://192.168.6.20:5000/telemetria";
+  private API = "http://192.168.6.20:5000/telemetrias";
 
   constructor(private http: HttpClient) {}
 

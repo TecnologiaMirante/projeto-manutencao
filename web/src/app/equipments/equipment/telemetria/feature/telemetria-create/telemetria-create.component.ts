@@ -4,6 +4,7 @@ import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-acces
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TelemetriaService } from '../../data-access/telemetria.service';
+import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
 
 @Component({
   selector: 'app-telemetria-create',
@@ -18,12 +19,15 @@ export class TelemetriaCreateComponent {
   equipment: string = "Telemetria";
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[2]; //Telemetria
+  equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
+  selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
 
   action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment}`;
   telemetriaForm!: FormGroup;
 
   telemetria: Telemetria = {
     tag: '',
+    status: this.selectedEquipmentStatus.value, //FUNCIONANDO
     marca: '',
     modelo: '',
     category: this.selectedEquipmentType.value, //TELEMETRIA
@@ -35,12 +39,10 @@ export class TelemetriaCreateComponent {
     private router: Router
   ) {}
 
-  form!: FormGroup;
-
-
   ngOnInit(): void {
     this.telemetriaForm = this.formBuilder.group({
       tag: ['', Validators.required],
+      status: [''],
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
       category: [''] 
@@ -50,9 +52,9 @@ export class TelemetriaCreateComponent {
   OnSubmit() {
     this.telemetria.tag = this.telemetriaForm.get('tag')?.value;
     this.telemetria.marca = this.telemetriaForm.get('marca')?.value;
-    this.telemetria.modelo = this.telemetriaForm.get('modelo')?.value;
+    this.telemetria.modelo = this.telemetriaForm.get('modelo')?.value;    
 
-    console.log(this.telemetriaForm.value)
+    console.log(this.telemetria)
 
     this.telemetriaService.create(this.telemetria).subscribe(
       {
@@ -72,7 +74,7 @@ export class TelemetriaCreateComponent {
     this.router.navigate(['/equipments']);
   }
 
-  OnEquipmentTypeSelected(value: EquipmentType) {
+  OnEquipmentStatusSelected(value: EquipmentStatus) {
     this.telemetriaForm.patchValue({
       category:value.value
     })

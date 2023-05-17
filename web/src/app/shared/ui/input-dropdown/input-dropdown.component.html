@@ -3,15 +3,15 @@
 
   <select
     class="appearance-none bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-sm font-normal text-gray2 block w-custom_140px pt-custom_6px pb-custom_7px px-custom_10px pr-custom_23_72px"
-    id="equipmentType"
-    [(ngModel)]="selectedEquipmentType"
-    (change)="OnEquipmentTypeChange()"
+    id="equipmentStatus"
+    [(ngModel)]="selectedEquipmentStatus"
+    (change)="OnEquipmentStatusChange()"
   >
     <option
-      *ngFor="let equipmentType of equipmentTypes"
-      [ngValue]="equipmentType"
+      *ngFor="let equipmentStatus of equipmentStatus"
+      [ngValue]="equipmentStatus"
     >
-      {{ equipmentType.title }}
+      {{ equipmentStatus.title }}
     </option>
   </select>
 </div>

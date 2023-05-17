@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormControlName } from '@angular/forms';
+import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
 import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
 
 @Component({
@@ -14,19 +15,13 @@ export class InputDropdownComponent {
   @Input() title!: string;
   @Input() placeholder: string = "XXXXX";
 
-  equipmentTypes: EquipmentType[] = EquipmentsTypeList;
-  @Input() selectedEquipmentType!: EquipmentType;
-  @Output() equipmentTypeSelected: EventEmitter<EquipmentType> = new EventEmitter<EquipmentType>();
+  equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
+  @Input() selectedEquipmentStatus!: EquipmentStatus;
+  @Output() equipmentStatusSelected: EventEmitter<EquipmentStatus> = new EventEmitter<EquipmentStatus>();
 
-  OnEquipmentTypeChange() {
-    if(this.selectedEquipmentType) {
-      this.equipmentTypeSelected.emit(this.selectedEquipmentType);
+  OnEquipmentStatusChange() {
+    if(this.selectedEquipmentStatus) {
+      this.equipmentStatusSelected.emit(this.selectedEquipmentStatus);
     }
   }
-
-  options = [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' }
-  ];
 }

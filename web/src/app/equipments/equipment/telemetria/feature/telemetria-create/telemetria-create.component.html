@@ -16,13 +16,22 @@
           <div class="flex justify-between mx-9 pt-6 mb-4">
             <!-- left section  -->
             <div class="mb-7">
-              <app-input-text
-                class="flex mb-8"
-                [control]="$any(telemetriaForm.get('tag'))"
-                inputId="tag"
-                title="Tag"
-                placeholder="Text"
-              ></app-input-text>
+              <div class="flex">
+                <app-input-text
+                  class="flex mb-8"
+                  [control]="$any(telemetriaForm.get('tag'))"
+                  inputId="tag"
+                  title="Tag"
+                  placeholder="Text"
+                ></app-input-text>
+
+                <app-input-dropdown
+                  [selectedEquipmentStatus]="equipmentStatus[0]"
+                  (equipmentStatusSelected)="OnEquipmentStatusSelected($event)"
+                  title="Status"
+                  placeholder="Status"
+                ></app-input-dropdown>
+              </div>
 
               <div class="flex mb-8">
                 <app-input-text
@@ -35,14 +44,6 @@
                   title="Modelo"
                   placeholder="Modelo"
                 ></app-input-text>
-                <div>
-                  <app-input-dropdown
-                    (equipmentTypeSelected)="OnEquipmentTypeSelected($event)"
-                    title="Categoria"
-                    placeholder="Categoria"
-                    [selectedEquipmentType]="equipmentTypes[2]"
-                  ></app-input-dropdown>
-                </div>
               </div>
             </div>
 
