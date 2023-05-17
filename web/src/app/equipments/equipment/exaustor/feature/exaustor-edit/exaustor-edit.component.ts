@@ -67,7 +67,7 @@ export class ExaustorEditComponent implements OnInit {
       {
         next: () => {
           alert("Exaustor editado com sucesso!");
-          this.exaustorForm.reset();
+          this.router.navigate(['/equipments'])
         },
         error: (err) => {
           console.log(err.error.message);

@@ -56,6 +56,13 @@ const routes: Routes = [
             import('../equipments/equipment/exaustor/feature/exaustor-shell/exaustor-shell-routing.module').then(
                 (m) => m.ExaustorShellRoutingModule
             )
+    },
+    {
+        path: 'telemetria',
+        loadChildren: () =>
+            import('../equipments/equipment/telemetria/feature/telemetria-shell/telemetria-shell-routing.module').then(
+                (m) => m.TelemetriaShellRoutingModule
+            )
     }
 ]
 
