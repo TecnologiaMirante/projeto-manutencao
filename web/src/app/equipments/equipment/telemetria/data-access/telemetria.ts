@@ -1,6 +1,6 @@
 export interface Telemetria {
     id?: number;
-    tag: string;
+    codigo: string;
     status: string;
     marca: string;
     modelo: string;

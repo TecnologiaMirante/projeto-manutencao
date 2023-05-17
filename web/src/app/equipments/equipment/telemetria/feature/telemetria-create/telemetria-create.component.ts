@@ -26,7 +26,7 @@ export class TelemetriaCreateComponent {
   telemetriaForm!: FormGroup;
 
   telemetria: Telemetria = {
-    tag: '',
+    codigo: '',
     status: this.selectedEquipmentStatus.value, //FUNCIONANDO
     marca: '',
     modelo: '',
@@ -41,7 +41,7 @@ export class TelemetriaCreateComponent {
 
   ngOnInit(): void {
     this.telemetriaForm = this.formBuilder.group({
-      tag: ['', Validators.required],
+      codigo: ['', Validators.required],
       status: [''],
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
@@ -50,7 +50,7 @@ export class TelemetriaCreateComponent {
   }
 
   OnSubmit() {
-    this.telemetria.tag = this.telemetriaForm.get('tag')?.value;
+    this.telemetria.codigo = this.telemetriaForm.get('codigo')?.value;
     this.telemetria.marca = this.telemetriaForm.get('marca')?.value;
     this.telemetria.modelo = this.telemetriaForm.get('modelo')?.value;    
 
