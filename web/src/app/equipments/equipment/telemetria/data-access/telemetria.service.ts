@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class TelemetriaService {
 
-  private API = "http://192.168.6.20:5000/telemetrias";
+  private URL = "http://192.168.6.20:5000";
+  private URL_test = "http://localhost:3000";
+  private API = this.URL_test + "/telemetrias";
 
   constructor(private http: HttpClient) {}
 
