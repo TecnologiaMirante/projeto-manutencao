@@ -13,6 +13,13 @@ const routes: Routes = [
       import('../telemetria-create/telemetria-create.module').then(
         (m) => m.TelemetriaCreateModule
       )
+  },
+  {
+    path: ':id/edit',
+    loadChildren: () => 
+    import('../telemetria-edit/telemetria-edit.module').then(
+      (m) => m.TelemetriaEditModule
+    )
   }
 ];
 

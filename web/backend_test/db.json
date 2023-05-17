@@ -7,6 +7,14 @@
       "modelo": "modelo telemetria 1",
       "category": "TELEMETRIA",
       "id": 1
+    },
+    {
+      "codigo": "codigo teste 1",
+      "status": "FUNCIONANDO",
+      "marca": "marca teste 1",
+      "modelo": "modelo teste 1",
+      "category": "TELEMETRIA",
+      "id": 2
     }
   ]
 }

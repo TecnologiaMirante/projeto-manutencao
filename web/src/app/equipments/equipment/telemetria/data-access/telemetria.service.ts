@@ -13,8 +13,24 @@ export class TelemetriaService {
   private API = this.URL_test + "/telemetrias";
 
   constructor(private http: HttpClient) {}
+  
+  list(): Observable<Telemetria[]> {
+    return this.http.get<Telemetria[]>(this.API);
+  }
+  
+  find(id: number): Observable<Telemetria> {
+    return this.http.get<Telemetria>(`${this.API}/:${id}`);
+  }
 
   create(telemetria: Telemetria): Observable<Telemetria> {
     return this.http.post<Telemetria>(this.API, telemetria);
+  }
+
+  update(telemetria: Telemetria): Observable<Telemetria> {
+    return this.http.put<Telemetria>(`${this.API}/${telemetria.id}`, telemetria);
+  }
+
+  delete(id: number): Observable<Telemetria> {
+    return this.http.delete<Telemetria>(`${this.API}/${id}`);
   }
 }
