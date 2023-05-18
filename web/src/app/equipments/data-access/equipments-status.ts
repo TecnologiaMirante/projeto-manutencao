@@ -9,11 +9,15 @@ export const EquipmentsStatusList:EquipmentStatus[] = [
         value: 'FUNCIONANDO'
     },
     {
-        title: 'Stand-by',
-        value: 'STAND-BY'
+        title: 'Stand by',
+        value: 'STANDBY'
     },
     {
         title: 'Defeito',
         value: 'DEFEITO'
+    },
+    {
+        title: 'Manutenção',
+        value: 'MANUTENCAO'
     },
 ];

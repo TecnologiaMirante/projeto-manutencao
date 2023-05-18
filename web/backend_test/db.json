@@ -1,12 +1,4 @@
 {
-  "telemetrias": [
-    {
-      "codigo": "Código telemetria 1",
-      "status": "FUNCIONANDO",
-      "marca": "Marca telemetria 1",
-      "modelo": "modelo telemetria 1",
-      "category": "TELEMETRIA",
-      "id": 1
-    }
-  ]
+  "telemetrias": [],
+  "switches": []
 }

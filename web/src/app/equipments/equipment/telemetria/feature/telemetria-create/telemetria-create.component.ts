@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TelemetriaService } from '../../data-access/telemetria.service';
 import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
+import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
 
 @Component({
   selector: 'app-telemetria-create',
@@ -21,15 +22,18 @@ export class TelemetriaCreateComponent {
   selectedEquipmentType: EquipmentType = this.equipmentTypes[2]; //Telemetria
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  dadosGerais: DadosGerais = {
+    codigo: '',
+    marca: '',
+    modelo: ''
+  }
 
   action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment}`;
   telemetriaForm!: FormGroup;
 
   telemetria: Telemetria = {
-    codigo: '',
+    dados_gerais: this.dadosGerais, 
     status: this.selectedEquipmentStatus.value, //FUNCIONANDO
-    marca: '',
-    modelo: '',
     category: this.selectedEquipmentType.value, //TELEMETRIA
   }
 
@@ -45,14 +49,15 @@ export class TelemetriaCreateComponent {
       status: [''],
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
-      category: [''] 
     })
   }
 
   OnSubmit() {
-    this.telemetria.codigo = this.telemetriaForm.get('codigo')?.value;
-    this.telemetria.marca = this.telemetriaForm.get('marca')?.value;
-    this.telemetria.modelo = this.telemetriaForm.get('modelo')?.value;    
+    this.telemetria.dados_gerais.codigo = this.telemetriaForm.get('codigo')?.value;
+    this.telemetria.dados_gerais.marca = this.telemetriaForm.get('marca')?.value;
+    this.telemetria.dados_gerais.modelo = this.telemetriaForm.get('modelo')?.value;    
+
+    console.log(this.telemetria)
 
     this.telemetriaService.create(this.telemetria).subscribe(
       {
@@ -73,8 +78,9 @@ export class TelemetriaCreateComponent {
   }
 
   OnEquipmentStatusSelected(value: EquipmentStatus) {
+    this.telemetria.status = value.value;
     this.telemetriaForm.patchValue({
       category:value.value
-    })
+    });
   }
 }

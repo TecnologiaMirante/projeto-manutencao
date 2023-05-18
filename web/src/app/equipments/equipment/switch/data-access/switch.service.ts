@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class SwitchService {
 
-  private API = "http://192.168.6.20:5000/switches";
+  private URL = "http://192.168.6.20:5000";
+  private URL_test = "http://localhost:3000";
+  private API = this.URL_test + "/switches";
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +19,6 @@ export class SwitchService {
   }
 
   update(switch_object: Switch): Observable<Switch> {
-    console.log(switch_object)
     const url = `${this.API}/${switch_object.id}`;
     return this.http.put<Switch>(url, switch_object);
   }
