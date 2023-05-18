@@ -27,7 +27,8 @@ export class TelemetriaService {
   }
 
   update(telemetria: Telemetria): Observable<Telemetria> {
-    return this.http.put<Telemetria>(`${this.API}/${telemetria.id}`, telemetria);
+    const url = `${this.API}/${telemetria.id}`;
+    return this.http.put<Telemetria>(url, telemetria);
   }
 
   delete(id: number): Observable<Telemetria> {

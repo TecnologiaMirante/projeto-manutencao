@@ -1,12 +1,4 @@
 {
-  "telemetrias": [
-    {
-      "codigo": "codigo 1",
-      "status": "STANDBY",
-      "marca": "marca 1",
-      "modelo": "modelo 1",
-      "category": "TELEMETRIA",
-      "id": 1
-    }
-  ]
+  "telemetrias": [],
+  "switches": []
 }

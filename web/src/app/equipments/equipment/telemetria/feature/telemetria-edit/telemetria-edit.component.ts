@@ -5,6 +5,7 @@ import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-acces
 import { Telemetria } from '../../data-access/telemetria';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TelemetriaService } from '../../data-access/telemetria.service';
+import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
 
 @Component({
   selector: 'app-telemetria-edit',
@@ -14,22 +15,24 @@ import { TelemetriaService } from '../../data-access/telemetria.service';
 export class TelemetriaEditComponent {
   cidade:string = "Cururupu";
   equipamento:string = "TLM0001";
-  funcao:string = "Criar";
+  funcao:string = "Editar";
   equipment: string = "Telemetria";
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[2]; //Telemetria
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
-
+  dadosGerais: DadosGerais = {
+    codigo: '',
+    marca: '',
+    modelo: ''
+  }
   action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment}`;
   telemetriaForm!: FormGroup;
 
   telemetria: Telemetria = {
-    codigo: '',
-    status: this.selectedEquipmentStatus.value, //FUNCIONANDO
-    marca: '',
-    modelo: '',
-    category: this.selectedEquipmentType.value, //TELEMETRIA
+    dados_gerais: this.dadosGerais, 
+    status: this.selectedEquipmentStatus.value,
+    category: this.selectedEquipmentType.value, 
   }
 
   constructor(
@@ -45,7 +48,6 @@ export class TelemetriaEditComponent {
       status: [''],
       marca: [''],
       modelo: [''],
-      category: [''] 
     });
 
     const id = this.route.snapshot.paramMap.get('id');
@@ -53,11 +55,18 @@ export class TelemetriaEditComponent {
       {
         next: (telemetria) => {
           this.telemetria = telemetria;
-          this.telemetriaForm.patchValue(telemetria);
+          const { dados_gerais, status, category }: Telemetria = telemetria;
+          const { codigo, marca, modelo } = dados_gerais;
+          this.telemetriaForm.patchValue({
+            codigo,
+            marca,
+            modelo,
+            status,
+            category
+          });
           this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === telemetria.status)!;
         },
         error: (err) => {
-          console.log(this.telemetria),
           alert(err.error.message);
           this.router.navigate(['/equipments']);
         }
@@ -66,9 +75,9 @@ export class TelemetriaEditComponent {
   }
 
   OnSubmit() {
-    this.telemetria.codigo = this.telemetriaForm.get('codigo')?.value;
-    this.telemetria.marca = this.telemetriaForm.get('marca')?.value;
-    this.telemetria.modelo = this.telemetriaForm.get('modelo')?.value;
+    this.telemetria.dados_gerais.codigo = this.telemetriaForm.get('codigo')?.value;
+    this.telemetria.dados_gerais.marca = this.telemetriaForm.get('marca')?.value;
+    this.telemetria.dados_gerais.modelo = this.telemetriaForm.get('modelo')?.value;
     
     this.telemetriaService.update(this.telemetria).subscribe(
       {
