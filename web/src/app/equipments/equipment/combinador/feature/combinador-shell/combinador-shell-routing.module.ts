@@ -13,6 +13,13 @@ const routes: Routes = [
       import('../combinador-create/combinador-create.module').then(
         (m) => m.CombinadorCreateModule
       )
+  },
+  {
+    path: ':id/edit',
+    loadChildren: () => 
+      import('../combinador-edit/combinador-edit.module').then(
+        (m) => m.CombinadorEditModule
+      )
   }
 ];
 

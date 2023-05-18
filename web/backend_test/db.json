@@ -6,5 +6,26 @@
   "exaustores": [],
   "telemetrias": [],
   "switches": [],
-  "combinadores": []
+  "combinadores": [
+    {
+      "dados_gerais": {
+        "codigo": "codigo 2",
+        "marca": "marca 2",
+        "modelo": "modelo 2"
+      },
+      "status": "STANDBY",
+      "category": "IRRADIACAO",
+      "id": 2
+    },
+    {
+      "dados_gerais": {
+        "codigo": "codigo 3",
+        "marca": "marca 3",
+        "modelo": "modelo 3"
+      },
+      "status": "FUNCIONANDO",
+      "category": "IRRADIACAO",
+      "id": 3
+    }
+  ]
 }
