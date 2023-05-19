@@ -11,6 +11,17 @@
       "modelo": "modelo 1",
       "corrente_maxima": "10",
       "id": 1
+    },
+    {
+      "dados_gerais": {
+        "codigo": "codigo",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "STANDBY",
+      "category": "ELETRICA",
+      "corrente_maxima": "0",
+      "id": 2
     }
   ],
   "switches": [],

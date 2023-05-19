@@ -10,7 +10,7 @@ export class DisjuntorService {
 
   private URL = "http://192.168.6.20:5000";
   private URL_test = "http://localhost:3000";
-  private API = this.URL_test + "/telemetrias";
+  private API = this.URL_test + "/disjuntores";
 
   constructor(private http: HttpClient) { }
 
