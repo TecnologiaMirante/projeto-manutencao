@@ -1,9 +1,33 @@
 {
   "disjuntores": [],
   "dps": [],
-  "nobreaks": [],
+  "nobreaks": [
+    {
+      "dados_gerais": {
+        "codigo": "adasd",
+        "marca": "adasdd",
+        "modelo": "adasd"
+      },
+      "status": "DEFEITO",
+      "category": "ELETRICA",
+      "tensaoEntrada": "10",
+      "tensaoSaida": "10",
+      "id": 1
+    }
+  ],
   "arcondicionados": [],
-  "exaustores": [],
+  "exaustores": [
+    {
+      "dados_gerais": {
+        "codigo": "codigo 1",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "DEFEITO",
+      "category": "ELETRICA",
+      "id": 1
+    }
+  ],
   "antenas": [],
   "cabos": [],
   "combinadores": [

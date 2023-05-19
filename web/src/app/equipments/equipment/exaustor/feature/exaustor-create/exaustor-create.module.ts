@@ -10,6 +10,7 @@ import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-butto
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-dropdown.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { RouterModule } from '@angular/router';
     CancelButtonModule,
     VmessageModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    InputDropdownModule
   ],
   exports: [
     ExaustorCreateComponent
