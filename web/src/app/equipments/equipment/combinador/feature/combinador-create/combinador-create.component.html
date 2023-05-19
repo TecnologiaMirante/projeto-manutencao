@@ -7,9 +7,9 @@
 
   <div class="flex justify-center">
     <div class="mt-6">
-      <h3 class="mb-6 text-lg font-bold text-main-blue">Ar condicionado</h3>
+      <h3 class="mb-6 text-lg font-bold text-main-blue">Combinador</h3>
 
-      <form [formGroup]="arCondicionadoForm" class="" (ngSubmit)="OnSubmit()">
+      <form [formGroup]="combinadorForm" class="" (ngSubmit)="OnSubmit()">
         <div
           class="md:w-custom_810px xl:w-custom_1236px h-max rounded-lg bg-white shadow-customBlue"
         >
@@ -19,13 +19,13 @@
               <div class="flex">
                 <app-input-text
                   class="flex mb-8"
-                  [control]="$any(arCondicionadoForm.get('codigo'))"
+                  [control]="$any(combinadorForm.get('codigo'))"
                   inputId="codigo"
                   title="Código"
                   placeholder="Text"
                 ></app-input-text>
                 <app-input-dropdown
-                  [control]="$any(arCondicionadoForm.get('status'))"
+                  [control]="$any(combinadorForm.get('status'))"
                   [selectedEquipmentStatus]="equipmentStatus[0]"
                   (equipmentStatusSelected)="OnEquipmentStatusSelected($event)"
                   title="Status"
@@ -35,37 +35,15 @@
 
               <div class="flex mb-8">
                 <app-input-text
-                  [control]="$any(arCondicionadoForm.get('marca'))"
+                  [control]="$any(combinadorForm.get('marca'))"
                   title="Marca"
                   placeholder="Marca"
                 ></app-input-text>
                 <app-input-text
-                  [control]="$any(arCondicionadoForm).get('modelo')"
+                  [control]="$any(combinadorForm).get('modelo')"
                   title="Modelo"
                   placeholder="Modelo"
                 ></app-input-text>
-                <div>
-                  <app-input-text
-                    [control]="$any(arCondicionadoForm.get('potencia'))"
-                    title="Potência"
-                    placeholder="Potência"
-                  ></app-input-text>
-                  <app-vmessage
-                    *ngIf="arCondicionadoForm.get('potencia')?.errors?.['pattern']"
-                    text="Digite um número!"
-                  ></app-vmessage>
-                </div>
-                <div>
-                  <app-input-text
-                    [control]="$any(arCondicionadoForm).get('tensao')"
-                    title="Tensão"
-                    placeholder="Tensão"
-                  ></app-input-text>
-                  <app-vmessage
-                    *ngIf="arCondicionadoForm.get('tensao')?.errors?.['pattern']"
-                    text="Digite um número!"
-                  ></app-vmessage>
-                </div>
               </div>
             </div>
 
@@ -81,7 +59,7 @@
           <app-cancel-button (click)="cancel()"></app-cancel-button>
 
           <button
-            [disabled]="arCondicionadoForm.invalid"
+            [disabled]="combinadorForm.invalid"
             type="submit"
             class="px-custom_15px py-custom_10px font-inter font-normal text-base rounded-lg text-white1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br duration-300"
           >

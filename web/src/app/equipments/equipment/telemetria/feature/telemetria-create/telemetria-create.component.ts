@@ -57,8 +57,6 @@ export class TelemetriaCreateComponent {
     this.telemetria.dados_gerais.marca = this.telemetriaForm.get('marca')?.value;
     this.telemetria.dados_gerais.modelo = this.telemetriaForm.get('modelo')?.value;    
 
-    console.log(this.telemetria)
-
     this.telemetriaService.create(this.telemetria).subscribe(
       {
         next: () => {

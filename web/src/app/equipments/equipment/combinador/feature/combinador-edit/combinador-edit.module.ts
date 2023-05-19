@@ -1,39 +1,43 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ArCondicionadoCreateRoutingModule } from './ar-condicionado-create-routing.module';
-import { ArCondicionadoCreateComponent } from './ar-condicionado-create.component';
+import { CombinadorEditRoutingModule } from './combinador-edit-routing.module';
+import { CombinadorEditComponent } from './combinador-edit.component';
+import { CombinadorService } from '../../data-access/combinador.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'src/app/shared/ui/input-text/input-text.module';
 import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-button.module';
+import { DeleteButtonModule } from 'src/app/shared/ui/delete-button/delete-button.module';
+import { DeleteEquipmentDialogModule } from 'src/app/shared/ui/delete-equipment-dialog/delete-equipment-dialog.module';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
-import { ArCondicionadoService } from '../../data-access/ar-condicionado.service';
+import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialog.module';
 import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-dropdown.module';
 
 
 @NgModule({
   declarations: [
-    ArCondicionadoCreateComponent
+    CombinadorEditComponent
   ],
   imports: [
     CommonModule,
-    ArCondicionadoCreateRoutingModule,
+    CombinadorEditRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
     CancelButtonModule,
+    DeleteButtonModule,
+    DeleteEquipmentDialogModule,
     HttpClientModule,
-    RouterModule,
     VmessageModule,
+    CancelDialogModule,
     InputDropdownModule
   ],
   exports: [
-    ArCondicionadoCreateComponent
+    CombinadorEditComponent
   ],
   providers: [
-    ArCondicionadoService
+    CombinadorService
   ]
 })
-export class ArCondicionadoCreateModule { }
+export class CombinadorEditModule { }

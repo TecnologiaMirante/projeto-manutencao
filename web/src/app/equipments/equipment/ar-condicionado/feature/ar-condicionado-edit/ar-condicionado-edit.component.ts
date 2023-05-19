@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArCondicionado } from '../../data-access/ar-condicionado';
 import { ArCondicionadoService } from '../../data-access/ar-condicionado.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
+import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
+import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
 
 @Component({
   selector: 'app-ar-condicionado-edit',
@@ -10,19 +13,29 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./ar-condicionado-edit.component.css']
 })
 export class ArCondicionadoEditComponent {
+
   cidade:string = "Cururupu";
   equipamento:string = "ARC0001";
-  funcao:string = "Criar";
+  funcao:string = "Editar";
   equipment_type:string = "Ar Condicionado"
+  equipmentTypes: EquipmentType[] = EquipmentsTypeList;
+  selectedEquipmentType: EquipmentType = this.equipmentTypes[2]; //Refrigeração
+  equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
+  selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  dadosGerais: DadosGerais = {
+    codigo: '',
+    marca: '',
+    modelo: ''
+  }
 
   action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment_type}`
 
   arCondicionadoForm!: FormGroup;
 
   arCondicionado: ArCondicionado = {
-    tag: '',
-    marca: '',
-    modelo: '',
+    dados_gerais: this.dadosGerais, 
+    status: this.selectedEquipmentStatus.value,
+    category: this.selectedEquipmentType.value,
     potencia: 0,
     tensao: 0
   }
@@ -36,23 +49,32 @@ export class ArCondicionadoEditComponent {
 
   ngOnInit(): void {
     this.arCondicionadoForm = this.formBuilder.group({
-      tag: ['', Validators.required],
-      marca: ['', Validators.required],
-      modelo: ['', Validators.required],
-      potencia: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
-      tensao: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]]
+      codigo: ['', ],
+      marca: ['', ],
+      modelo: ['', ],
+      status: [''],
+      potencia: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
+      tensao: ['', Validators.pattern("-?\\d+(\\.\\d+)?")]
     })
 
     const id = this.route.snapshot.paramMap.get('id');
-    this.arCondicionadoService.find(parseInt(id!)).subscribe((arCondicionado) => {
-      this.arCondicionado = arCondicionado;
-    })
-
     this.arCondicionadoService.find(parseInt(id!)).subscribe(
       {
         next: (arCondicionado) => {
-          this.arCondicionadoForm.patchValue(arCondicionado);
           this.arCondicionado = arCondicionado;
+          const { dados_gerais, status, category, potencia, tensao }: ArCondicionado = arCondicionado;
+          const { codigo, marca, modelo } = dados_gerais;
+
+          this.arCondicionadoForm.patchValue({
+            codigo,
+            marca,
+            modelo,
+            status,
+            potencia,
+            tensao,
+            category
+          });
+          this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === arCondicionado.status)!;
         },
         error: (err) => {
           alert(err.error.message);
@@ -63,9 +85,9 @@ export class ArCondicionadoEditComponent {
   }
 
   OnSubmit() {
-    this.arCondicionado.tag = this.arCondicionadoForm.get('tag')?.value;
-    this.arCondicionado.marca = this.arCondicionadoForm.get('marca')?.value;
-    this.arCondicionado.modelo = this.arCondicionadoForm.get('modelo')?.value;
+    this.arCondicionado.dados_gerais.codigo = this.arCondicionadoForm.get('codigo')?.value;
+    this.arCondicionado.dados_gerais.marca = this.arCondicionadoForm.get('marca')?.value;
+    this.arCondicionado.dados_gerais.modelo = this.arCondicionadoForm.get('modelo')?.value;
     this.arCondicionado.potencia = this.arCondicionadoForm.get('potencia')?.value;
     this.arCondicionado.tensao = this.arCondicionadoForm.get('tensao')?.value;
     
@@ -116,7 +138,13 @@ export class ArCondicionadoEditComponent {
           }
         }
       )
-
     }
+  }
+
+  OnEquipmentStatusSelected(value: EquipmentStatus) {
+    this.arCondicionado.status = value.value;
+    this.arCondicionadoForm.patchValue({
+      category:value.value
+    })
   }
 }

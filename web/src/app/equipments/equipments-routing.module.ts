@@ -63,6 +63,13 @@ const routes: Routes = [
             import('../equipments/equipment/telemetria/feature/telemetria-shell/telemetria-shell-routing.module').then(
                 (m) => m.TelemetriaShellRoutingModule
             )
+    },
+    {
+        path: 'combinador',
+        loadChildren: () =>
+            import('../equipments/equipment/combinador/feature/combinador-shell/combinador-shell-routing.module').then(
+                (m) => m.CombinadorShellRoutingModule
+            )
     }
 ]
 
