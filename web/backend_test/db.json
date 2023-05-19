@@ -2,7 +2,20 @@
   "disjuntores": [],
   "dps": [],
   "nobreaks": [],
-  "arcondicionados": [],
+  "arcondicionados": [
+    {
+      "dados_gerais": {
+        "codigo": "codigo 1",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "STANDBY",
+      "category": "REFRIGERACAO",
+      "potencia": "3",
+      "tensao": "3",
+      "id": 1
+    }
+  ],
   "exaustores": [],
   "telemetrias": [],
   "switches": []
