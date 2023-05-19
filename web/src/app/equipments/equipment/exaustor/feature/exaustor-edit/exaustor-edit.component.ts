@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Exaustor } from '../../data-access/exaustor';
 import { ExaustorService } from '../../data-access/exaustor.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
+import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
+import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
 
 @Component({
   selector: 'app-exaustor-edit',
@@ -12,17 +15,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ExaustorEditComponent implements OnInit {
   cidade:string = "Cururupu";
   equipamento:string = "EXT0001";
-  funcao:string = "Criar";
-  equipment_type:string = "Exaustor"
+  funcao:string = "Editar";
+  equipment: string = "Exaustor";
+  equipmentTypes: EquipmentType[] = EquipmentsTypeList;
+  selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Refrigeração
+  equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
+  selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  dadosGerais: DadosGerais = {
+    codigo: '',
+    marca: '',
+    modelo: ''
+  }
 
-  action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment_type}`
+  action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment}`;
 
   exaustorForm!: FormGroup;
 
   exaustor: Exaustor = {
-    tag: '',
-    marca: '',
-    modelo: '',
+    dados_gerais: this.dadosGerais, 
+    status: this.selectedEquipmentStatus.value,
+    category: this.selectedEquipmentType.value, 
   }
 
   constructor(
@@ -34,21 +46,29 @@ export class ExaustorEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.exaustorForm = this.formBuilder.group({
-      tag: ['', Validators.required],
-      marca: ['', Validators.required],
-      modelo: ['', Validators.required],
-    })
+      codigo: [''],
+      marca: [''],
+      modelo: [''],
+      status: ['']
+    }, {
+      validators: this.atLeastOneHasValue(['codigo', 'marca', 'modelo'])
+    } )
 
     const id = this.route.snapshot.paramMap.get('id');
-    this.exaustorService.find(parseInt(id!)).subscribe((exaustor) => {
-      this.exaustor = exaustor;
-    })
-
     this.exaustorService.find(parseInt(id!)).subscribe(
       {
         next: (exaustor) => {
-          this.exaustorForm.patchValue(exaustor);
           this.exaustor = exaustor;
+          const { dados_gerais, status, category }: Exaustor = exaustor;
+          const { codigo, marca, modelo } = dados_gerais;
+          this.exaustorForm.patchValue({
+            codigo,
+            marca,
+            modelo,
+            status,
+            category
+          });
+          this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === exaustor.status)!;
         },
         error: (err) => {
           alert(err.error.message);
@@ -59,9 +79,9 @@ export class ExaustorEditComponent implements OnInit {
   }
 
   OnSubmit() {
-    this.exaustor.tag = this.exaustorForm.get('tag')?.value;
-    this.exaustor.marca = this.exaustorForm.get('marca')?.value;
-    this.exaustor.modelo = this.exaustorForm.get('modelo')?.value;
+    this.exaustor.dados_gerais.codigo = this.exaustorForm.get('codigo')?.value;
+    this.exaustor.dados_gerais.marca = this.exaustorForm.get('marca')?.value;
+    this.exaustor.dados_gerais.modelo = this.exaustorForm.get('modelo')?.value;
     
     this.exaustorService.update(this.exaustor).subscribe(
       {
@@ -110,7 +130,13 @@ export class ExaustorEditComponent implements OnInit {
           }
         }
       )
-
     }
+  }
+
+  OnEquipmentStatusSelected(value: EquipmentStatus) {
+    this.exaustor.status = value.value;
+    this.exaustorForm.patchValue({
+      category:value.value
+    })
   }
 }

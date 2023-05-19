@@ -12,6 +12,7 @@ import { DeleteEquipmentDialogModule } from 'src/app/shared/ui/delete-equipment-
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialog.module';
 import { HttpClientModule } from '@angular/common/http';
+import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-dropdown.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     DeleteEquipmentDialogModule,
     VmessageModule,
     CancelDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    InputDropdownModule
   ],
   exports: [
     ExaustorEditComponent

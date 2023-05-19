@@ -13,7 +13,6 @@ import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
   styleUrls: ['./telemetria-create.component.css']
 })
 export class TelemetriaCreateComponent {
-
   cidade:string = "Cururupu";
   equipamento:string = "TLM0001";
   funcao:string = "Criar";

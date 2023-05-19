@@ -100,7 +100,7 @@ export class DpsEditComponent implements OnInit {
       {
         next: () => {
           alert("DPS editado com sucesso!");
-          this.dpsForm.reset();
+          this.router.navigate(['/equipments'])
         },
         error: (err) => {
           console.log(err.error.message);
