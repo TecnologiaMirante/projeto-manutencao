@@ -49,6 +49,8 @@ export class TelemetriaEditComponent {
       status: [''],
       marca: [''],
       modelo: [''],
+    }, {
+      validators: this.atLeastOneHasValue(['codigo', 'marca', 'modelo'])
     });
 
     const id = this.route.snapshot.paramMap.get('id');

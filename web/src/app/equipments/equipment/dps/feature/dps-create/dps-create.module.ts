@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { DpsService } from '../../data-access/dps.service';
+import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-dropdown.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DpsService } from '../../data-access/dps.service';
     CancelButtonModule,
     HttpClientModule,
     RouterModule,
-    VmessageModule
+    VmessageModule,
+    InputDropdownModule
   ],
   exports: [
     DpsCreateComponent

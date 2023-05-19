@@ -4,27 +4,8 @@
   "nobreaks": [],
   "arcondicionados": [],
   "exaustores": [],
-  "telemetrias": [
-    {
-      "tag": "tag 1",
-      "marca": "marca 1",
-      "modelo": "modelo 1",
-      "corrente_maxima": "10",
-      "id": 1
-    },
-    {
-      "dados_gerais": {
-        "codigo": "codigo",
-        "marca": "marca 1",
-        "modelo": "modelo 1"
-      },
-      "status": "STANDBY",
-      "category": "ELETRICA",
-      "corrente_maxima": "0",
-      "id": 2
-    }
-  ],
-  "switches": [],
+  "antenas": [],
+  "cabos": [],
   "combinadores": [
     {
       "dados_gerais": {
@@ -56,5 +37,30 @@
       "category": "IRRADIACAO",
       "id": 4
     }
-  ]
+  ],
+  "parabolicas": [],
+  "receptores": [],
+  "torres": [],
+  "transmissores": [],
+  "telemetrias": [
+    {
+      "tag": "tag 1",
+      "marca": "marca 1",
+      "modelo": "modelo 1",
+      "corrente_maxima": "10",
+      "id": 1
+    },
+    {
+      "dados_gerais": {
+        "codigo": "codigo",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "STANDBY",
+      "category": "ELETRICA",
+      "corrente_maxima": "0",
+      "id": 2
+    }
+  ],
+  "switches": []
 }
