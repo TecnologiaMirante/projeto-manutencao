@@ -58,15 +58,23 @@ export class ArCondicionadoEditComponent {
     })
 
     const id = this.route.snapshot.paramMap.get('id');
-    this.arCondicionadoService.find(parseInt(id!)).subscribe((arCondicionado) => {
-      this.arCondicionado = arCondicionado;
-    })
-
     this.arCondicionadoService.find(parseInt(id!)).subscribe(
       {
         next: (arCondicionado) => {
-          this.arCondicionadoForm.patchValue(arCondicionado);
           this.arCondicionado = arCondicionado;
+          const { dados_gerais, status, category, potencia, tensao }: ArCondicionado = arCondicionado;
+          const { codigo, marca, modelo } = dados_gerais;
+
+          this.arCondicionadoForm.patchValue({
+            codigo,
+            marca,
+            modelo,
+            status,
+            potencia,
+            tensao,
+            category
+          });
+          this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === arCondicionado.status)!;
         },
         error: (err) => {
           alert(err.error.message);

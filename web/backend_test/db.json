@@ -2,22 +2,17 @@
   "disjuntores": [],
   "dps": [],
   "nobreaks": [],
-  "arcondicionados": [
+  "arcondicionados": [],
+  "exaustores": [],
+  "telemetrias": [
     {
-      "dados_gerais": {
-        "codigo": "codigo 1",
-        "marca": "marca 1",
-        "modelo": "modelo 1"
-      },
-      "status": "STANDBY",
-      "category": "REFRIGERACAO",
-      "potencia": "3",
-      "tensao": "3",
+      "tag": "tag 1",
+      "marca": "marca 1",
+      "modelo": "modelo 1",
+      "corrente_maxima": "10",
       "id": 1
     }
   ],
-  "exaustores": [],
-  "telemetrias": [],
   "switches": [],
   "combinadores": [
     {
@@ -39,6 +34,16 @@
       "status": "FUNCIONANDO",
       "category": "IRRADIACAO",
       "id": 3
+    },
+    {
+      "dados_gerais": {
+        "codigo": "codigo 1",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "STANDBY",
+      "category": "IRRADIACAO",
+      "id": 4
     }
   ]
 }
