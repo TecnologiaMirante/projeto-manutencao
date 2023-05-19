@@ -22,7 +22,7 @@
                   [control]="$any(telemetriaForm.get('codigo'))"
                   inputId="codigo"
                   title="Código"
-                  placeholder="Text"
+                  placeholder="{{ this.telemetria.dados_gerais.codigo }}"
                 ></app-input-text>
                 <app-input-dropdown
                   [control]="$any(telemetriaForm.get('status'))"
@@ -37,12 +37,12 @@
                 <app-input-text
                   [control]="$any(telemetriaForm.get('marca'))"
                   title="Marca"
-                  placeholder="Marca"
+                  placeholder="{{ this.telemetria.dados_gerais.codigo }}"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(telemetriaForm).get('modelo')"
                   title="Modelo"
-                  placeholder="Modelo"
+                  placeholder="{{ this.telemetria.dados_gerais.modelo }}"
                 ></app-input-text>
               </div>
             </div>
