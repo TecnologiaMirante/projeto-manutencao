@@ -18,6 +18,6 @@ export const EquipmentsStatusList:EquipmentStatus[] = [
     },
     {
         title: 'Manutenção',
-        value: 'MANUTENCAO'
+        value: 'MANUTENÇÃO'
     },
 ];
