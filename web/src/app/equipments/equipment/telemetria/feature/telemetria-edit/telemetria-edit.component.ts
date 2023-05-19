@@ -26,6 +26,7 @@ export class TelemetriaEditComponent {
     marca: '',
     modelo: ''
   }
+  
   action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment}`;
   telemetriaForm!: FormGroup;
 

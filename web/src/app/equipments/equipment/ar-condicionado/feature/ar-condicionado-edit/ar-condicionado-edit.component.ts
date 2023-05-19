@@ -49,12 +49,14 @@ export class ArCondicionadoEditComponent {
 
   ngOnInit(): void {
     this.arCondicionadoForm = this.formBuilder.group({
-      codigo: ['', ],
-      marca: ['', ],
-      modelo: ['', ],
+      codigo: [''],
+      marca: [''],
+      modelo: [''],
       status: [''],
       potencia: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
       tensao: ['', Validators.pattern("-?\\d+(\\.\\d+)?")]
+    }, {
+      validators: this.atLeastOneHasValue(['codigo', 'marca', 'modelo', 'potencia', 'tensao'])
     })
 
     const id = this.route.snapshot.paramMap.get('id');

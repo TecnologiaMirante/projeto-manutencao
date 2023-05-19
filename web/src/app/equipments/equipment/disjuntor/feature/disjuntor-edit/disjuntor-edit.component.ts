@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Disjuntor } from '../../data-access/disjuntor';
 import { DisjuntorService } from '../../data-access/disjuntor.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
+import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
+import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
 
 @Component({
   selector: 'app-disjuntor-edit',
@@ -12,16 +15,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DisjuntorEditComponent implements OnInit {
   cidade:string = "Cururupu";
   equipamento:string = "DJN0001";
-  funcao:string = "Editar Disjuntor";
-
-  action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao}`
+  funcao:string = "Editar";
+  equipment: string = "Disjuntor";
+  equipmentTypes: EquipmentType[] = EquipmentsTypeList;
+  selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
+  equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
+  selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  dadosGerais: DadosGerais = {
+    codigo: '',
+    marca: '',
+    modelo: ''
+  }
+  
+  action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment}`;
   
   disjuntorForm!: FormGroup;
 
   disjuntor: Disjuntor = {
-    tag: 'Text',
-    marca: 'Marca',
-    modelo: 'Modelo',
+    dados_gerais: this.dadosGerais, 
+    status: this.selectedEquipmentStatus.value,
+    category: this.selectedEquipmentType.value, 
     corrente_maxima: 0
   }
 
@@ -35,22 +48,32 @@ export class DisjuntorEditComponent implements OnInit {
   ngOnInit(): void {
 
     this.disjuntorForm = this.formBuilder.group({
-      tag: [''],
+      codigo: [''],
       marca: [''],
       modelo: [''],
+      status: [''],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
       corrente_maxima: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
     }, {
-      validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'corrente_maxima'])
+      validators: this.atLeastOneHasValue(['codigo', 'marca', 'modelo', 'corrente_maxima'])
     })
 
     const id = this.route.snapshot.paramMap.get('id');
     this.disjuntorService.find(parseInt(id!)).subscribe(
       {
         next: (disjuntor) => {
-          this.disjuntorForm.patchValue(disjuntor);
           this.disjuntor = disjuntor;
+          const { dados_gerais, status, category, corrente_maxima }: Disjuntor = disjuntor;
+          const { codigo, marca, modelo } = dados_gerais;
+          this.disjuntorForm.patchValue({
+            codigo,
+            marca,
+            modelo,
+            status, 
+            corrente_maxima,           
+            category
+          });
         },
         error: (err) => {
           alert(err.error.message);
@@ -61,9 +84,9 @@ export class DisjuntorEditComponent implements OnInit {
   }
 
   OnSubmit() {
-    this.disjuntor.tag = this.disjuntorForm.get('tag')?.value;
-    this.disjuntor.marca = this.disjuntorForm.get('marca')?.value;
-    this.disjuntor.modelo = this.disjuntorForm.get('modelo')?.value;
+    this.disjuntor.dados_gerais.codigo = this.disjuntorForm.get('codigo')?.value;
+    this.disjuntor.dados_gerais.marca = this.disjuntorForm.get('marca')?.value;
+    this.disjuntor.dados_gerais.modelo = this.disjuntorForm.get('modelo')?.value;
     this.disjuntor.corrente_maxima = this.disjuntorForm.get('corrente_maxima')?.value;
     
     this.disjuntorService.update(this.disjuntor).subscribe(
@@ -114,7 +137,12 @@ export class DisjuntorEditComponent implements OnInit {
         }
       )
     }
+  }
 
-
+  OnEquipmentStatusSelected(value: EquipmentStatus) {
+    this.disjuntor.status = value.value;
+    this.disjuntorForm.patchValue({
+      category:value.value
+    })
   }
 }
