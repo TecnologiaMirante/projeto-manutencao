@@ -12,6 +12,7 @@ import { NobreakService } from '../../data-access/nobreak.service';
 import { HttpClientModule } from '@angular/common/http';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialog.module';
+import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-dropdown.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialo
     DeleteEquipmentDialogModule,
     HttpClientModule,
     VmessageModule,
-    CancelDialogModule
+    CancelDialogModule,
+    InputDropdownModule
   ],
   exports: [
     NobreakEditComponent
