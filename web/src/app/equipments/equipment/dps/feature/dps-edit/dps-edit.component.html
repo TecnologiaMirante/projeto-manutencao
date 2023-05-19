@@ -18,22 +18,22 @@
             <div class="mb-7">
               <app-input-text
                 class="flex mb-8"
-                [control]="$any(dpsForm.get('tag'))"
-                inputId="tag"
-                title="Tag"
-                placeholder="{{ this.dps.tag }}"
+                [control]="$any(dpsForm.get('codigo'))"
+                inputId="codigo"
+                title="Código"
+                placeholder="{{ this.dps.dados_gerais.codigo }}"
               ></app-input-text>
 
               <div class="flex mb-8">
                 <app-input-text
                   [control]="$any(dpsForm.get('marca'))"
                   title="Marca"
-                  placeholder="{{ this.dps.marca }}"
+                  placeholder="{{ this.dps.dados_gerais.marca }}"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(dpsForm).get('modelo')"
                   title="Modelo"
-                  placeholder="{{ this.dps.modelo }}"
+                  placeholder="{{ this.dps.dados_gerais.modelo }}"
                 ></app-input-text>
                 <div>
                   <app-input-text

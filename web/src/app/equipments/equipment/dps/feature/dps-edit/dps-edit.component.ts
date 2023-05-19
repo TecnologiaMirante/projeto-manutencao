@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DPS } from '../../data-access/dps';
 import { DpsService } from '../../data-access/dps.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
+import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
+import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
 
 @Component({
   selector: 'app-dps-edit',
@@ -13,16 +16,27 @@ export class DpsEditComponent implements OnInit {
   cidade:string = "Cururupu";
   equipamento:string = "DPS0001";
   funcao:string = "Editar";
-  equipment_type:string = "DPS"
+  equipment: string = "DPS";
 
-  action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment_type}`
+  equipmentTypes: EquipmentType[] = EquipmentsTypeList;
+  selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
+  equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
+  selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  
+  dadosGerais: DadosGerais = {
+    codigo: '',
+    marca: '',
+    modelo: ''
+  }
+
+  action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment}`;
 
   dpsForm!: FormGroup;
 
   dps: DPS = {
-    tag: 'Text',
-    marca: 'marca',
-    modelo: 'Modelo',
+    dados_gerais: this.dadosGerais, 
+    status: this.selectedEquipmentStatus.value,
+    category: this.selectedEquipmentType.value,
     corrente_maxima: 0,
     classe: 'Classe'
   }
@@ -37,27 +51,35 @@ export class DpsEditComponent implements OnInit {
   ngOnInit(): void {
 
     this.dpsForm = this.formBuilder.group({
-      tag: [''],
+      codigo: [''],
       marca: [''],
       modelo: [''],
+      status: [''],
       // futuramente verificar se o modelo ja existe no sistema
       // criar um async validator
       corrente_maxima: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
       classe: ['']
     }, {
-      validators: this.atLeastOneHasValue(['tag', 'marca', 'modelo', 'corrente_maxima', 'classe'])
+      validators: this.atLeastOneHasValue(['codigo', 'marca', 'modelo', 'corrente_maxima', 'classe'])
     })
 
     const id = this.route.snapshot.paramMap.get('id');
-    this.dpsService.find(parseInt(id!)).subscribe((dps) => {
-      this.dps = dps;
-    })
-
     this.dpsService.find(parseInt(id!)).subscribe(
       {
         next: (dps) => {
-          this.dpsForm.patchValue(dps);
           this.dps = dps;
+          const { dados_gerais, status, category, corrente_maxima, classe }: DPS = dps;
+          const { codigo, marca, modelo } = dados_gerais;
+          this.dpsForm.patchValue({
+            codigo,
+            marca,
+            modelo,
+            status,
+            corrente_maxima,
+            classe,
+            category
+          });
+          this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === dps.status)!;
         },
         error: (err) => {
           alert(err.error.message);
@@ -68,9 +90,9 @@ export class DpsEditComponent implements OnInit {
   }
 
   OnSubmit() {
-    this.dps.tag = this.dpsForm.get('tag')?.value;
-    this.dps.marca = this.dpsForm.get('marca')?.value;
-    this.dps.modelo = this.dpsForm.get('modelo')?.value;
+    this.dps.dados_gerais.codigo = this.dpsForm.get('codigo')?.value;
+    this.dps.dados_gerais.marca = this.dpsForm.get('marca')?.value;
+    this.dps.dados_gerais.modelo = this.dpsForm.get('modelo')?.value;
     this.dps.corrente_maxima = this.dpsForm.get('corrente_maxima')?.value;
     this.dps.classe = this.dpsForm.get('classe')?.value;
     
@@ -121,7 +143,13 @@ export class DpsEditComponent implements OnInit {
           }
         }
       )
-
     }
+  }
+
+  OnEquipmentStatusSelected(value: EquipmentStatus) {
+    this.dps.status = value.value;
+    this.dpsForm.patchValue({
+      category:value.value
+    })
   }
 }
