@@ -18,10 +18,14 @@ export class ArCondicionadoCreateComponent {
   equipamento:string = "ARC0001";
   funcao:string = "Criar";
   equipment_type:string = "Ar condicionado"
+
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[0]; //REFRIGERACAO
+  
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+  
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
@@ -82,10 +86,12 @@ export class ArCondicionadoCreateComponent {
     this.router.navigate(['/equipments'])
   }
 
-  OnEquipmentStatusSelected(value: EquipmentStatus) {
-    this.arCondicionado.status = value.value;
+  OnEquipmentStatusSelected(value: string) {
     this.arCondicionadoForm.patchValue({
-      category:value.value
+      status:value
     });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.arCondicionado.status = this.selectedEquipmentStatus.value;
   }
 }
