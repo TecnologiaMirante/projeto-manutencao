@@ -21,10 +21,15 @@ export class DpsCreateComponent implements OnInit {
 
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
+  typesOptions: string[] = this.equipmentTypes.map(({ title }) => title);
+  
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+
   dpsClasses: DPSClass[] =  DPSClassList;
-  selectedDPSClass: DPSClass = this.dpsClasses[0];
+  selectedDPSClass: DPSClass = this.dpsClasses[0]; //D_1
+  dpsOptions: string[] = this.dpsClasses.map(({ title }) => title);
   
   dadosGerais: DadosGerais = {
     codigo: '',
@@ -59,8 +64,6 @@ export class DpsCreateComponent implements OnInit {
       corrente_maxima: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
       classe: ['']
     })
-
-    this.dpsForm.controls['classe'].setValue(this.selectedDPSClass.value);
   }
 
   OnSubmit() {
@@ -68,7 +71,6 @@ export class DpsCreateComponent implements OnInit {
     this.dps.dados_gerais.marca = this.dpsForm.get('marca')?.value;
     this.dps.dados_gerais.modelo = this.dpsForm.get('modelo')?.value;
     this.dps.corrente_maxima = this.dpsForm.get('corrente_maxima')?.value;
-    this.dps.classe = this.dpsForm.get('classe')?.value;
 
     this.dpsService.create(this.dps).subscribe(
       {
@@ -88,16 +90,21 @@ export class DpsCreateComponent implements OnInit {
     this.router.navigate(['/equipments'])
   }
 
-  OnEquipmentStatusSelected(value: EquipmentStatus) {
-    this.dps.status = value.value;
+  OnEquipmentStatusSelected(value: string) {
     this.dpsForm.patchValue({
-      category:value.value
+      status:value
     });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.dps.status = this.selectedEquipmentStatus.value;
   }
 
-  OnEquipmentDpsClassChange(value: DPSClass) {
-    this.dps.classe = value.value;
+  OnClassSelected(value: string) {
+    this.dpsForm.patchValue({
+      classe:value
+    });
+    
+    this.selectedDPSClass = this.dpsClasses.find((dpsClass) => dpsClass.title === value)!;
+    this.dps.classe = this.selectedDPSClass.value;
   }
-
-
 }
