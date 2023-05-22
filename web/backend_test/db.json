@@ -12,20 +12,7 @@
       "id": 1
     }
   ],
-  "dps": [
-    {
-      "dados_gerais": {
-        "codigo": "codigo 2",
-        "marca": "marca 2",
-        "modelo": "modelo 2"
-      },
-      "status": "DEFEITO",
-      "category": "ELETRICA",
-      "corrente_maxima": "12",
-      "classe": "D_3",
-      "id": 1
-    }
-  ],
+  "dps": [],
   "nobreaks": [
     {
       "dados_gerais": {
