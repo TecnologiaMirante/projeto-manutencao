@@ -1,0 +1,10 @@
+.custom-select-arrow {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("../../../../../../assets/toggle_arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.75rem auto;
+  padding-right: 2.5rem;
+}

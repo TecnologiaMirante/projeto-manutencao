@@ -1,9 +1,19 @@
 export interface DPSClass {
+    title: string;
     value: string;
 }
 
 export const DPSClassList: DPSClass[] = [
-    { value: '1' },
-    { value: '2' },
-    { value: '3' }
+    { 
+        title: '1',
+        value: 'D_1' 
+    },
+    { 
+        title: '2',
+        value: 'D_2' 
+    },
+    { 
+        title: '3',
+        value: 'D_3' 
+    },
 ]
