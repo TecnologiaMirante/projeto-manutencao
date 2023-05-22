@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
 import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
 import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
+import { DPSClass, DPSClassList } from '../../utils/dps-class';
 
 @Component({
   selector: 'app-dps-edit',
@@ -22,7 +23,9 @@ export class DpsEditComponent implements OnInit {
   selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
-  
+  dpsClasses: DPSClass[] =  DPSClassList;
+  selectedDPSClass: DPSClass = this.dpsClasses[0];
+
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
@@ -38,7 +41,7 @@ export class DpsEditComponent implements OnInit {
     status: this.selectedEquipmentStatus.value,
     category: this.selectedEquipmentType.value,
     corrente_maxima: 0,
-    classe: 'Classe'
+    classe: this.selectedDPSClass.value,
   }
 
   constructor(
@@ -61,7 +64,7 @@ export class DpsEditComponent implements OnInit {
       classe: ['']
     }, {
       validators: this.atLeastOneHasValue(['codigo', 'marca', 'modelo', 'corrente_maxima', 'classe'])
-    })
+    });
 
     const id = this.route.snapshot.paramMap.get('id');
     this.dpsService.find(parseInt(id!)).subscribe(
