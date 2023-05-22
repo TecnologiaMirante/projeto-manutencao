@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Switch } from '../../data-access/switch';
 import { SwitchService } from '../../data-access/switch.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
+import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
+import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
 
 @Component({
   selector: 'app-switch-edit',
@@ -15,14 +18,27 @@ export class SwitchEditComponent implements OnInit {
   funcao:string = "Editar";
   equipment_type:string = "Switch"
 
+  equipmentTypes: EquipmentType[] = EquipmentsTypeList;
+  selectedEquipmentType: EquipmentType = this.equipmentTypes[2]; //Telemetria
+  
+  equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
+  selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+
+  dadosGerais: DadosGerais = {
+    codigo: '',
+    marca: '',
+    modelo: ''
+  }
+
   action_path:string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment_type}`
 
   switchForm!: FormGroup;
 
   switch: Switch = {
-    tag: '',
-    marca: '',
-    modelo: '',
+    dados_gerais: this.dadosGerais,
+    status: this.selectedEquipmentStatus.value,
+    category: this.selectedEquipmentType.value,
     qtdPortas: 0
   }
 
@@ -35,22 +51,33 @@ export class SwitchEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.switchForm = this.formBuilder.group({
-      tag: ['', Validators.required],
-      marca: ['', Validators.required],
-      modelo: ['', Validators.required],
-      qtdPortas: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
-    })
+      codigo: [''],
+      marca: [''],
+      modelo: [''],
+      status: [''],
+      category: [''],
+      qtdPortas: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
+    }, {
+      validators: this.atLeastOneHasValue(['codigo', 'marca', 'modelo', 'qtdPortas'])
+    });
 
     const id = this.route.snapshot.paramMap.get('id');
-    this.switchService.find(parseInt(id!)).subscribe((switch_object) => {
-      this.switch = switch_object;
-    })
-
     this.switchService.find(parseInt(id!)).subscribe(
       {
         next: (switch_object) => {
-          this.switchForm.patchValue(switch_object);
           this.switch = switch_object;
+          console.log(switch_object);
+          const { dados_gerais, status, category, qtdPortas }: Switch = switch_object;
+          const { codigo, marca, modelo } = dados_gerais;
+          this.switchForm.patchValue({
+            codigo,
+            marca,
+            modelo,
+            status,
+            category,
+            qtdPortas
+          });
+          this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === switch_object.status)!;
         },
         error: (err) => {
           alert(err.error.message);
@@ -61,9 +88,9 @@ export class SwitchEditComponent implements OnInit {
   }
 
   OnSubmit() {
-    this.switch.tag = this.switchForm.get('tag')?.value;
-    this.switch.marca = this.switchForm.get('marca')?.value;
-    this.switch.modelo = this.switchForm.get('modelo')?.value;
+    this.switch.dados_gerais.codigo = this.switchForm.get('codigo')?.value;
+    this.switch.dados_gerais.marca = this.switchForm.get('marca')?.value;
+    this.switch.dados_gerais.modelo = this.switchForm.get('modelo')?.value;
     this.switch.qtdPortas = this.switchForm.get('qtdPortas')?.value;
     
     this.switchService.update(this.switch).subscribe(
@@ -114,5 +141,14 @@ export class SwitchEditComponent implements OnInit {
         }
       )
     }
+  }
+
+  OnEquipmentStatusSelected(value: string) {
+    this.switchForm.patchValue({
+      status:value
+    });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.switch.status = this.selectedEquipmentStatus.value;
   }
 }
