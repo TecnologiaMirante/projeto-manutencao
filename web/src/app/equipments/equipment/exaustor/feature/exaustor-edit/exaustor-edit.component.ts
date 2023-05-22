@@ -17,10 +17,14 @@ export class ExaustorEditComponent implements OnInit {
   equipamento:string = "EXT0001";
   funcao:string = "Editar";
   equipment: string = "Exaustor";
+  
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Refrigeração
+  
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+  
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
@@ -133,10 +137,12 @@ export class ExaustorEditComponent implements OnInit {
     }
   }
 
-  OnEquipmentStatusSelected(value: EquipmentStatus) {
-    this.exaustor.status = value.value;
+  OnEquipmentStatusSelected(value: string) {
     this.exaustorForm.patchValue({
-      category:value.value
-    })
+      status:value
+    });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.exaustor.status = this.selectedEquipmentStatus.value;
   }
 }

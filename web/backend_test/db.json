@@ -15,18 +15,7 @@
   "dps": [],
   "nobreaks": [],
   "arcondicionados": [],
-  "exaustores": [
-    {
-      "dados_gerais": {
-        "codigo": "codigo 1",
-        "marca": "marca 1",
-        "modelo": "modelo 1"
-      },
-      "status": "DEFEITO",
-      "category": "ELETRICA",
-      "id": 1
-    }
-  ],
+  "exaustores": [],
   "antenas": [],
   "cabos": [],
   "combinadores": [
