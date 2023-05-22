@@ -17,10 +17,14 @@ export class NobreakCreateComponent implements OnInit {
   equipamento:string = "REC0001";
   funcao:string = "Criar";
   equipment: string = "Nobreak";
+
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
+  
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+  
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
@@ -83,10 +87,12 @@ export class NobreakCreateComponent implements OnInit {
     this.router.navigate(['/equipments'])
   }
 
-  OnEquipmentStatusSelected(value: EquipmentStatus) {
-    this.nobreak.status = value.value;
+  OnEquipmentStatusSelected(value: string) {
     this.nobreakForm.patchValue({
-      category:value.value
+      status:value
     });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.nobreak.status = this.selectedEquipmentStatus.value;
   }
 }

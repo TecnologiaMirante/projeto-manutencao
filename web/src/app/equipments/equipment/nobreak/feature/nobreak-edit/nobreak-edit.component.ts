@@ -17,10 +17,14 @@ export class NobreakEditComponent {
   equipamento:string = "NBR0001";
   funcao:string = "Editar";
   equipment: string = "Nobreak";
+
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
+  
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+  
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
@@ -144,10 +148,12 @@ export class NobreakEditComponent {
     }
   }
 
-  OnEquipmentStatusSelected(value: EquipmentStatus) {
-    this.nobreak.status = value.value;
+  OnEquipmentStatusSelected(value: string) {
     this.nobreakForm.patchValue({
-      category:value.value
-    })
+      status:value
+    });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.nobreak.status = this.selectedEquipmentStatus.value;
   }
 }

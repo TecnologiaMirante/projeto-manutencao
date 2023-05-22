@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NobreakService } from '../../data-access/nobreak.service';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
-import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-dropdown.module';
+import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dropdown2.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-drop
     HttpClientModule,
     RouterModule,
     VmessageModule,
-    InputDropdownModule
+    InputDropdown2Module
   ],
   exports: [
     NobreakCreateComponent
