@@ -1,5 +1,17 @@
 {
-  "disjuntores": [],
+  "disjuntores": [
+    {
+      "dados_gerais": {
+        "codigo": "codigo 1",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "MANUTENÇÃO",
+      "category": "ELETRICA",
+      "corrente_maxima": "101",
+      "id": 1
+    }
+  ],
   "dps": [
     {
       "dados_gerais": {
@@ -91,6 +103,17 @@
   "receptores": [],
   "torres": [],
   "transmissores": [],
-  "telemetrias": [],
+  "telemetrias": [
+    {
+      "dados_gerais": {
+        "codigo": "codigo 1",
+        "marca": "marca ",
+        "modelo": "modelo"
+      },
+      "status": "DEFEITO",
+      "category": "TELEMETRIA",
+      "id": 1
+    }
+  ],
   "switches": []
 }
