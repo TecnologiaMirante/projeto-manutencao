@@ -9,8 +9,8 @@ import { RouterModule } from '@angular/router';
 import { InputTextModule } from 'src/app/shared/ui/input-text/input-text.module';
 import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-button.module';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
-import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-dropdown.module';
 import { CombinadorService } from '../../data-access/combinador.service';
+import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dropdown2.module';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { CombinadorService } from '../../data-access/combinador.service';
     InputTextModule,
     CancelButtonModule,
     VmessageModule,
-    InputDropdownModule
+    InputDropdown2Module
   ],
   exports: [
     CombinadorCreateComponent

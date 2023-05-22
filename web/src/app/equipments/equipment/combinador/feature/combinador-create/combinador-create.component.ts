@@ -17,10 +17,14 @@ export class CombinadorCreateComponent {
   equipamento:string = "CMB0001";
   funcao:string = "Criar";
   equipment: string = "Combinador";
+
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[3]; //Irradiação
+
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
@@ -76,10 +80,12 @@ export class CombinadorCreateComponent {
     this.router.navigate(['/equipments']);
   }
 
-  OnEquipmentStatusSelected(value: EquipmentStatus) {
-    this.combinador.status = value.value;
+  OnEquipmentStatusSelected(value: string) {
     this.combinadorForm.patchValue({
-      category:value.value
+      status:value
     });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.combinador.status = this.selectedEquipmentStatus.value;
   }
 }
