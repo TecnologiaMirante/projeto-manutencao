@@ -15,27 +15,15 @@
   "dps": [
     {
       "dados_gerais": {
-        "codigo": "cod",
-        "marca": "mar",
-        "modelo": "mod"
+        "codigo": "codigo 2",
+        "marca": "marca 2",
+        "modelo": "modelo 2"
       },
-      "status": "STANDBY",
-      "category": "ELETRICA",
-      "corrente_maxima": "12",
-      "classe": "D_2",
-      "id": 1
-    },
-    {
-      "dados_gerais": {
-        "codigo": "cod",
-        "marca": "mar",
-        "modelo": "mod"
-      },
-      "status": "STANDBY",
+      "status": "DEFEITO",
       "category": "ELETRICA",
       "corrente_maxima": "12",
       "classe": "D_3",
-      "id": 2
+      "id": 1
     }
   ],
   "nobreaks": [
