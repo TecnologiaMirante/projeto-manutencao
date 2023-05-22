@@ -1,6 +1,19 @@
 {
   "disjuntores": [],
-  "dps": [],
+  "dps": [
+    {
+      "dados_gerais": {
+        "codigo": "codigo 1",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "STANDBY",
+      "category": "ELETRICA",
+      "corrente_maxima": "10",
+      "classe": "3",
+      "id": 1
+    }
+  ],
   "nobreaks": [
     {
       "dados_gerais": {

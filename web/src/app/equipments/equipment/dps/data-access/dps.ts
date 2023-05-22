@@ -1,4 +1,5 @@
 import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
+import { DPSClass } from '../utils/dps-class';
 
 export interface DPS {
     id?: number;

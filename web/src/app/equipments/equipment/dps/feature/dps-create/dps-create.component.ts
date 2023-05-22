@@ -6,6 +6,7 @@ import { DpsService } from '../../data-access/dps.service';
 import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
 import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
 import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
+import { DPSClass, DPSClassList } from '../../utils/dps-class';
 
 @Component({
   selector: 'app-dps-create',
@@ -17,10 +18,14 @@ export class DpsCreateComponent implements OnInit {
   equipamento:string = "DPS0001";
   funcao:string = "Criar";
   equipment: string = "DPS";
+
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  dpsClasses: DPSClass[] =  DPSClassList;
+  selectedDPSClass: DPSClass = this.dpsClasses[0];
+  
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
@@ -36,7 +41,7 @@ export class DpsCreateComponent implements OnInit {
     status: this.selectedEquipmentStatus.value, //FUNCIONANDO
     category: this.selectedEquipmentType.value, //ELETRICA
     corrente_maxima: 0,
-    classe: ''
+    classe: this.selectedDPSClass.value,
   }
 
   constructor(
@@ -52,8 +57,10 @@ export class DpsCreateComponent implements OnInit {
       modelo: ['', Validators.required],
       status: [''],
       corrente_maxima: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
-      classe: ['', Validators.required]
+      classe: ['']
     })
+
+    this.dpsForm.controls['classe'].setValue(this.selectedDPSClass.value);
   }
 
   OnSubmit() {
@@ -62,7 +69,7 @@ export class DpsCreateComponent implements OnInit {
     this.dps.dados_gerais.modelo = this.dpsForm.get('modelo')?.value;
     this.dps.corrente_maxima = this.dpsForm.get('corrente_maxima')?.value;
     this.dps.classe = this.dpsForm.get('classe')?.value;
-    
+
     this.dpsService.create(this.dps).subscribe(
       {
         next: () => {
@@ -87,4 +94,10 @@ export class DpsCreateComponent implements OnInit {
       category:value.value
     });
   }
+
+  OnEquipmentDpsClassChange(value: DPSClass) {
+    this.dps.classe = value.value;
+  }
+
+
 }

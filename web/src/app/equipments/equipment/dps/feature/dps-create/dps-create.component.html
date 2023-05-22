@@ -55,11 +55,30 @@
                     text="Digite um número!"
                   ></app-vmessage>
                 </div>
-                <app-input-text
+                <!-- <app-input-text
                   [control]="$any(dpsForm).get('classe')"
                   title="Classe"
                   placeholder="Classe"
-                ></app-input-text>
+                ></app-input-text> -->
+                <div class="pr-6">
+                  <h3 class="block mb-2 text-base font-bold text-main-blue">
+                    Classe
+                  </h3>
+
+                  <select
+                    class="appearance-none bg-secondary-gray border border-secondary-gray rounded focus:ring-blue-500 focus:border-main-blue shadow-inner text-sm font-normal text-gray2 block w-custom_140px pt-custom_6px pb-custom_7px px-custom_10px pr-custom_23_72px custom-select-arrow"
+                    id="equipmentStatus"
+                    formControlName="classe"
+                  >
+                    >
+                    <option
+                      *ngFor="let dpsClass of dpsClasses"
+                      [ngValue]="dpsClass.value"
+                    >
+                      {{ dpsClass.value }}
+                    </option>
+                  </select>
+                </div>
               </div>
             </div>
 
