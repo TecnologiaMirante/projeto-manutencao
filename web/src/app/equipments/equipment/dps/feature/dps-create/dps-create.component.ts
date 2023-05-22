@@ -21,7 +21,6 @@ export class DpsCreateComponent implements OnInit {
 
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
-  typesOptions: string[] = this.equipmentTypes.map(({ title }) => title);
   
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando

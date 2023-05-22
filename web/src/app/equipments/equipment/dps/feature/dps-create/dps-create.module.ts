@@ -28,7 +28,6 @@ import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dr
     HttpClientModule,
     RouterModule,
     VmessageModule,
-    InputDropdownModule,
     InputDropdown2Module
   ],
   exports: [
