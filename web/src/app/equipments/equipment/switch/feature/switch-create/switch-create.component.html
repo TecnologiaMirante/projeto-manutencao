@@ -16,13 +16,23 @@
           <div class="flex justify-between mx-9 pt-6 mb-4">
             <!-- left section  -->
             <div class="mb-7">
-              <app-input-text
-                class="flex mb-8"
-                [control]="$any(switchForm.get('tag'))"
-                inputId="tag"
-                title="Tag"
-                placeholder="Text"
-              ></app-input-text>
+              <div class="flex">
+                <app-input-text
+                  class="flex mb-8"
+                  [control]="$any(switchForm.get('codigo'))"
+                  inputId="codigo"
+                  title="Código"
+                  placeholder="Text"
+                ></app-input-text>
+                <app-input-dropdown2
+                  [control]="$any(switchForm.get('status'))"
+                  [optionsList]="statusOptions"
+                  [selectedOption]="equipmentStatus[0].title"
+                  (optionSelected)="OnEquipmentStatusSelected($event)"
+                  title="Status"
+                  placeholder="Status"
+                ></app-input-dropdown2>
+              </div>
 
               <div class="flex mb-8">
                 <app-input-text

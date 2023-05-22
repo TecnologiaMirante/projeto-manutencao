@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { SwitchCreateComponent } from './switch-create.component';
 import { SwitchService } from '../../data-access/switch.service';
+import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dropdown2.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SwitchService } from '../../data-access/switch.service';
     CancelButtonModule,
     HttpClientModule,
     RouterModule,
-    VmessageModule
+    VmessageModule,
+    InputDropdown2Module
   ],
   exports: [
     SwitchCreateComponent

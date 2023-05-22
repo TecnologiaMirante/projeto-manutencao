@@ -13,6 +13,7 @@ import { DeleteEquipmentDialogModule } from 'src/app/shared/ui/delete-equipment-
 import { HttpClientModule } from '@angular/common/http';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialog.module';
+import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dropdown2.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialo
     DeleteEquipmentDialogModule,
     HttpClientModule,
     VmessageModule,
-    CancelDialogModule
+    CancelDialogModule,
+    InputDropdown2Module
   ],
   exports: [
     SwitchEditComponent
