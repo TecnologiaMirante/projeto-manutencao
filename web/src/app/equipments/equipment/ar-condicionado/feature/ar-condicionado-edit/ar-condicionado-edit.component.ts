@@ -18,10 +18,14 @@ export class ArCondicionadoEditComponent {
   equipamento:string = "ARC0001";
   funcao:string = "Editar";
   equipment_type:string = "Ar Condicionado"
+
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[2]; //Refrigeração
+  
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+  
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
@@ -143,10 +147,12 @@ export class ArCondicionadoEditComponent {
     }
   }
 
-  OnEquipmentStatusSelected(value: EquipmentStatus) {
-    this.arCondicionado.status = value.value;
+  OnEquipmentStatusSelected(value: string) {
     this.arCondicionadoForm.patchValue({
-      category:value.value
-    })
+      status:value
+    });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.arCondicionado.status = this.selectedEquipmentStatus.value;
   }
 }
