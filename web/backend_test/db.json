@@ -57,13 +57,13 @@
   "telemetrias": [
     {
       "dados_gerais": {
-        "codigo": "codigo 1",
-        "marca": "marca ",
-        "modelo": "modelo"
+        "codigo": "cod tele",
+        "marca": "marca tele",
+        "modelo": "modelo tele"
       },
-      "status": "DEFEITO",
+      "status": "STANDBY",
       "category": "TELEMETRIA",
-      "id": 1
+      "id": 2
     }
   ],
   "switches": []
