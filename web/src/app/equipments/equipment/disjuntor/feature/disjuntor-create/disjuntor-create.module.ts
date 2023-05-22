@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { CancelButtonModule } from 'src/app/shared/ui/cancel-button/cancel-button.module';
 import { DisjuntorService } from '../../data-access/disjuntor.service';
 import { HttpClientModule } from '@angular/common/http';
-import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-dropdown.module';
+import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dropdown2.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-drop
     HttpClientModule,
     RouterModule,
     VmessageModule,
-    InputDropdownModule
+    InputDropdown2Module
   ],
   exports: [
     DisjuntorCreateComponent

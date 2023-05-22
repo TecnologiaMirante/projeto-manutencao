@@ -17,10 +17,14 @@ export class DisjuntorEditComponent implements OnInit {
   equipamento:string = "DJN0001";
   funcao:string = "Editar";
   equipment: string = "Disjuntor";
+
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
+  
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+  
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
@@ -74,6 +78,7 @@ export class DisjuntorEditComponent implements OnInit {
             corrente_maxima,           
             category
           });
+          this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === disjuntor.status)!;
         },
         error: (err) => {
           alert(err.error.message);
@@ -139,10 +144,12 @@ export class DisjuntorEditComponent implements OnInit {
     }
   }
 
-  OnEquipmentStatusSelected(value: EquipmentStatus) {
-    this.disjuntor.status = value.value;
+  OnEquipmentStatusSelected(value: string) {
     this.disjuntorForm.patchValue({
-      category:value.value
-    })
+      status:value
+    });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.disjuntor.status = this.selectedEquipmentStatus.value;
   }
 }
