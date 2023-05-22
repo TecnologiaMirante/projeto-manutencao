@@ -21,10 +21,14 @@ export class DpsEditComponent implements OnInit {
 
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
   selectedEquipmentType: EquipmentType = this.equipmentTypes[1]; //Elétrica
+
   equipmentStatus: EquipmentStatus[] = EquipmentsStatusList;
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
+  statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
+  
   dpsClasses: DPSClass[] =  DPSClassList;
   selectedDPSClass: DPSClass = this.dpsClasses[0];
+  dpsOptions: string[] = this.dpsClasses.map(({ title }) => title);
 
   dadosGerais: DadosGerais = {
     codigo: '',
@@ -83,6 +87,7 @@ export class DpsEditComponent implements OnInit {
             category
           });
           this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === dps.status)!;
+          this.selectedDPSClass = DPSClassList.find((dpsClass) => dpsClass.value === dps.classe)!;
         },
         error: (err) => {
           alert(err.error.message);
@@ -97,7 +102,6 @@ export class DpsEditComponent implements OnInit {
     this.dps.dados_gerais.marca = this.dpsForm.get('marca')?.value;
     this.dps.dados_gerais.modelo = this.dpsForm.get('modelo')?.value;
     this.dps.corrente_maxima = this.dpsForm.get('corrente_maxima')?.value;
-    this.dps.classe = this.dpsForm.get('classe')?.value;
     
     this.dpsService.update(this.dps).subscribe(
       {
@@ -149,10 +153,21 @@ export class DpsEditComponent implements OnInit {
     }
   }
 
-  OnEquipmentStatusSelected(value: EquipmentStatus) {
-    this.dps.status = value.value;
+  OnEquipmentStatusSelected(value: string) {
     this.dpsForm.patchValue({
-      category:value.value
-    })
+      status:value
+    });
+
+    this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
+    this.dps.status = this.selectedEquipmentStatus.value;
+  }
+
+  OnClassSelected(value: string) {
+    this.dpsForm.patchValue({
+      classe:value
+    });
+    
+    this.selectedDPSClass = this.dpsClasses.find((dpsClass) => dpsClass.title === value)!;
+    this.dps.classe = this.selectedDPSClass.value;
   }
 }
