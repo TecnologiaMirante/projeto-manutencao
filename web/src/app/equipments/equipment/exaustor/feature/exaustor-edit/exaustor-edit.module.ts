@@ -13,6 +13,7 @@ import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { CancelDialogModule } from 'src/app/shared/ui/cancel-dialog/cancel-dialog.module';
 import { HttpClientModule } from '@angular/common/http';
 import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-dropdown.module';
+import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dropdown2.module';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { InputDropdownModule } from 'src/app/shared/ui/input-dropdown/input-drop
     VmessageModule,
     CancelDialogModule,
     HttpClientModule,
-    InputDropdownModule
+    InputDropdown2Module
   ],
   exports: [
     ExaustorEditComponent
