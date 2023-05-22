@@ -24,13 +24,14 @@
                   title="Código"
                   placeholder="Text"
                 ></app-input-text>
-                <app-input-dropdown
+                <app-input-dropdown2
                   [control]="$any(telemetriaForm.get('status'))"
-                  [selectedEquipmentStatus]="equipmentStatus[0]"
-                  (equipmentStatusSelected)="OnEquipmentStatusSelected($event)"
+                  [optionsList]="statusOptions"
+                  [selectedOption]="equipmentStatus[0].title"
+                  (optionSelected)="OnEquipmentStatusSelected($event)"
                   title="Status"
                   placeholder="Status"
-                ></app-input-dropdown>
+                ></app-input-dropdown2>
               </div>
 
               <div class="flex mb-8">
