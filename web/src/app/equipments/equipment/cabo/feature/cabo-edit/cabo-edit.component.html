@@ -27,7 +27,7 @@
                 <app-input-dropdown2
                   [control]="$any(caboForm.get('status'))"
                   [optionsList]="statusOptions"
-                  [selectedOption]="equipmentStatus[0].title"
+                  [selectedOption]="selectedEquipmentStatus.title"
                   (optionSelected)="OnEquipmentStatusSelected($event)"
                   title="Status"
                   placeholder="Status"
@@ -48,7 +48,7 @@
                 <app-input-dropdown2
                   [control]="$any(caboForm.get('tipo'))"
                   [optionsList]="caboOptions"
-                  [selectedOption]="caboTypes[0].title"
+                  [selectedOption]="selectedCaboType.title"
                   (optionSelected)="OnCaboTypeSelected($event)"
                   title="Tipo"
                   placeholder="Tipo"
@@ -76,10 +76,19 @@
 
         <!-- buttons -->
         <div class="flex justify-end gap-3">
-          <app-cancel-button (click)="cancel()"></app-cancel-button>
-
+          <app-delete-button
+            data-modal-target="popup-modal"
+            data-modal-toggle="popup-modal"
+            class="block"
+          >
+          </app-delete-button>
+          <app-cancel-button
+            data-modal-target="cancel-modal"
+            data-modal-toggle="cancel-modal"
+            class="block"
+          ></app-cancel-button>
           <button
-            [disabled]="caboForm.invalid"
+            [disabled]="caboForm.hasError('atLeastOneFieldFilled')"
             type="submit"
             class="px-custom_15px py-custom_10px font-inter font-normal text-base rounded-lg text-white1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br duration-300"
           >
@@ -87,6 +96,17 @@
           </button>
         </div>
       </form>
+
+      <app-delete-equipment-dialog
+        class="relative"
+        (deleteEquipment)="confirmDelete($event)"
+      >
+      </app-delete-equipment-dialog>
+
+      <app-cancel-dialog
+        class="relative"
+        (exitEquipment)="confirmCancel($event)"
+      ></app-cancel-dialog>
     </div>
   </div>
 </div>

@@ -14,6 +14,13 @@ const routes: Routes = [
         (m) => m.CaboCreateModule
       )
   },  
+  {
+    path: ':id/edit',
+    loadChildren: () =>
+      import('../cabo-edit/cabo-edit.module').then(
+        (m) => m.CaboEditModule
+      )
+  }
 ];
 
 @NgModule({
