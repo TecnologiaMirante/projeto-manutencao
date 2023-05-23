@@ -70,6 +70,13 @@ const routes: Routes = [
             import('../equipments/equipment/combinador/feature/combinador-shell/combinador-shell-routing.module').then(
                 (m) => m.CombinadorShellRoutingModule
             )
+    },
+    {
+        path: 'cabo',
+        loadChildren: () =>
+            import('../equipments/equipment/cabo/feature/cabo-shell/cabo-shell-routing.module').then(
+                (m) => m.CaboShellRoutingModule
+            )
     }
 ]
 
