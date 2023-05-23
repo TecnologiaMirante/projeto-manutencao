@@ -78,13 +78,6 @@ const routes: Routes = [
                 (m) => m.CaboShellRoutingModule
             )
     },
-    {
-        path: 'torre',
-        loadChildren: () =>
-            import('../equipments/equipment/torre/feature/torre-shell/torre-shell-routing.module').then(
-                (m) => m.TorreShellRoutingModule
-            )
-    }
 ]
 
 @NgModule({
