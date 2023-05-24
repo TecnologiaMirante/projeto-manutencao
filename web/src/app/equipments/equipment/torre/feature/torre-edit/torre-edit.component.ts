@@ -2,19 +2,19 @@ import { Component } from '@angular/core';
 import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
 import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
 import { EstruturaType, EstruturaTypeList } from '../../data-access/estrutura-type';
+import { AterramentoType, AterramentoTypesList } from '../../data-access/aterramento-option';
 import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Torre } from '../../data-access/torre';
 import { TorreService } from '../../data-access/torre.service';
-import { Router } from '@angular/router';
-import { AterramentoType, AterramentoTypesList } from '../../data-access/aterramento-option';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-torre-create',
-  templateUrl: './torre-create.component.html',
-  styleUrls: ['./torre-create.component.css']
+  selector: 'app-torre-edit',
+  templateUrl: './torre-edit.component.html',
+  styleUrls: ['./torre-edit.component.css']
 })
-export class TorreCreateComponent {
+export class TorreEditComponent {
   cidade:string = "Cururupu";
   equipamento:string = "TOR0001";
   funcao:string = "Criar";
@@ -34,13 +34,12 @@ export class TorreCreateComponent {
   aterramentoTypes: AterramentoType[] = AterramentoTypesList;
   selectedAterramentoType: AterramentoType = this.aterramentoTypes[0];
   aterramentoTypeOptions: string[] = this.aterramentoTypes.map(({ title }) => title);
-
+  
   dadosGerais: DadosGerais = {
     codigo: '',
     marca: '',
     modelo: ''
   }
-
 
   action_path: string = `Estações > ${this.cidade} > Equipamentos > ${this.funcao} ${this.equipment}`;
   
@@ -58,43 +57,107 @@ export class TorreCreateComponent {
   constructor(
     private formBuilder: FormBuilder,
     private torreService: TorreService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.torreForm = this.formBuilder.group({
-      codigo: ['', Validators.required],
-      marca: ['', Validators.required],
-      modelo: ['', Validators.required],
-      altura: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
+      codigo: [''],
+      marca: [''],
+      modelo: [''],
+      altura: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
       status: [''],
       estrutura: [''],
       aterramento: [''],
-    })
-  }
+    }, {
+      validators: this.atLeastOneHasValue(['codigo', 'marca', 'modelo', 'altura'])
+    });
 
+    const id = this.route.snapshot.paramMap.get('id');
+    this.torreService.find(parseInt(id!)).subscribe(
+      {
+        next: (torre) => {
+          this.torre = torre;
+          const { dados_gerais, status, category, altura, aterramento, estrutura }: Torre = torre;
+          const { codigo, marca, modelo } = dados_gerais;
+          this.torreForm.patchValue({
+            codigo,
+            marca,
+            modelo,
+            status,            
+            category,
+            estrutura,
+            aterramento,
+            altura
+          });
+          this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === torre.status)!;
+          this.selectedEstruturaType = EstruturaTypeList.find((estruturaType) => estruturaType.value === torre.estrutura)!;
+          this.selectedAterramentoType = AterramentoTypesList.find((aterramentoType) => aterramentoType.value === torre.aterramento)!;
+        },
+        error: (err) => {
+          alert(err.error.message);
+          this.router.navigate(['/equipments']);
+        }
+      }
+    );
+
+  }
+  
   OnSubmit() {
     this.torre.dados_gerais.codigo = this.torreForm.get('codigo')?.value;
     this.torre.dados_gerais.modelo = this.torreForm.get('modelo')?.value;
     this.torre.dados_gerais.marca = this.torreForm.get('marca')?.value;
     this.torre.altura = this.torreForm.get('altura')?.value;
 
-    this.torreService.create(this.torre).subscribe(
+    this.torreService.update(this.torre).subscribe(
       {
         next: () => {
-          alert("Torre criada com sucesso!");
-          this.torreForm.reset();
+          alert("Torre editada com sucesso!");
+          this.router.navigate(['/equipments'])
         },
         error: (err) => {
-          console.log(err); //Remover isso quando testar com a api do backend
+          console.log(err.error.message);
           this.torreForm.reset();
         }
       }
     )
   }
 
+  atLeastOneHasValue(fields: Array<string>) {
+    return (group: FormGroup) => {
+      for (const fieldName of fields) {
+        if (group.get(fieldName)!.value) {
+          return null;
+        }
+      }
+      return { atLeastOneFieldFilled: true };
+    }
+  }
+
   cancel() {
-    this.router.navigate(['/equipments']);
+    this.router.navigate(['/equipments'])
+  }
+
+  confirmCancel(dado:boolean) {
+    this.router.navigate(['/equipments'])
+  }
+
+  confirmDelete(dado:boolean) {
+    if(this.torre.id) {
+      this.torreService.delete(this.torre.id).subscribe(
+        {
+          next: () => {
+            alert("Torre deletada com sucesso!");
+            this.router.navigate(['/equipments'])
+          },
+          error: (err) => {
+            alert(err.error.message);
+            this.torreForm.reset();
+          }
+        }
+      )
+    }
   }
 
   OnEquipmentStatusSelected(value: string) {

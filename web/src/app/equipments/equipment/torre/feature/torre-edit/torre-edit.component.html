@@ -27,7 +27,7 @@
                 <app-input-dropdown2
                   [control]="$any(torreForm.get('status'))"
                   [optionsList]="statusOptions"
-                  [selectedOption]="equipmentStatus[0].title"
+                  [selectedOption]="selectedEquipmentStatus.title"
                   (optionSelected)="OnEquipmentStatusSelected($event)"
                   title="Status"
                   placeholder="Status"
@@ -59,7 +59,7 @@
                 <app-input-dropdown2
                   [control]="$any(torreForm.get('estrutura'))"
                   [optionsList]="estruturaTypeOptions"
-                  [selectedOption]="estruturaTypes[0].title"
+                  [selectedOption]="selectedEstruturaType.title"
                   (optionSelected)="OnEstruturaTypeSelected($event)"
                   title="Estrutura"
                   placeholder="Estrutura"
@@ -67,7 +67,7 @@
                 <app-input-dropdown2
                   [control]="$any(torreForm.get('aterramento'))"
                   [optionsList]="aterramentoTypeOptions"
-                  [selectedOption]="aterramentoTypeOptions[0]"
+                  [selectedOption]="selectedAterramentoType.title"
                   (optionSelected)="OnAterramentoTypeSelected($event)"
                   title="Aterramento"
                   placeholder="Aterramento"
@@ -84,10 +84,19 @@
 
         <!-- buttons -->
         <div class="flex justify-end gap-3">
-          <app-cancel-button (click)="cancel()"></app-cancel-button>
-
+          <app-delete-button
+            data-modal-target="popup-modal"
+            data-modal-toggle="popup-modal"
+            class="block"
+          >
+          </app-delete-button>
+          <app-cancel-button
+            data-modal-target="cancel-modal"
+            data-modal-toggle="cancel-modal"
+            class="block"
+          ></app-cancel-button>
           <button
-            [disabled]="torreForm.invalid"
+            [disabled]="torreForm.hasError('atLeastOneFieldFilled')"
             type="submit"
             class="px-custom_15px py-custom_10px font-inter font-normal text-base rounded-lg text-white1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br duration-300"
           >
@@ -95,6 +104,17 @@
           </button>
         </div>
       </form>
+
+      <app-delete-equipment-dialog
+        class="relative"
+        (deleteEquipment)="confirmDelete($event)"
+      >
+      </app-delete-equipment-dialog>
+
+      <app-cancel-dialog
+        class="relative"
+        (exitEquipment)="confirmCancel($event)"
+      ></app-cancel-dialog>
     </div>
   </div>
 </div>

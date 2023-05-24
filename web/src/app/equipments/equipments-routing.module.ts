@@ -81,8 +81,8 @@ const routes: Routes = [
     {
         path: 'torre',
         loadChildren: () =>
-            import('../equipments/equipment/torre/feature/torre-shell/torre-shell-routing.module').then(
-                (m) => m.TorreShellRoutingModule
+            import('../equipments/equipment/torre/feature/torre-shell/torre-shell.module').then(
+                (m) => m.TorreShellModule
             )
     }
 ]

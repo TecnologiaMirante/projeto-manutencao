@@ -10,8 +10,15 @@ const routes: Routes = [
   {
     path: 'create',
     loadChildren: () =>
-      import('../torre-create/torre-create-routing.module').then(
-        (m) => m.TorreCreateRoutingModule
+      import('../torre-create/torre-create.module').then(
+        (m) => m.TorreCreateModule
+      )
+  },
+  {
+    path: ':id/edit',
+    loadChildren: () =>
+      import('../torre-edit/torre-edit.module').then(
+        (m) => m.TorreEditModule
       )
   }
 ];
