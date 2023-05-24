@@ -77,6 +77,13 @@ const routes: Routes = [
             import('../equipments/equipment/cabo/feature/cabo-shell/cabo-shell-routing.module').then(
                 (m) => m.CaboShellRoutingModule
             )
+    },
+    {
+        path: 'torre',
+        loadChildren: () =>
+            import('../equipments/equipment/torre/feature/torre-shell/torre-shell-routing.module').then(
+                (m) => m.TorreShellRoutingModule
+            )
     }
 ]
 
