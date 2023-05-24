@@ -1,11 +1,13 @@
 import { DadosGerais } from 'src/app/equipments/data-access/dados-gerais';
 
-export interface Torre {
+export interface Antena {
     id?: number;
     dados_gerais: DadosGerais;
     status: string; //ENUM
     category: string; //ENUM
-    estrutura: string; //ENUM
-    altura?: number;
-    aterramento?: boolean;
+    gain: string;
+    fendas: number;
+    tipos_antena: string; //ENUM
+    nv?: number;
+    posicao_torre?: number;
 }

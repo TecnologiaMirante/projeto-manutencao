@@ -32,7 +32,21 @@
   "combinadores": [],
   "parabolicas": [],
   "receptores": [],
-  "torres": [],
+  "torres": [
+    {
+      "dados_gerais": {
+        "codigo": "codigo 1",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "STANDBY",
+      "category": "IRRADIACAO",
+      "estrutura": "ESTAIADA",
+      "altura": "",
+      "aterramento": false,
+      "id": 1
+    }
+  ],
   "transmissores": [],
   "telemetrias": [
     {

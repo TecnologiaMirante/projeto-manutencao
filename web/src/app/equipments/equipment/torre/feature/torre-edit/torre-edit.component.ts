@@ -17,7 +17,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TorreEditComponent {
   cidade:string = "Cururupu";
   equipamento:string = "TOR0001";
-  funcao:string = "Criar";
+  funcao:string = "Editar";
   equipment: string = "Torre";
 
   equipmentTypes: EquipmentType[] = EquipmentsTypeList;
