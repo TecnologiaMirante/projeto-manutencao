@@ -66,7 +66,7 @@ export class TorreCreateComponent {
       codigo: ['', Validators.required],
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
-      altura: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],
+      altura: ['', Validators.pattern("-?\\d+(\\.\\d+)?")],
       status: [''],
       estrutura: [''],
       aterramento: [''],

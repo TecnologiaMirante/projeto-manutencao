@@ -84,6 +84,13 @@ const routes: Routes = [
             import('../equipments/equipment/torre/feature/torre-shell/torre-shell.module').then(
                 (m) => m.TorreShellModule
             )
+    },
+    {
+        path: 'antena',
+        loadChildren: () =>
+            import('../equipments/equipment/antena/feature/antena-shell/antena-shell.module').then(
+                (m) => m.AntenaShellModule
+            )
     }
 ]
 
