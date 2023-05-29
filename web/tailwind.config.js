@@ -84,6 +84,7 @@ module.exports = {
       borderRadius: {
         DEFAULT: "0.25rem",
         "4px": "0.25rem",
+        "20px": "1.25rem",
       },
       boxShadow: {
         customBlue: "0px 5px 40px -5px rgba(58, 157, 249, 0.3)",

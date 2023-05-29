@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StationsListRoutingModule } from './stations-list-routing.module';
 import { StationsListComponent } from './stations-list.component';
 import { StationCardModule } from '../../ui/station-card/station-card.module';
+import { SearchBarModule } from 'src/app/shared/ui/search-bar/search-bar.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { StationCardModule } from '../../ui/station-card/station-card.module';
   imports: [
     CommonModule,
     StationsListRoutingModule,
-    StationCardModule
+    StationCardModule,
+    SearchBarModule
   ],
   exports: [
     StationsListComponent
