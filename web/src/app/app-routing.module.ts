@@ -3,15 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'equipments'
-  },
-  {
     path: 'equipments',
     loadChildren: () =>
       import('./equipments/equipments.module').then(m => m.EquipmentsModule)
   },
+  {
+    path: 'stations',
+    loadChildren: () =>
+      import('./stations/feature/stations-shell/stations-shell.module').then(
+        (m) => m.StationsShellModule
+      )
+  }
 ];
 
 @NgModule({
