@@ -66,6 +66,7 @@ module.exports = {
         custom_184px: "11.5rem",
         custom_212px: "13.25rem",
         custom_237px: "14.813rem",
+        custom_275px: "17.188rem",
         custom_334px: "20.875rem",
         custom_342px: "21.375rem",
         custom_378px: "23.625rem",
@@ -74,6 +75,7 @@ module.exports = {
         custom_432px: "27rem",
         custom_532px: "33.25rem",
         custom_810px: "50.625rem",
+        custom_960px: "60rem",
         custom_1056px: "66rem",
         custom_1108px: "69.25rem",
         custom_1236px: "77.25rem",
@@ -95,7 +97,7 @@ module.exports = {
       },
       screens: {
         xl1: "1680px",
-        "3xl": "1920px",
+        "3xl": "1900px",
       },
       backgroundSize: {
         "size-200": "200% 200%",
