@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Station } from '../../data-access/station';
+import { StationsService } from '../../data-access/stations.service';
 
 @Component({
   selector: 'app-stations-list',
@@ -7,10 +9,25 @@ import { Component } from '@angular/core';
 })
 export class StationsListComponent {
 
-  nStations: number = 45;
-  station_name: string[] = [
-    'Cururupu',
-    'Bacabal'
-  ];
+  stations: Station[] = [];
+  nStations: number = this.stations.length;
+
+  constructor(
+    private stationService: StationsService,
+  ) {}
+
+  ngOnInit(): void {
+    this.stationService.list().subscribe(
+      {
+        next: (stations) => {
+          this.stations = stations;
+          this.nStations = this.stations.length;
+        },
+        error(err) {
+          alert(err.error.message);
+        },
+      }
+    );
+  }
 
 }
