@@ -1,0 +1,25 @@
+<div>
+  <p
+    class="md:px-14 lg:px-16 2xl:px-40 pt-3 text-base font-normal text-main-blue"
+  >
+    Estações
+  </p>
+
+  <div class="flex justify-center">
+    <div class="xl1:mx-80 3xl:mx-custom_275px mt-6 flex">
+      <div>
+        <div class="justify-start text-base font-bold text-main-blue">
+          {{ nStations }} Estações
+        </div>
+        <div class="3xl:w-custom_1108px h-max pt-6">
+          <div class="grid gap-3 md:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
+            <div *ngFor="let station of stations">
+              <app-station-card [stationName]="station.nome"></app-station-card>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pl-9"><app-search-bar></app-search-bar></div>
+    </div>
+  </div>
+</div>
