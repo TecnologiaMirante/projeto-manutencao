@@ -7,8 +7,11 @@
 
   <div class="flex justify-center">
     <div class="xl1:mx-80 3xl:mx-custom_275px mt-6 flex">
-      <div>
-        <div class="justify-start text-base font-bold text-main-blue">
+      <div *ngIf="nStations != 0; else noStationsMessage">
+        <div
+          *ngIf="nStations > 1; else singular"
+          class="justify-start text-base font-bold text-main-blue"
+        >
           {{ nStations }} Estações
         </div>
         <div class="3xl:w-custom_1108px h-max pt-6">
@@ -22,4 +25,17 @@
       <div class="pl-9"><app-search-bar></app-search-bar></div>
     </div>
   </div>
+  <ng-template #noStationsMessage
+    ><div
+      class="lg:w-custom_532px xl:w-custom_960px 3xl:w-custom_1108px flex justify-center h-max pt-6 text-lg font-normal text-main-blue"
+    >
+      Nenhuma estação cadastrada!
+    </div>
+  </ng-template>
+  <ng-template #singular
+    ><div class="justify-start text-base font-bold text-main-blue">
+      {{ nStations }} Estação
+    </div></ng-template
+  >
+  <app-fab></app-fab>
 </div>

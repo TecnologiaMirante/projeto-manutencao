@@ -62,87 +62,13 @@
   ],
   "switches": [],
   "cabo": [],
-  "stations":[
+  "stations": [
     {
-      "nome": "Cururupu"      
+      "nome": "Cururupu"
     },
     {
-      "nome": "Bacabal"      
-    },
-    {
-      "nome": "Nome estação 1"      
-    },
-    {
-      "nome": "Nome estação 2"      
-    },
-    {
-      "nome": "Nome estação 3"      
-    },
-    {
-      "nome": "Nome estação 4"      
-    },
-    {
-      "nome": "Nome estação 5"      
-    },
-    {
-      "nome": "Nome estação 6"      
-    },
-    {
-      "nome": "Nome estação 7"      
-    },
-    {
-      "nome": "Nome estação 8"      
-    },
-    {
-      "nome": "Nome estação 9"      
-    },
-    {
-      "nome": "Nome estação 10"      
-    },
-    {
-      "nome": "Nome estação 11"      
-    },
-    {
-      "nome": "Nome estação 12"      
-    },
-    {
-      "nome": "Nome estação 13"      
-    },
-    {
-      "nome": "Nome estação 14"      
-    },
-    {
-      "nome": "Nome estação 15"      
-    },
-    {
-      "nome": "Nome estação 16"      
-    },
-    {
-      "nome": "Nome estação 17"      
-    },
-    {
-      "nome": "Nome estação 18"      
-    },
-    {
-      "nome": "Nome estação 19"      
-    },
-    {
-      "nome": "Nome estação 20"      
-    },
-    {
-      "nome": "Nome estação 21"      
-    },
-    {
-      "nome": "Nome estação 22"      
-    },
-    {
-      "nome": "Nome estação 23"      
-    },
-    {
-      "nome": "Nome estação 24"      
-    },
-    {
-      "nome": "Nome estação 25"      
+      "nome": "Cururupu 2"
     }
   ]
+
 }
