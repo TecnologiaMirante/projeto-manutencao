@@ -98,6 +98,13 @@ const routes: Routes = [
             import('../equipments/equipment/parabolica/feature/parabolica-shell/parabolica-shell.module').then(
                 (m) => m.ParabolicaShellModule
             )
+    },
+    {
+        path: 'receptor',
+        loadChildren: () =>
+            import('../equipments/equipment/receptor/feature/receptor-shell/receptor-shell.module').then(
+                (m) => m.ReceptorShellModule
+            )
     }
 ]
 
