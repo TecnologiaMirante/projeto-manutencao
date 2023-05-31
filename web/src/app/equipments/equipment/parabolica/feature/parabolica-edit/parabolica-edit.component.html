@@ -1,0 +1,115 @@
+<div>
+  <p
+    class="md:px-14 lg:px-16 2xl:px-40 pt-3 text-base font-normal text-main-blue"
+  >
+    {{ action_path }}
+  </p>
+
+  <div class="flex justify-center">
+    <div class="mt-6">
+      <h3 class="mb-6 text-lg font-bold text-main-blue">Parabólica</h3>
+
+      <form [formGroup]="parabolicaForm" class="" (ngSubmit)="OnSubmit()">
+        <div
+          class="md:w-custom_810px xl:w-custom_1236px h-max rounded-lg bg-white shadow-customBlue"
+        >
+          <div class="flex justify-between mx-9 pt-6 mb-4">
+            <!-- left section  -->
+            <div class="mb-7">
+              <div class="flex">
+                <app-input-text
+                  class="flex mb-8"
+                  [control]="$any(parabolicaForm.get('codigo'))"
+                  inputId="codigo"
+                  title="Código"
+                  placeholder="Text"
+                ></app-input-text>
+                <app-input-dropdown2
+                  [control]="$any(parabolicaForm.get('status'))"
+                  [optionsList]="statusOptions"
+                  [selectedOption]="selectedEquipmentStatus.title"
+                  (optionSelected)="OnEquipmentStatusSelected($event)"
+                  title="Status"
+                  placeholder="Status"
+                ></app-input-dropdown2>
+              </div>
+
+              <div class="flex mb-8">
+                <app-input-text
+                  [control]="$any(parabolicaForm.get('marca'))"
+                  title="Marca"
+                  placeholder="Marca"
+                ></app-input-text>
+                <app-input-text
+                  [control]="$any(parabolicaForm).get('modelo')"
+                  title="Modelo"
+                  placeholder="Modelo"
+                ></app-input-text>
+                <div>
+                  <app-input-text
+                    [control]="$any(parabolicaForm.get('diametro'))"
+                    title="Diâmetro"
+                    placeholder="Diâmetro"
+                  ></app-input-text>
+                  <app-vmessage
+                    *ngIf="parabolicaForm.get('diametro')?.errors?.['pattern']"
+                    text="Digite um número!"
+                  ></app-vmessage>
+                </div>
+                <div>
+                  <app-input-text
+                    [control]="$any(parabolicaForm.get('satelite'))"
+                    title="Satélite"
+                    placeholder="Satélite"
+                  ></app-input-text>
+                  <app-vmessage
+                    *ngIf="parabolicaForm.get('satelite')?.errors?.['pattern']"
+                    text="Digite um número!"
+                  ></app-vmessage>
+                </div>
+              </div>
+            </div>
+
+            <!-- image -->
+            <div
+              class="md:w-[5.75rem] md:h-[3.75rem] xl:w-custom_184px xl:h-custom_120px rounded bg-blue5"
+            ></div>
+          </div>
+        </div>
+
+        <!-- buttons -->
+        <div class="flex justify-end gap-3">
+          <app-delete-button
+            data-modal-target="popup-modal"
+            data-modal-toggle="popup-modal"
+            class="block"
+          >
+          </app-delete-button>
+          <app-cancel-button
+            data-modal-target="cancel-modal"
+            data-modal-toggle="cancel-modal"
+            class="block"
+          ></app-cancel-button>
+          <button
+            [disabled]="parabolicaForm.hasError('atLeastOneFieldFilled')"
+            type="submit"
+            class="px-custom_15px py-custom_10px font-inter font-normal text-base rounded-lg text-white1 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br duration-300"
+          >
+            Salvar equipamento
+          </button>
+        </div>
+      </form>
+
+      <app-delete-equipment-dialog
+        class="relative"
+        (deleteEquipment)="confirmDelete($event)"
+      >
+      </app-delete-equipment-dialog>
+
+      <app-cancel-dialog
+        class="relative"
+        (exitEquipment)="confirmCancel($event)"
+      ></app-cancel-dialog>
+    </div>
+  </div>
+</div>

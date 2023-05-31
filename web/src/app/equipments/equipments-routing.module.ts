@@ -91,6 +91,13 @@ const routes: Routes = [
             import('../equipments/equipment/antena/feature/antena-shell/antena-shell.module').then(
                 (m) => m.AntenaShellModule
             )
+    },
+    {
+        path: 'parabolica',
+        loadChildren: () =>
+            import('../equipments/equipment/parabolica/feature/parabolica-shell/parabolica-shell.module').then(
+                (m) => m.ParabolicaShellModule
+            )
     }
 ]
 

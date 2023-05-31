@@ -18,7 +18,7 @@ export class EquipmentsTypeComponent {
     },
     {
       title: "Irradiação",
-      items: ["Antena", "Cabo", "Combinador", "Parabólica", "Receptor", "Torre", "Transmissor"]
+      items: ["Antena", "Cabo", "Combinador", "Parabolica", "Receptor", "Torre", "Transmissor"]
     },
     {
       title: "Telemetria",
