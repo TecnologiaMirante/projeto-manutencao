@@ -116,5 +116,4 @@ export class ReceptorCreateComponent {
     this.selectedParabolica = this.parabolicas.find((parabolica) => parabolica.dados_gerais.codigo === value)!;
     this.receptor.parabolica_id = this.selectedParabolica.id;
   }
-
 }
