@@ -30,8 +30,61 @@
   "antenas": [],
   "cabos": [],
   "combinadores": [],
-  "parabolicas": [],
-  "receptores": [],
+  "parabolicas": [
+    {
+      "dados_gerais": {
+        "codigo": "PAR001",
+        "marca": "Marca Parabólica 1",
+        "modelo": "Modelo Parabólica 1"
+      },
+      "status": "DEFEITO",
+      "category": "IRRADIACAO",
+      "diametro": "10",
+      "satelite": "Satélite Parabólica 1",
+      "id": 1
+    },
+    {
+      "dados_gerais": {
+        "codigo": "PAR002",
+        "marca": "MARCA 2",
+        "modelo": "MODELO 2"
+      },
+      "status": "DEFEITO",
+      "category": "IRRADIACAO",
+      "diametro": "10",
+      "satelite": "SATELITE 2",
+      "id": 2
+    }
+  ],
+  "receptores": [
+    {
+      "dados_gerais": {
+        "codigo": "codigo 1",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "MANUTENÇÃO",
+      "category": "IRRADIACAO",
+      "canal": "10",
+      "frequency": "20",
+      "symbol_rate": "30",
+      "id": 1
+    },
+    {
+      "dados_gerais": {
+        "codigo": "REC002",
+        "marca": "MARCA 1",
+        "modelo": "MODELO 1"
+      },
+      "status": "STANDBY",
+      "category": "IRRADIACAO",
+      "parabolica_id": 1,
+      "canal": "10",
+      "frequency": "10",
+      "symbol_rate": "10",
+      "id": 2
+    }
+  ],
   "torres": [
     {
       "dados_gerais": {

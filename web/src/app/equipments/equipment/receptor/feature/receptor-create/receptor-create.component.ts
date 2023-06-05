@@ -6,7 +6,8 @@ import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-acces
 import { Receptor } from '../../data-access/receptor';
 import { Parabolica } from '../../../parabolica/data-access/parabolica';
 import { ReceptorService } from '../../data-access/receptor.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ParabolicaService } from '../../../parabolica/data-access/parabolica.service';
 
 @Component({
   selector: 'app-receptor-create',
@@ -26,7 +27,9 @@ export class ReceptorCreateComponent {
   selectedEquipmentStatus: EquipmentStatus = this.equipmentStatus[0]; //Funcionando
   statusOptions: string[] = this.equipmentStatus.map(({ title }) => title);
 
-  parabolica: Parabolica[] = [];
+  parabolicas: Parabolica[] = [];
+  selectedParabolica?: Parabolica;
+  parabolicasOptions: string[] = this.parabolicas.map(({ dados_gerais }) => dados_gerais.codigo);
 
   dadosGerais: DadosGerais = {
     codigo: '',
@@ -42,6 +45,7 @@ export class ReceptorCreateComponent {
     dados_gerais: this.dadosGerais, 
     status: this.selectedEquipmentStatus.value, //FUNCIONANDO
     category: this.selectedEquipmentType.value, //IRRADIAÇÃO
+    parabolica_id: this.selectedParabolica?.id,
     canal: 0,
     frequency: 0,
     symbol_rate: 0,    
@@ -50,15 +54,23 @@ export class ReceptorCreateComponent {
   constructor(
     private formBuilder: FormBuilder,
     private receptorService: ReceptorService,
+    private route: ActivatedRoute,
     private router: Router    
   ) {}
 
   ngOnInit(): void {
+    
+    this.route.data.subscribe((data) => {
+      this.parabolicas = data['parabolicas'];
+      this.parabolicasOptions = this.parabolicas.map(({ dados_gerais }) => dados_gerais.codigo);
+    });
+
     this.receptorForm = this.formBuilder.group({
       codigo: ['', Validators.required],
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
       status: [''],
+      parabolica_id: [''],
       canal: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],      
       frequency: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],      
       symbol_rate: ['', [Validators.required, Validators.pattern("-?\\d+(\\.\\d+)?")]],      
@@ -98,6 +110,11 @@ export class ReceptorCreateComponent {
 
     this.selectedEquipmentStatus = this.equipmentStatus.find((status) => status.title === value)!;
     this.receptor.status = this.selectedEquipmentStatus.value;
+  }
+
+  OnParabolicaSelected(value: string) {    
+    this.selectedParabolica = this.parabolicas.find((parabolica) => parabolica.dados_gerais.codigo === value)!;
+    this.receptor.parabolica_id = this.selectedParabolica.id;
   }
 
 }

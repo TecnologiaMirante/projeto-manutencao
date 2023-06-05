@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { VmessageModule } from 'src/app/shared/ui/vmessage/vmessage.module';
 import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dropdown2.module';
+import { ParabolicaService } from '../../../parabolica/data-access/parabolica.service';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dr
     ReceptorCreateComponent
   ],
   providers: [
-    ReceptorService
+    ReceptorService,
+    ParabolicaService
   ]
 })
 export class ReceptorCreateModule { }

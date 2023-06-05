@@ -32,6 +32,14 @@
                   title="Status"
                   placeholder="Status"
                 ></app-input-dropdown2>
+                <app-input-dropdown2
+                  [control]="$any(receptorForm.get('parabolica_id'))"
+                  [optionsList]="parabolicasOptions"
+                  [selectedOption]="parabolicas[0].dados_gerais.codigo"
+                  (optionSelected)="OnParabolicaSelected($event)"
+                  title="Parabólica"
+                  placeholder="Parabólica"
+                ></app-input-dropdown2>
               </div>
 
               <div class="flex mb-8">
