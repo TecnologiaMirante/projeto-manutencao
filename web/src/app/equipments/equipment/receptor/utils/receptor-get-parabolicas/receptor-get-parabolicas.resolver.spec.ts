@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
-import { receptorCreateResolver } from './receptor-create.resolver';
+import { receptorGetParabolicasResolver } from './receptor-get-parabolicas.resolver';
 
-describe('receptorCreateResolver', () => {
+describe('receptorGetParabolicasResolver', () => {
   const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
-      TestBed.runInInjectionContext(() => receptorCreateResolver(...resolverParameters));
+      TestBed.runInInjectionContext(() => receptorGetParabolicasResolver(...resolverParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

@@ -13,6 +13,13 @@ const routes: Routes = [
       import('../receptor-create/receptor-create.module').then(
         (m) => m.ReceptorCreateModule
       )
+  },
+  {
+    path: ':id/edit',
+    loadChildren: () => 
+      import('../receptor-edit/receptor-edit.module').then(
+        (m) => m.ReceptorEditModule
+      )
   }
 ];
 

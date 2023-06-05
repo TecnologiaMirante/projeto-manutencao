@@ -16,7 +16,7 @@ export class InputDropdown2Component {
   @Input() placeholder: string = "XXXXX";
 
   @Input() optionsList!: string[];
-  @Input() selectedOption!: string;
+  @Input() selectedOption?: string;
   @Output() optionSelected: EventEmitter<string> = new EventEmitter<string>;
   
   OnOptionChange() {

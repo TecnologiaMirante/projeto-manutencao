@@ -22,12 +22,12 @@
                   [control]="$any(receptorForm.get('codigo'))"
                   inputId="codigo"
                   title="Código"
-                  placeholder="Ex.: REC001"
+                  placeholder="{{ this.receptor.dados_gerais.codigo }}"
                 ></app-input-text>
                 <app-input-dropdown2
                   [control]="$any(receptorForm.get('status'))"
                   [optionsList]="statusOptions"
-                  [selectedOption]="equipmentStatus[0].title"
+                  [selectedOption]="selectedEquipmentStatus.title"
                   (optionSelected)="OnEquipmentStatusSelected($event)"
                   title="Status"
                   placeholder="Status"
@@ -35,7 +35,7 @@
                 <app-input-dropdown2
                   [control]="$any(receptorForm.get('parabolica_id'))"
                   [optionsList]="parabolicasOptions"
-                  [selectedOption]=""
+                  [selectedOption]="selectedParabolica?.dados_gerais?.codigo"
                   (optionSelected)="OnParabolicaSelected($event)"
                   title="Parabólica"
                   placeholder="Parabólica"
@@ -46,18 +46,18 @@
                 <app-input-text
                   [control]="$any(receptorForm.get('marca'))"
                   title="Marca"
-                  placeholder="Marca"
+                  placeholder="{{ this.receptor.dados_gerais.marca }}"
                 ></app-input-text>
                 <app-input-text
                   [control]="$any(receptorForm).get('modelo')"
                   title="Modelo"
-                  placeholder="Modelo"
+                  placeholder="{{ this.receptor.dados_gerais.modelo }}"
                 ></app-input-text>
                 <div>
                   <app-input-text
                     [control]="$any(receptorForm.get('canal'))"
                     title="Canal"
-                    placeholder="Canal"
+                    placeholder="{{ this.receptor.canal }}"
                   ></app-input-text>
                   <app-vmessage
                     *ngIf="receptorForm.get('canal')?.errors?.['pattern']"
@@ -68,7 +68,7 @@
                   <app-input-text
                     [control]="$any(receptorForm.get('frequency'))"
                     title="Frequência"
-                    placeholder="Frequência"
+                    placeholder="{{ this.receptor.frequency }}"
                   ></app-input-text>
                   <app-vmessage
                     *ngIf="receptorForm.get('frequency')?.errors?.['pattern']"
@@ -79,21 +79,13 @@
                   <app-input-text
                     [control]="$any(receptorForm.get('symbol_rate'))"
                     title="Symbol Rate"
-                    placeholder="Symbol Rate"
+                    placeholder="{{ this.receptor.symbol_rate }}"
                   ></app-input-text>
                   <app-vmessage
                     *ngIf="receptorForm.get('symbol_rate')?.errors?.['pattern']"
                     text="Digite um número!"
                   ></app-vmessage>
                 </div>
-                <!-- <app-input-dropdown2
-                  [control]="$any(receptorForm.get('classe'))"
-                  [optionsList]="dpsOptions"
-                  [selectedOption]="dpsClasses[0].title"
-                  (optionSelected)="OnClassSelected($event)"
-                  title="Classe"
-                  placeholder="Classe"
-                ></app-input-dropdown2> -->
               </div>
             </div>
 
