@@ -96,9 +96,6 @@ export class ReceptorEditComponent {
           });
           this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === receptor.status)!;          
           this.selectedParabolica = this.parabolicas.find((parabolica) => parabolica.id === receptor.parabolica_id)!;
-          console.log(this.parabolicas)
-          console.log(this.receptor.parabolica_id)
-          console.log(this.selectedParabolica)
         },
         error: (err) => {
           alert(err.error.message);

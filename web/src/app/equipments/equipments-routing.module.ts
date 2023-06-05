@@ -105,6 +105,13 @@ const routes: Routes = [
             import('../equipments/equipment/receptor/feature/receptor-shell/receptor-shell.module').then(
                 (m) => m.ReceptorShellModule
             )
+    },
+    {
+        path: 'transmissor',
+        loadChildren: () => 
+            import('../equipments/equipment/transmissor/feature/transmissor-shell/transmissor-shell.module').then(
+                (m) => m.TransmissorShellModule
+            )
     }
 ]
 

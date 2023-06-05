@@ -114,7 +114,22 @@
       "id": 1
     }
   ],
-  "transmissores": [],
+  "transmissores": [
+    {
+      "dados_gerais": {
+        "codigo": "codigo 1",
+        "marca": "marca 1",
+        "modelo": "modelo 1"
+      },
+      "status": "STANDBY",
+      "category": "IRRADIACAO",
+      "programmed_power": "10",
+      "canal_fisico": "20",
+      "receptor_id": 2,
+      "canal_virtual": "30",
+      "id": 1
+    }
+  ],
   "telemetrias": [
     {
       "dados_gerais": {
