@@ -9,10 +9,12 @@ import { StationsService } from '../../data-access/stations.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FabModule } from 'src/app/shared/ui/fab/fab.module';
 import { Stations1Module } from '../../ui/stations1/stations1.module';
+import { FilterByNamePipe } from '../../utils/pipes/filter-by-name.pipe';
 
 @NgModule({
   declarations: [
-    StationsListComponent
+    StationsListComponent,
+    FilterByNamePipe
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,7 @@ import { Stations1Module } from '../../ui/stations1/stations1.module';
     SearchBarModule,
     HttpClientModule,
     FabModule,
-    Stations1Module
+    Stations1Module,
   ],
   exports: [
     StationsListComponent

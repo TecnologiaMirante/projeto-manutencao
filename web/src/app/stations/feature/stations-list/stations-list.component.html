@@ -14,7 +14,9 @@
         >
           {{ nStations }} Estações
         </div>
-        <app-stations1 [stations]="stations"></app-stations1>
+        <app-stations1
+          [stations]="stations | filterByName : filter"
+        ></app-stations1>
       </div>
       <div class="pl-9">
         <app-search-bar
