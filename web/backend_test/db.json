@@ -2,25 +2,36 @@
   "disjuntores": [
     {
       "dados_gerais": {
-        "codigo": "codigo 1",
-        "marca": "marca 1",
-        "modelo": "modelo 1"
+        "codigo": "codigo disjuntor 2",
+        "marca": "marca 2",
+        "modelo": "modelo 2"
       },
-      "status": "MANUTENÇÃO",
+      "status": "DEFEITO",
       "category": "ELETRICA",
-      "corrente_maxima": "101",
-      "id": 1
+      "corrente_maxima": "20",
+      "id": 2
     },
     {
       "dados_gerais": {
-        "codigo": "codigo switch 1",
-        "marca": "marca 1",
-        "modelo": "modelo 1"
+        "codigo": "DIS001",
+        "marca": "Marca Disjuntor 1",
+        "modelo": "Modelo Disjuntor 1"
       },
-      "status": "STANDBY",
+      "status": "MANUTENÇÃO",
       "category": "ELETRICA",
       "corrente_maxima": "10",
-      "id": 2
+      "id": 3
+    },
+    {
+      "dados_gerais": {
+        "codigo": "DIS001",
+        "marca": "Marca Disjuntor 1",
+        "modelo": "Modelo Disjuntor 1"
+      },
+      "status": "DEFEITO",
+      "category": "ELETRICA",
+      "corrente_maxima": "10",
+      "id": 4
     }
   ],
   "dps": [],
@@ -54,6 +65,18 @@
       "diametro": "10",
       "satelite": "SATELITE 2",
       "id": 2
+    },
+    {
+      "dados_gerais": {
+        "codigo": "PAR003",
+        "marca": "Marca 3",
+        "modelo": "Modelo 3"
+      },
+      "status": "STANDBY",
+      "category": "IRRADIACAO",
+      "diametro": "10",
+      "satelite": "Satelite 3",
+      "id": 3
     }
   ],
   "receptores": [
