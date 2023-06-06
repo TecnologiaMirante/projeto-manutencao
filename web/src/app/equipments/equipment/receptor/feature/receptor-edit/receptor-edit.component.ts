@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EquipmentStatus, EquipmentsStatusList } from 'src/app/equipments/data-access/equipments-status';
 import { EquipmentType, EquipmentsTypeList } from 'src/app/equipments/data-access/equipments-type';
 import { Parabolica } from '../../../parabolica/data-access/parabolica';
@@ -7,13 +7,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Receptor } from '../../data-access/receptor';
 import { ReceptorService } from '../../data-access/receptor.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ParabolicaService } from '../../../parabolica/data-access/parabolica.service';
 
 @Component({
   selector: 'app-receptor-edit',
   templateUrl: './receptor-edit.component.html',
   styleUrls: ['./receptor-edit.component.css']
 })
-export class ReceptorEditComponent {
+export class ReceptorEditComponent implements OnInit {
   cidade:string = "Cururupu";
   equipamento:string = "REC0001";
   funcao:string = "Editar";
@@ -53,16 +54,24 @@ export class ReceptorEditComponent {
   constructor(
     private formBuilder: FormBuilder,
     private receptorService: ReceptorService,
+    private parabolicaService: ParabolicaService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe((data) => {
-      this.parabolicas = data['parabolicas'];
-      this.parabolicasOptions = this.parabolicas.map(({ dados_gerais }) => dados_gerais.codigo);
-      this.parabolicasOptions.push("");
-    });
+    this.parabolicaService.list().subscribe(
+      {
+        next: (parabolicas) => {
+          this.parabolicas = parabolicas;
+          this.parabolicasOptions = this.parabolicas.map(({ dados_gerais }) => dados_gerais.codigo);
+          this.parabolicasOptions.push("");
+        },
+        error: (err) => {
+          alert(err.error.message);
+        } 
+      }
+    );
 
     this.receptorForm = this.formBuilder.group({
       codigo: [''],
@@ -96,9 +105,7 @@ export class ReceptorEditComponent {
           });
           this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === receptor.status)!;          
           this.selectedParabolica = this.parabolicas.find((parabolica) => parabolica.id === receptor.parabolica_id)!;
-          console.log(this.parabolicas)
-          console.log(this.receptor.parabolica_id)
-          console.log(this.selectedParabolica)
+        
         },
         error: (err) => {
           alert(err.error.message);

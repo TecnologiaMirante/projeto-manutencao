@@ -37,7 +37,7 @@ import { InputDropdown2Module } from 'src/app/shared/ui/input-dropdown2/input-dr
     AntenaEditComponent
   ],
   providers: [
-    AntenaService
+    AntenaService,
   ]
 })
 export class AntenaEditModule { }

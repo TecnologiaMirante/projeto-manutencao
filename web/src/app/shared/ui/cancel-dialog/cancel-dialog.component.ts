@@ -13,6 +13,7 @@ export class CancelDialogComponent {
   constructor() {}
 
   cancel() {
+    console.log("ok")
     this.showDialog.emit(false);
   }
 
