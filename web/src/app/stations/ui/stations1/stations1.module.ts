@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Stations1Component } from './stations1.component';
 import { SearchBarModule } from 'src/app/shared/ui/search-bar/search-bar.module';
 import { StationCardModule } from '../station-card/station-card.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ import { StationCardModule } from '../station-card/station-card.module';
   imports: [
     CommonModule,
     SearchBarModule,
-    StationCardModule
+    StationCardModule,
+    RouterModule
   ],
   exports: [
     Stations1Component

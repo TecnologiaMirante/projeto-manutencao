@@ -11,4 +11,8 @@ export class Stations1Component {
   @Input() stations: Station[] = [];
 
   constructor() {}  
+
+  removeBlankSpacesAndLowerCase(inputString: string): string {
+    return inputString.replace(/ /g, '').toLowerCase();
+  }
 }

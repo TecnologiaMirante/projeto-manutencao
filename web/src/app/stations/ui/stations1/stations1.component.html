@@ -1,7 +1,14 @@
 <div class="3xl:w-custom_1108px h-max pt-6">
   <div class="grid gap-3 md:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
     <div *ngFor="let station of stations">
-      <app-station-card [stationName]="station.nome"></app-station-card>
+      <a
+        [routerLink]="[
+          '/stations',
+          removeBlankSpacesAndLowerCase(station.nome)
+        ]"
+      >
+        <app-station-card [stationName]="station.nome"></app-station-card>
+      </a>
     </div>
   </div>
 </div>

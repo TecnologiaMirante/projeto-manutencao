@@ -5,12 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { EquipmentsModule } from './equipments/equipments.module';
-import { FilterByNamePipe } from './stations/utils/pipes/filter-by-name.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterByNamePipe,
   ],
   imports: [
     BrowserModule,
