@@ -14,15 +14,14 @@
         >
           {{ nStations }} Estações
         </div>
-        <div class="3xl:w-custom_1108px h-max pt-6">
-          <div class="grid gap-3 md:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
-            <div *ngFor="let station of stations">
-              <app-station-card [stationName]="station.nome"></app-station-card>
-            </div>
-          </div>
-        </div>
+        <app-stations1 [stations]="stations"></app-stations1>
       </div>
-      <div class="pl-9"><app-search-bar></app-search-bar></div>
+      <div class="pl-9">
+        <app-search-bar
+          (onTyping)="filter = $event"
+          [value]="filter"
+        ></app-search-bar>
+      </div>
     </div>
   </div>
   <ng-template #noStationsMessage

@@ -8,6 +8,7 @@ import { SearchBarModule } from 'src/app/shared/ui/search-bar/search-bar.module'
 import { StationsService } from '../../data-access/stations.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FabModule } from 'src/app/shared/ui/fab/fab.module';
+import { Stations1Module } from '../../ui/stations1/stations1.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FabModule } from 'src/app/shared/ui/fab/fab.module';
     SearchBarModule,
     HttpClientModule,
     FabModule,
+    Stations1Module
   ],
   exports: [
     StationsListComponent
