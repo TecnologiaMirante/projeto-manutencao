@@ -121,7 +121,7 @@
         "marca": "marca 1",
         "modelo": "modelo 1"
       },
-      "status": "STANDBY",
+      "status": "DEFEITO",
       "category": "IRRADIACAO",
       "programmed_power": "10",
       "canal_fisico": "20",
