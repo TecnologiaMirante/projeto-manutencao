@@ -2,32 +2,72 @@
   "disjuntores": [
     {
       "dados_gerais": {
-        "codigo": "codigo 1",
-        "marca": "marca 1",
-        "modelo": "modelo 1"
+        "codigo": "codigo disjuntor 2",
+        "marca": "marca 2",
+        "modelo": "modelo 2"
       },
-      "status": "MANUTENÇÃO",
+      "status": "DEFEITO",
       "category": "ELETRICA",
-      "corrente_maxima": "101",
-      "id": 1
+      "corrente_maxima": "20",
+      "id": 2
     },
     {
       "dados_gerais": {
-        "codigo": "codigo switch 1",
-        "marca": "marca 1",
-        "modelo": "modelo 1"
+        "codigo": "DIS001",
+        "marca": "Marca Disjuntor 1",
+        "modelo": "Modelo Disjuntor 1"
+      },
+      "status": "MANUTENÇÃO",
+      "category": "ELETRICA",
+      "corrente_maxima": "10",
+      "id": 3
+    },
+    {
+      "dados_gerais": {
+        "codigo": "DIS001",
+        "marca": "Marca Disjuntor 1",
+        "modelo": "Modelo Disjuntor 1"
+      },
+      "status": "DEFEITO",
+      "category": "ELETRICA",
+      "corrente_maxima": "10",
+      "id": 4
+    }
+  ],
+  "dps": [
+    {
+      "dados_gerais": {
+        "codigo": "sadaskdsada",
+        "marca": "asdsad",
+        "modelo": "asdsad"
       },
       "status": "STANDBY",
       "category": "ELETRICA",
-      "corrente_maxima": "10",
-      "id": 2
+      "corrente_maxima": "01",
+      "classe": "D_1",
+      "id": 1
     }
   ],
-  "dps": [],
   "nobreaks": [],
   "arcondicionados": [],
   "exaustores": [],
-  "antenas": [],
+  "antenas": [
+    {
+      "dados_gerais": {
+        "codigo": "aaaaa",
+        "marca": "aa",
+        "modelo": "aa"
+      },
+      "status": "FUNCIONANDO",
+      "category": "IRRADIACAO",
+      "tipos_antena": "OMNIDIRECIONAL",
+      "gain": "aa",
+      "fendas": "10",
+      "nv": "10",
+      "posicao_torre": "10",
+      "id": 1
+    }
+  ],
   "cabos": [],
   "combinadores": [],
   "parabolicas": [
@@ -54,6 +94,18 @@
       "diametro": "10",
       "satelite": "SATELITE 2",
       "id": 2
+    },
+    {
+      "dados_gerais": {
+        "codigo": "PAR003",
+        "marca": "Marca 3",
+        "modelo": "Modelo 3"
+      },
+      "status": "STANDBY",
+      "category": "IRRADIACAO",
+      "diametro": "10",
+      "satelite": "Satelite 3",
+      "id": 3
     }
   ],
   "receptores": [
@@ -68,7 +120,8 @@
       "canal": "10",
       "frequency": "20",
       "symbol_rate": "30",
-      "id": 1
+      "id": 1,
+      "parabolica_id": 2
     },
     {
       "dados_gerais": {
@@ -112,6 +165,19 @@
       "altura": "",
       "aterramento": false,
       "id": 1
+    },
+    {
+      "dados_gerais": {
+        "codigo": "aaa",
+        "marca": "aAA",
+        "modelo": "AAA"
+      },
+      "status": "STANDBY",
+      "category": "IRRADIACAO",
+      "estrutura": "ESTAIADA",
+      "altura": "01",
+      "aterramento": false,
+      "id": 2
     }
   ],
   "transmissores": [
@@ -150,6 +216,12 @@
     },
     {
       "nome": "Cururupu 2"
+    },
+    {
+      "nome": "Balsas"
+    },
+    {
+      "nome": "Bacabal"
     }
   ]
 }

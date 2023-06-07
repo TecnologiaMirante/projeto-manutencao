@@ -3,8 +3,11 @@
 >
   <img src="../../../../assets/lupa.svg" alt="pesquisar" />
   <input
+    #inputFilter
     type="text"
     placeholder="Pesquisar"
+    (keyup)="debounce.next(inputFilter.value)"
+    [value]="value"
     class="flex h-8 lg:w-28 focus:outline-none focus:ring-0 border-none pl-custom_6px text-main-blue opacity-50 font-normal text-sm"
   />
 </div>

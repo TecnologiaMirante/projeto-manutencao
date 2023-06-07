@@ -11,6 +11,7 @@ export class StationsListComponent {
 
   stations: Station[] = [];
   nStations: number = this.stations.length;
+  filter: string = '';
 
   constructor(
     private stationService: StationsService,
