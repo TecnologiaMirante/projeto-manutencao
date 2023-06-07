@@ -8,6 +8,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Transmissor } from '../../data-access/transmissor';
 import { TransmissorService } from '../../data-access/transmissor.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AntenaService } from '../../../antena/data-access/antena.service';
+import { ParabolicaService } from '../../../parabolica/data-access/parabolica.service';
+import { ReceptorService } from '../../../receptor/data-access/receptor.service';
 
 @Component({
   selector: 'app-transmissor-edit',
@@ -56,22 +59,38 @@ export class TransmissorEditComponent {
   constructor(
     private formBuilder: FormBuilder,
     private transmissorService: TransmissorService,
+    private antenaService: AntenaService,
+    private receptorService: ReceptorService,
     private route: ActivatedRoute,
     private router: Router    
   ) {}
 
   ngOnInit(): void {
-    this.route.data.subscribe((data) => {
-      this.antenas = data['antenas'];
-      this.antenasOptions = this.antenas.map(({ dados_gerais }) => dados_gerais.codigo);
-      this.antenasOptions.push("");
-    });
- 
-    this.route.data.subscribe((data) => {
-      this.receptores = data['receptores'];
-      this.receptoresOptions = this.receptores.map(({ dados_gerais }) => dados_gerais.codigo);
-      this.receptoresOptions.push("");
-    });
+    this.antenaService.list().subscribe(
+      {
+        next: (antenas) => {
+          this.antenas = antenas;
+          this.antenasOptions = this.antenas.map(({ dados_gerais }) => dados_gerais.codigo);
+          this.antenasOptions.push("");
+        },
+        error: (err) => {
+          alert(err.error.message);
+        } 
+      }
+    );
+
+    this.receptorService.list().subscribe(
+      {
+        next: (receptores) => {
+          this.receptores = receptores;
+          this.receptoresOptions = this.receptores.map(({ dados_gerais }) => dados_gerais.codigo);
+          this.receptoresOptions.push("");
+        },
+        error: (err) => {
+          alert(err.error.message);
+        } 
+      }
+    );
 
     this.transmissorForm = this.formBuilder.group({
       codigo: [''],

@@ -105,10 +105,6 @@ export class ReceptorEditComponent implements OnInit {
           });
           this.selectedEquipmentStatus = EquipmentsStatusList.find((equipment) => equipment.value === receptor.status)!;          
           this.selectedParabolica = this.parabolicas.find((parabolica) => parabolica.id === receptor.parabolica_id)!;
-<<<<<<< HEAD
-=======
-        
->>>>>>> fbd458ffbbcac20b905f7c5b5764c51529bcb475
         },
         error: (err) => {
           alert(err.error.message);
