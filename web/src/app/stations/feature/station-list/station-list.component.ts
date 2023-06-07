@@ -3,12 +3,11 @@ import { Station } from '../../data-access/station';
 import { StationsService } from '../../data-access/stations.service';
 
 @Component({
-  selector: 'app-stations-list',
-  templateUrl: './stations-list.component.html',
-  styleUrls: ['./stations-list.component.css']
+  selector: 'app-station-list',
+  templateUrl: './station-list.component.html',
+  styleUrls: ['./station-list.component.css']
 })
-export class StationsListComponent {
-
+export class StationListComponent {
   stations: Station[] = [];
   nStations: number = this.stations.length;
   filter: string = '';
@@ -30,5 +29,4 @@ export class StationsListComponent {
       }
     );
   }
-
 }

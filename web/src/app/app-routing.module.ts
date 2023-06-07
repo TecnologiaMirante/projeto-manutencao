@@ -10,8 +10,8 @@ const routes: Routes = [
   {
     path: 'stations',
     loadChildren: () =>
-      import('./stations/feature/stations-shell/stations-shell.module').then(
-        (m) => m.StationsShellModule
+      import('./stations/feature/station-shell/station-shell.module').then(
+        (m) => m.StationShellModule
       )
   }
 ];

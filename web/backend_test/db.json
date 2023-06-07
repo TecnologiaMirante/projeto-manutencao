@@ -212,16 +212,40 @@
   "cabo": [],
   "stations": [
     {
-      "nome": "Cururupu"
+      "id": 1,
+      "nome": "Cururupu",
+      "identificacao": "Idenficação Cururupu",
+      "latitude": "Latitude Cururupu",
+      "longitude": "Longitude Cururupu",
+      "endereco": "1111111111",
+      "link_grafana": "Link Grafana Cururupu"
     },
     {
-      "nome": "Cururupu 2"
+      "id": 2,
+      "nome": "Cururupu 2",
+      "identificacao": "Idenficação Cururupu 2",
+      "latitude": "Latitude Cururupu 2",
+      "longitude": "Longitude Cururupu 2",
+      "endereco": "2222222222",
+      "link_grafana": "Link Grafana Cururupu 2"
     },
     {
-      "nome": "Balsas"
+      "id": 3,
+      "nome": "Cururupu 3",
+      "identificacao": "Idenficação Cururupu 3",
+      "latitude": "Latitude Cururupu 3",
+      "longitude": "Longitude Cururupu 3",
+      "endereco": "3333333333",
+      "link_grafana": "Link Grafana Cururupu 3"
     },
     {
-      "nome": "Bacabal"
+      "id": 4,
+      "nome": "Cururupu 4",
+      "identificacao": "Idenficação Cururupu 4",
+      "latitude": "Latitude Cururupu 4",
+      "longitude": "Longitude Cururupu 4",
+      "endereco": "444444444",
+      "link_grafana": "Link Grafana Cururupu 4"
     }
   ]
 }

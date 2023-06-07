@@ -10,14 +10,21 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: () =>
-      import('../stations-list/stations-list.module').then(
-        (m) => m.StationsListModule
+      import('../station-list/station-list.module').then(
+        (m) => m.StationListModule
       )    
-  }
+  },
+  {
+    path: ':id/detail',
+    loadChildren: () =>
+      import('../station-detail/station-detail.module').then(
+        (m) => m.StationDetailModule
+      )
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class StationsShellRoutingModule { }
+export class StationShellRoutingModule { }

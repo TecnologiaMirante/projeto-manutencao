@@ -1,0 +1,43 @@
+<div>
+  <p
+    class="md:px-14 lg:px-16 2xl:px-40 pt-3 text-base font-normal text-main-blue"
+  >
+    {{ action_path }}
+  </p>
+
+  <div class="flex justify-center">
+    <!-- Div equipamentos -->
+    <div class="xl1:mx-80 3xl:mx-custom_275px mt-6">
+      <!-- Title equipamentos -->
+      <div *ngIf="nEquipamentos != 0">
+        <div
+          *ngIf="nEquipamentos > 1; else singular"
+          class="justify-start text-base font-bold text-main-blue"
+        >
+          {{ nEquipamentos }} Equipamentos
+        </div>
+      </div>
+
+      <div>
+        <!-- Equipamento Card -->
+        <app-station-detail-card [station]="station"></app-station-detail-card>
+
+        <!-- Equipamentos relacionados -->
+        <div>Equipamentos</div>
+      </div>
+    </div>
+    <ng-template #singular
+      ><div class="justify-start text-base font-bold text-main-blue">
+        {{ nEquipamentos }} Equipamento
+      </div></ng-template
+    >
+
+    <!-- Div search-bar -->
+    <!-- <div class="pl-9">
+      <app-search-bar
+        (onTyping)="filter = $event"
+        [value]="filter"
+      ></app-search-bar>
+    </div> -->
+  </div>
+</div>

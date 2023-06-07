@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { StationsListRoutingModule } from './stations-list-routing.module';
-import { StationsListComponent } from './stations-list.component';
+import { StationListRoutingModule } from './station-list-routing.module';
+import { StationListComponent } from './station-list.component';
+import { FilterByNamePipe } from '../../utils/pipes/filter-by-name.pipe';
+import { StationsService } from '../../data-access/stations.service';
 import { StationCardModule } from '../../ui/station-card/station-card.module';
 import { SearchBarModule } from 'src/app/shared/ui/search-bar/search-bar.module';
-import { StationsService } from '../../data-access/stations.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FabModule } from 'src/app/shared/ui/fab/fab.module';
 import { Stations1Module } from '../../ui/stations1/stations1.module';
-import { FilterByNamePipe } from '../../utils/pipes/filter-by-name.pipe';
+
 
 @NgModule({
   declarations: [
-    StationsListComponent,
+    StationListComponent,
     FilterByNamePipe
   ],
   imports: [
     CommonModule,
-    StationsListRoutingModule,
+    StationListRoutingModule,
     StationCardModule,
     SearchBarModule,
     HttpClientModule,
@@ -26,10 +27,10 @@ import { FilterByNamePipe } from '../../utils/pipes/filter-by-name.pipe';
     Stations1Module,
   ],
   exports: [
-    StationsListComponent
+    StationListComponent,
   ],
   providers: [
     StationsService
   ]
 })
-export class StationsListModule { }
+export class StationListModule { }

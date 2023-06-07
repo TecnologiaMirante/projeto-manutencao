@@ -12,7 +12,4 @@ export class Stations1Component {
 
   constructor() {}  
 
-  removeBlankSpacesAndLowerCase(inputString: string): string {
-    return inputString.replace(/ /g, '').toLowerCase();
-  }
 }
