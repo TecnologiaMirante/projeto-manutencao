@@ -7,6 +7,7 @@ import { StationsService } from '../../data-access/stations.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarModule } from 'src/app/shared/ui/search-bar/search-bar.module';
 import { StationDetailCardModule } from '../../ui/station-detail-card/station-detail-card.module';
+import { EquipmentsModule } from '../../ui/equipments/equipments.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { StationDetailCardModule } from '../../ui/station-detail-card/station-de
     StationDetailRoutingModule,
     HttpClientModule,
     SearchBarModule,
-    StationDetailCardModule
+    StationDetailCardModule,
+    EquipmentsModule
   ],
   exports: [
     StationDetailComponent

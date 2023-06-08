@@ -1,4 +1,4 @@
-<div>
+<div class="pb-32">
   <p
     class="md:px-14 lg:px-16 2xl:px-40 pt-3 text-base font-normal text-main-blue"
   >
@@ -24,8 +24,16 @@
             [station]="station"
           ></app-station-detail-card>
 
+          <div
+            class="flex gap-6 justify-center mt-6 font-normal text-main-blue text-base"
+          >
+            <a routerLink="#">Histórico de Manutenções</a>
+            <a routerLink="#" class="font-bold">Equipamentos</a>
+            <a routerLink="#">Documentos</a>
+          </div>
+
           <!-- Equipamentos relacionados -->
-          <div>Equipamentos</div>
+          <app-equipments [equipaments]="equipaments"></app-equipments>
         </div>
 
         <!-- Filter -->

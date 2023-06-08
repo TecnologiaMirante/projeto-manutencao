@@ -66,6 +66,7 @@ module.exports = {
         custom_167px: "10.438rem",
         custom_180px: "11.25rem",
         custom_184px: "11.5rem",
+        custom_187px: "11.688rem",
         custom_212px: "13.25rem",
         custom_237px: "14.813rem",
         custom_275px: "17.188rem",

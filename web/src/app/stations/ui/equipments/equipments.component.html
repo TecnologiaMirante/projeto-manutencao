@@ -1,0 +1,52 @@
+<div>
+  <div>
+    <!-- Elétrica -->
+    <div>
+      <p class="text-main-blue font-bold mt-6">Elétrica</p>
+      <div class="mt-3 grid gap-3 grid-cols-5">
+        <a routerLink="#"
+          ><app-equipment-card
+            [equipments]="equipaments.items.eletrica.dps[0]"
+          ></app-equipment-card
+        ></a>
+        <a routerLink="#"
+          ><app-equipment-card
+            [equipments]="equipaments.items.eletrica.disjuntores[0]"
+          ></app-equipment-card
+        ></a>
+      </div>
+    </div>
+    <!-- Irradiação -->
+    <div>
+      <p class="text-main-blue font-bold mt-6">Irradiação</p>
+      <div class="mt-3 grid gap-3 grid-cols-5">
+        <a routerLink="#"
+          ><app-equipment-card
+            [equipments]="equipaments.items.irradiacao.antenas[0]"
+          ></app-equipment-card
+        ></a>
+        <a routerLink="#"
+          ><app-equipment-card
+            [equipments]="equipaments.items.irradiacao.parabolicas[0]"
+          ></app-equipment-card
+        ></a>
+        <a routerLink="#"
+          ><app-equipment-card
+            [equipments]="equipaments.items.irradiacao.receptores[0]"
+          ></app-equipment-card
+        ></a>
+      </div>
+    </div>
+    <!-- Telemetria -->
+    <div>
+      <p class="text-main-blue font-bold mt-6">Telemetria</p>
+      <div class="mt-3 grid gap-3 grid-cols-5">
+        <a routerLink="#"
+          ><app-equipment-card
+            [equipments]="equipaments.items.telemetria.telemetria[0]"
+          ></app-equipment-card
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
