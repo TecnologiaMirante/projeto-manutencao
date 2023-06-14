@@ -15,12 +15,10 @@ import { Torre } from 'src/app/equipments/equipment/torre/data-access/torre';
 import { Transmissor } from 'src/app/equipments/equipment/transmissor/data-access/transmissor';
 
 export interface listaEquipments {
-    items: {
-        eletrica: itemsEletrica1;
-        refrigeracao: itemsRefrigeracao1;
-        irradiacao: itemsIrradiacao1;
-        telemetria: itemsTelemetria1;
-    };
+    eletrica: itemsEletrica1;
+    refrigeracao: itemsRefrigeracao1;
+    irradiacao: itemsIrradiacao1;
+    telemetria: itemsTelemetria1;
 }
   
 interface itemsEletrica {

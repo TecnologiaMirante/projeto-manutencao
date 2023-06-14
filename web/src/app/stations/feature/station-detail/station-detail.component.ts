@@ -37,86 +37,84 @@ export class StationDetailComponent implements OnInit {
   };
 
   equipaments: listaEquipments = {
-    items: {
-      eletrica: {
-        disjuntores: [
-          {
-            "codigo": "codigo disjuntor 2",
-            "marca": "marca 2",
-            "modelo": "modelo 2"
-          },
-          {
-            codigo: "DIS001",
-            marca: "Marca Disjuntor 1",
-            modelo: "Modelo Disjuntor 1"
-          },
-        ],
-        dps: [
-          {
-            codigo: "sadaskdsada",
-            marca: "asdsad",
-            modelo: "asdsad"
-          }
-        ],
-        nobreaks: []
-      },
-      irradiacao: {
-        antenas: [
-          {
-            codigo: "aaaaa",
-            marca: "aa",
-            modelo: "aa"
-          }
-        ],
-        parabolicas: [
-          {
-            codigo: "PAR001",
-            marca: "Marca Parabólica 1",
-            modelo: "Modelo Parabólica 1"
-          },
-          {
-            codigo: "PAR002",
-            marca: "MARCA 2",
-            modelo: "MODELO 2"
-          },
-        ],
-        receptores: [
-          {
-            codigo: "codigo 1",
-            marca: "marca 1",
-            modelo: "modelo 1"
+    eletrica: {
+      disjuntores: [
+        {
+          codigo: "codigo disjuntor 2",
+          marca: "marca 2",
+          modelo: "modelo 2"
+        },
+        {
+          codigo: "DIS001",
+          marca: "Marca Disjuntor 1",
+          modelo: "Modelo Disjuntor 1"
+        },
+      ],
+      dps: [
+        {
+          codigo: "sadaskdsada",
+          marca: "asdsad",
+          modelo: "asdsad"
+        }
+      ],
+      nobreaks: []
+    },
+    irradiacao: {
+      antenas: [
+        {
+          codigo: "aaaaa",
+          marca: "aa",
+          modelo: "aa"
+        }
+      ],
+      parabolicas: [
+        {
+          codigo: "PAR001",
+          marca: "Marca Parabólica 1",
+          modelo: "Modelo Parabólica 1"
+        },
+        {
+          codigo: "PAR002",
+          marca: "MARCA 2",
+          modelo: "MODELO 2"
+        },
+      ],
+      receptores: [
+        {
+          codigo: "codigo 1",
+          marca: "marca 1",
+          modelo: "modelo 1"
 
-          },
-          {
-            codigo: "REC002",
-            marca: "MARCA 1",
-            modelo: "MODELO 1"
-          },
-          {
-            codigo: "receptor 3",
-            marca: "marca 3",
-            modelo: "modelo 3"
-          }
-        ],
-        cabos: [],
-        combinadores: [],
-        torres: [],
-        transmissores: []
-      },
-      telemetria: {
-        telemetria: [
-          {
-            codigo: "cod tele",
-            marca: "marca tele",
-            modelo: "modelo tele"
-          }
-        ],
-        switches: []
-      },
-      refrigeracao: {
-        ar_condicionados: [],
-        exaustor: []
-      }
+        },
+        {
+          codigo: "REC002",
+          marca: "MARCA 1",
+          modelo: "MODELO 1"
+        },
+        {
+          codigo: "receptor 3",
+          marca: "marca 3",
+          modelo: "modelo 3"
+        }
+      ],
+      cabos: [],
+      combinadores: [],
+      torres: [],
+      transmissores: []
+    },
+    telemetria: {
+      telemetria: [
+        {
+          codigo: "cod tele",
+          marca: "marca tele",
+          modelo: "modelo tele"
+        }
+      ],
+      switches: []
+    },
+    refrigeracao: {
+      ar_condicionados: [],
+      exaustor: []
     }
   };
 
